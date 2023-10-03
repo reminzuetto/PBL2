@@ -1,0 +1,6 @@
+class Khachhang {
+
+    private:
+
+    public:
+};

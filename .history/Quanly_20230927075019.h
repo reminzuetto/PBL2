@@ -1,0 +1,7 @@
+class Quanly {
+
+    private:
+
+
+    public:
+};
