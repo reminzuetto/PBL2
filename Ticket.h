@@ -17,5 +17,4 @@ class Ticket {
         void setPrice();
         int getPrice();
         void isAvailable();
-
 };

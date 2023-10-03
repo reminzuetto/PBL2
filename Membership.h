@@ -11,5 +11,4 @@ class Membership : public Customer {
 
     public:
         void newPrice();
-
 };

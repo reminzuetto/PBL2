@@ -13,5 +13,4 @@ class Showtime {
         Showtime();
         void setShowTime();
         Showtime getShowTime();
-
 };
