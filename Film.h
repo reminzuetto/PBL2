@@ -8,15 +8,19 @@ class Film {
         string tenPhim;
         int duration;
         int AmountOfShowtime;
-        Showtime dssc;
+        Showtime *dssc;
         string TypeOfFilm;
     
     public:
         Film();
-        void setNameFilm();
+        void setNameFilm(string&);
         string getNameFilm();
-        void setDuration();
+        void setDuration(int&);
         int getDuration();
-        void setTypeOfFilm();
+        void setTypeOfFilm(string&);
         string getTypeOfFilm();
+        void setAmountOfShowtime(int&);
+        int getAmountOfShowtime();
+        void input();
+        void output();
 };
