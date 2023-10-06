@@ -27,12 +27,12 @@ void MainMenu() {
                 cout << "\n\n\t1. Them Phim";	
                 cout << "\n\n\t2. Xoa Phim";	
                 cout << "\n\n\t3. Chinh Sua Phim";	
-		cout << "\n\n\t4. Hien Thi Danh Sach Phim Hien Tai";
+		        cout << "\n\n\t4. Hien Thi Danh Sach Phim Hien Tai";
                 cout << "\n\n\t5. Kiem Tra Doanh Thu  ";
                 cout << "\n\n\t6. Danh Sach Khach Hang Da Mua Ve";
                 cout << "\n\n\t0. Ket Thuc";
                 cout << "\n\n\t\t ================= END ===============";	
-		cout << "\n\n\tMoi ban nhap lua chon: ";
+		        cout << "\n\n\tMoi ban nhap lua chon: ";
                 cin >> SelectMng;
                 if (SelectMng == 0) break;
 
@@ -50,7 +50,7 @@ void MainMenu() {
                 cout << "\n\n\t1. Mua Ve";
                 cout << "\n\n\t0. Kiem Tra Ve Da Dat";
                 cout << "\n\n\t\t ================= END ===============";	
-		cout << "\n\n\tMoi ban nhap lua chon: ";
+		        cout << "\n\n\tMoi ban nhap lua chon: ";
                 cin >> SelectCsm;
                 if (SelectCsm == 0) break;
             }
