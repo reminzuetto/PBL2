@@ -7,6 +7,7 @@ void MainMenu() {
 
     int Select;    
     while (true) {
+
 		system("cls");
 		cout << "\n\n\t\t ====== QUAN LY DAT VE XEM PHIM ======";
 		cout << "\n\n\t1. Dang Nhap Voi Vai Tro Quan Ly ";	
@@ -15,7 +16,7 @@ void MainMenu() {
 		cout << "\n\n\t\t ================= END ===============";	
 		cout << "\n\n\tMoi ban nhap lua chon: ";
 		cin >> Select;
-        if(Select ==1) {
+        if(Select == 1) {
 
             int SelectMng;
             while (true) {
@@ -68,7 +69,7 @@ void MainMenu() {
 
 int main() {
 
-    Manager m;
-    m.UpdateData();
+    // Manager m;
+    // m.UpdateData();
     MainMenu();
 }
