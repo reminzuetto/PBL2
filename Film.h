@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Showtime.h"
+#include "Room.h"
 #pragma once
 
 class Film {
@@ -7,8 +7,8 @@ class Film {
     private:
         string tenPhim;
         int duration;
-        int AmountOfShowtime;
-        Showtime *dssc;
+        int AmountOfRoom;
+        Room *NumOfRoom;
         string TypeOfFilm;
     
     public:
