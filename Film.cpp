@@ -73,7 +73,7 @@ void Film::output() {
     cout << "Thoi luong : " << this->duration << endl;
     cout << "The loai phim : " << this->TypeOfFilm << endl;
     cout << "So luong suat chieu : " << this->AmountOfShowtime << endl;
-    for (long long i=0 ;i<this->AmountOfShowtime;++i){
+    for (long long i=0 ;i < this->AmountOfShowtime;++i){
 
         (this->dssc + i)->output();
 
