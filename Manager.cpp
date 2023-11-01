@@ -27,6 +27,19 @@ void Manager::Display()
 }
 void Manager::UpdateData()
 {
-    ifstream TotalFilm, TotalCustomer, FilmList, CustomerList;
+    ifstream tf, tc, fl, cl;
+    tf.open("TotalFilm.txt",ios::in);
+    tc.open("TotalCustomer.txt",ios::in);
+    fl.open("FilmList.txt",ios::in);
+    cl.open("CustomerList.txt",ios::in);
+    tsp >> this-> m;
+    this->dsphim = new Film[this->m];
+    for (int i = 0; i < this->m; i++)
+    {
+        (this->dsphim + 1)->doc(fl);
+    }
+    tf.close();
+    fl.close();
     
 }
+
