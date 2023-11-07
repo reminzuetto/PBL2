@@ -13,10 +13,10 @@ class Ticket {
 
     public:
         Ticket(string = "", int = 0);
-        ~Ticker();
-        void setChairNumber();
+        ~Ticket();
+        void setChairNumber(string = "");
         string getChairNumber();
-        void setPrice();
+        void setPrice(int = "");
         int getPrice();
         void isAvailable();
 };
