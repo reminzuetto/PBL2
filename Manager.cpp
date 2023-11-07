@@ -42,4 +42,57 @@ void Manager::UpdateData()
     fl.close();
     
 }
+void Manager::AddFilm()
+{
+    ofstream fl;
+    fl.open("FilmList.txt",ios::app);
+    Film f;
+    f.nhap();
+    fl << f;
+    fl.close();
+}
+void Manager::DeleteFilm()
+{
+    int x;
+    cout << "Nhap vi tri phim can xoa: ";
+    cin >> x;
+    for (int i = x; i < this->m - 1; i++)
+    {
+        *(this->dsphim + i) = *(this->dsphim + i + 1);
+    }
+    this->m--;
+    ofstream fl;
+    fl.open("FilmList.txt",ios::out);
+    fl << this->m;
+    for (int i = 0; i < this->m; i++)
+    {
+        fl << *(this->dsphim + i);
+    }
+    fl.close();
+}
+void Manager::EditFilm()
+{
+    int x;
+    cout << "Nhap vi tri phim can chinh sua: ";
+    cin >> x;
+
+    ifstream inFile;
+    inFile.open("FilmList.txt",ios::in);
+    vector<Film> films;
+    Film temp;
+    while (inFile >> temp) {
+        films.push_back(temp);
+    }
+    inFile.close();
+
+    cout << "Nhap thong tin can chinh sua: ";
+    films[x].nhap();
+
+    ofstream outFile;
+    outFile.open("FilmList.txt",ios::out);
+    for (const auto& film : films) {
+        outFile << film;
+    }
+    outFile.close();
+}
 

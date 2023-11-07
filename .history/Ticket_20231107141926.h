@@ -13,10 +13,10 @@ class Ticket {
         Film 
     public:
         Ticket(string = "", int = 0);
-        ~Ticket();
-        void setChairNumber(string = "");
+        ~Ticker();
+        void setChairNumber();
         string getChairNumber();
-        void setPrice(int = "");
+        void setPrice();
         int getPrice();
         void isAvailable();
 };
