@@ -1,5 +1,4 @@
-#include <iostream>
-#include <string.h>
+#include "Room.h"
 #pragma once
 
 using namespace std;
@@ -7,11 +6,20 @@ using namespace std;
 class Showtime {
 
     private:
-        string time;
+        string Time;
+        int Prices;
+        int AmountOfRoom;
+        List<Room> NumOfRoom;
 
     public:
-        Showtime();
         void input();
         void output();
-        string getShowTime();
+        void setTime();
+        string getTime();
+        void setPrices();
+        int getPrices();
+        void setAmountOfRoom();
+        int getAmountOfRoom();
+        void setNumOfRoom();
+        Room getNumOfRoom();
 };

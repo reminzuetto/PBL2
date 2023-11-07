@@ -1,14 +1,14 @@
 #include <iostream>
 #include <fstream>
-#include "Membership.h"
+#include "Date.h"
+#include "Customer.h"
+#include "Trade.h"
 #pragma once
 class Manager {
 
     private:
-        Film *dsphim;
-        Membership *ds_membership;
-        Customer *ds_normal;
-        int m, n, p;
+        List <Date> DateOfWeek;
+
     public:
         void UpdateData();
         void AddFilm();
@@ -18,4 +18,5 @@ class Manager {
         void ListCustomer();
         void Revenue();
         void Display();
+        void List_Customer();
 };

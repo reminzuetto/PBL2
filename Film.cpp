@@ -12,7 +12,7 @@ void Film::setFilmName(string& s) {
 
 string Film::getFilmName() {
 
-    return this->filmName;
+    return this->FilmName;
 
 }
 
@@ -54,7 +54,7 @@ int Film::getAmountOfShowtime() {
 
 void Film::input() {
 
-    cout << "Nhap ten phim : "; getline(cin, this->filmName);
+    cout << "Nhap ten phim : "; getline(cin, this->FilmName);
     cout << "Nhap thoi luong : "; cin >> this->duration;
     cout << "Nhap the loai phim : "; getline(cin, this->TypeOfFilm);
     this->NumOfRoom = new Room[this->AmountOfRoom];
@@ -66,7 +66,7 @@ void Film::input() {
 
 void Film::output() {
 
-    cout << "Ten phim : " << this->filmName << endl;
+    cout << "Ten phim : " << this->FilmName << endl;
     cout << "Thoi luong : " << this->duration << endl;
     cout << "The loai phim : " << this->TypeOfFilm << endl;
     for (long long i=0 ;i < this->AmountOfRoom;++i){

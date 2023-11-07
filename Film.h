@@ -1,18 +1,18 @@
 #include <iostream>
-#include "Room.h"
+#include "Showtime.h"
 #pragma once
 
 class Film {
 
     private:
-        string filmName;
+        string FilmName;
         int duration;
         int AmountOfRoom;
-        Room *NumOfRoom;
         string TypeOfFilm;
     
     public:
-        Film();
+        void input();
+        void output();
         void setFilmName(string&);
         string getFilmName();
         void setDuration(int&);
@@ -21,6 +21,6 @@ class Film {
         string getTypeOfFilm();
         void setAmountOfShowtime(int&);
         int getAmountOfShowtime();
-        void input();
-        void output();
+        void setDSSC();
+        void getDSSC();
 };

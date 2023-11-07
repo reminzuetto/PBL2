@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include "Film.h"
+#include "Date.h"
 #pragma once
 
 using namespace std;
@@ -9,14 +9,25 @@ class Ticket {
 
     private:
         string ChairNumber;
-        int Price;
-        Film 
+        int Prices;
+        Film film;
+        Date date;
+        Showtime showtime;
+        Room room;
+
     public:
-        Ticket(string = "", int = 0);
-        ~Ticket();
+        void input();
+        void output();
         void setChairNumber(string = "");
         string getChairNumber();
-        void setPrice(int = "");
-        int getPrice();
-        void isAvailable();
+        void setPrices(int = "");
+        int getPrices();
+        void setDate();
+        Date getDate();
+        void setFilm();
+        Film getFilm();
+        void setShowtime();
+        Showtime getShowtime();
+        void setRoom();
+        Room getRoom();
 };
