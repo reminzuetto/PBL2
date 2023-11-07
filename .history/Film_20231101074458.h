@@ -5,7 +5,7 @@
 class Film {
 
     private:
-        string filmName;
+        string tenPhim;
         int duration;
         int AmountOfRoom;
         Room *NumOfRoom;
@@ -13,8 +13,8 @@ class Film {
     
     public:
         Film();
-        void setFilmName(string&);
-        string getFilmName();
+        void setNameFilm(string&);
+        string getNameFilm();
         void setDuration(int&);
         int getDuration();
         void setTypeOfFilm(string&);

@@ -1,5 +1,4 @@
 #include <iostream>
-#include <string>
 #include "Film.h"
 #pragma once
 
@@ -12,7 +11,7 @@ class Ticket {
         int Price;
 
     public:
-        Ticket(string = "", int = 0);
+        Ticket();
         ~Ticker();
         void setChairNumber();
         string getChairNumber();
