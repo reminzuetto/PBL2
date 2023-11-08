@@ -1,13 +1,14 @@
 #include <iostream>
 #include <fstream>
-#include "Date.h"
+#include "Film.h"
 #include "Customer.h"
 #include "Trade.h"
 #pragma once
 class Manager {
 
-    private:
-        List <Date> DateOfWeek;
+        private:
+        List <Film> ListOfFilm;
+        List <Customer> List_Customer;
 
     public:
         void UpdateData();
@@ -18,5 +19,5 @@ class Manager {
         void ListCustomer();
         void Revenue();
         void Display();
-        void List_Customer();
+        void LisOfTrade();
 };

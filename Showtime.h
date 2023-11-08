@@ -7,6 +7,7 @@ class Showtime {
 
     private:
         string Time;
+        string Date;
         int Prices;
         int AmountOfRoom;
         List<Room> NumOfRoom;
@@ -16,6 +17,8 @@ class Showtime {
         void output();
         void setTime();
         string getTime();
+        void setDate();
+        string getDate();
         void setPrices();
         int getPrices();
         void setAmountOfRoom();

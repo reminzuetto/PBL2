@@ -1,10 +1,8 @@
 #include "Ticket.h"
-#include "Customer.h"
 
 class Trade {
 
     private:
-        List<Customer> List_Customer;
         int AmountOfTicket;
         List<Ticket> List_Ticket;
 

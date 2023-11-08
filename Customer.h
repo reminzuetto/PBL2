@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#include "Trade.h"
 #pragma once
 
 using namespace std;
@@ -9,6 +10,7 @@ class Customer {
         int Age;
         string PhoneNumber;
         bool TypeOfCus;
+        List <Trade> ListOfTrade;
         
     public:
         void input();
@@ -21,4 +23,5 @@ class Customer {
         string getPhoneNumber();
         void setTypeOfCus();
         bool getTypeOfCus();
+        void BuyTicket();
 };
