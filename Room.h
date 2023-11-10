@@ -15,4 +15,4 @@ class Room {
         int getAmountOfChair();
         void isAvailable();
 
-}
+};

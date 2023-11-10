@@ -6,7 +6,7 @@ Film::Film() {
 
 void Film::setFilmName(string& s) {
 
-    this->tenPhim = s;
+    this->FilmName = s;
 
 }
 
@@ -42,13 +42,13 @@ string Film::getTypeOfFilm() {
 
 void Film::setAmountOfShowtime(int& amount) {
 
-    this->AmountOfRoom = amount;
+    this->AmountOfShowtime = amount;
 
 }
 
 int Film::getAmountOfShowtime() {
 
-    return this->AmountOfRoom;
+    return this->AmountOfShowtime;
 
 }
 
@@ -57,9 +57,11 @@ void Film::input() {
     cout << "Nhap ten phim : "; getline(cin, this->FilmName);
     cout << "Nhap thoi luong : "; cin >> this->duration;
     cout << "Nhap the loai phim : "; getline(cin, this->TypeOfFilm);
-    this->NumOfRoom = new Room[this->AmountOfRoom];
-    for (long long i = 0; i < this->AmountOfRoom; i++) {
-        (this->NumOfRoom + i)->input();
+    cout << "Nhap so luong suat chieu : "; getline(cin, this->AmountOfShowtime);
+    for (long long i = 0; i < this->AmountOfShowtime; i++) {
+        Showtime s;
+        s.input();
+        DSSC->push_back(s);
     }
 
 }
@@ -69,9 +71,9 @@ void Film::output() {
     cout << "Ten phim : " << this->FilmName << endl;
     cout << "Thoi luong : " << this->duration << endl;
     cout << "The loai phim : " << this->TypeOfFilm << endl;
-    for (long long i=0 ;i < this->AmountOfRoom;++i){
+    for (long long i=0 ;i < this->AmountOfShowtime;++i){
 
-        (this->NumOfRoom + i)->output();
+        
 
     }
 }

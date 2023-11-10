@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Showtime.h"
+#include "Vector.h"
 #pragma once
 
 class Film {
@@ -7,8 +8,9 @@ class Film {
     private:
         string FilmName;
         int duration;
-        int AmountOfRoom;
+        int AmountOfShowtime;
         string TypeOfFilm;
+        Vector<Showtime> *DSSC;
     
     public:
         void input();
@@ -21,6 +23,6 @@ class Film {
         string getTypeOfFilm();
         void setAmountOfShowtime(int&);
         int getAmountOfShowtime();
-        void setDSSC();
-        void getDSSC();
+        // void setDSSC();
+        // void getDSSC();
 };

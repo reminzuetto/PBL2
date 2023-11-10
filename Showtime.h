@@ -1,4 +1,5 @@
 #include "Room.h"
+#include "Vector.h"
 #pragma once
 
 using namespace std;
@@ -10,7 +11,7 @@ class Showtime {
         string Date;
         int Prices;
         int AmountOfRoom;
-        List<Room> NumOfRoom;
+        Vector<Room> NumOfRoom;
 
     public:
         void input();
