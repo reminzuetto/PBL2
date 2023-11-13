@@ -21,6 +21,6 @@ class Film {
         stSring getTypeOfFilm();
         void setAmountOfShowtime(int&);
         int getAmountOfShowtime();
-        friend void input();
+        void input();
         void output();
 };
