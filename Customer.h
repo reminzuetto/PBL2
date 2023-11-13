@@ -1,18 +1,27 @@
-#include "Ticket.h"
+#include <bits/stdc++.h>
+#include "Trade.h"
 #pragma once
 
+using namespace std;
 class Customer {
 
-    private:
+    protected:
         string Name;
-        Ticket T;
-        int Amount;
+        int Age;
+        string PhoneNumber;
+        bool TypeOfCus;
+        List <Trade> ListOfTrade;
+        
     public:
-        Customer();
-        ~Customer();
+        void input();
+        void output();
         void setName();
         string getName();
+        void setAge();
+        int getAge();
+        void setPhoneNumber();
+        string getPhoneNumber();
+        void setTypeOfCus();
+        bool getTypeOfCus();
         void BuyTicket();
-        void TotalPrice();
-        void TicketCheck();
 };
