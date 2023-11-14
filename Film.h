@@ -10,7 +10,7 @@ class Film {
         int duration;
         int AmountOfShowtime;
         string TypeOfFilm;
-        Vector<Showtime> *DSSC;
+        Vector<Showtime> DSSC;
     
     public:
         void input();

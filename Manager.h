@@ -6,8 +6,8 @@ class Manager {
 
     private:
         int AmountOfFilm;
-        Vector <Film>* ListOfFilm;
-        Vector <Customer>* List_Customer;
+        Vector <Film> ListOfFilm;
+        Vector <Customer> List_Customer;
 
     public:
         void UpdateData();

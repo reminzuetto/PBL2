@@ -11,8 +11,8 @@ class Vector {
     public:
         Vector();
         void push_back(const T&);
-        void print();
+        // void print();
         Node<T>* operator[](int);
-        void setData(Node<T>&, int);
-        T getData(int);
+        // void setData(Node<T>&, int);
+        // T getData(int);
 };

@@ -59,9 +59,9 @@ void Film::input() {
     cout << "Nhap the loai phim : "; getline(cin, this->TypeOfFilm);
     cout << "Nhap so luong suat chieu : "; getline(cin, this->AmountOfShowtime);
     for (long long i = 0; i < this->AmountOfShowtime; i++) {
-        Showtime s;
-        s.input();
-        DSSC->push_back(s);
+
+        DSSC[i]->data.input();
+
     }
 
 }
@@ -73,7 +73,7 @@ void Film::output() {
     cout << "The loai phim : " << this->TypeOfFilm << endl;
     for (long long i=0 ;i < this->AmountOfShowtime;++i){
 
-        
+        DSSC[i]->data.output();
 
     }
 }
