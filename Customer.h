@@ -11,7 +11,7 @@ class Customer {
         string PhoneNumber;
         bool TypeOfCus;
         int TotalPrice;
-        Vector <Trade>* ListOfTrade;
+        Vector <Trade> ListOfTrade;
         
     public:
         void input();
