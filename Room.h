@@ -6,6 +6,7 @@ using namespace std;
 class Room {
 
     private:
+        int AmountOfRoom;
         int AmountOfChair;
         
     public:

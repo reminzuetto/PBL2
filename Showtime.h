@@ -10,7 +10,6 @@ class Showtime {
         string Time;
         string Date;
         int Prices;
-        int AmountOfRoom;
         Room NumOfRoom;
 
     public:
