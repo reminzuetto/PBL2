@@ -1,14 +1,13 @@
-#include <iostream>
-#include <fstream>
 #include "Film.h"
 #include "Customer.h"
 #include "Trade.h"
 #pragma once
 class Manager {
 
-        private:
-        List <Film> ListOfFilm;
-        List <Customer> List_Customer;
+    private:
+        int AmountOfFilm;
+        Vector <Film>* ListOfFilm;
+        Vector <Customer>* List_Customer;
 
     public:
         void UpdateData();
@@ -19,4 +18,5 @@ class Manager {
         void ListCustomer();
         void Revenue();
         void Display();
+        void AddCustomer(const Customer&);
 };

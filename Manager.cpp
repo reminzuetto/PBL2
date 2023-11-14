@@ -150,30 +150,10 @@ void Manager::Display()
     }
     cout << "---------------------------------------------------------\n";
 }
-// void Manager::AddCustomer()
-// {
-//     int x;
-//     cout << "Nhap loai khach hang: ";
-//     cin >> x;
-//     if (x == 1)
-//     {
-//         ofstream cl;
-//         cl.open("CustomerList.txt",ios::app);
-//         Membership c;
-//         c.nhap();
-//         cl << c;
-//         cl.close();
-//     }
-//     else
-//     {
-//         ofstream cl;
-//         cl.open("CustomerList.txt",ios::app);
-//         Customer c;
-//         c.nhap();
-//         cl << c;
-//         cl.close();
-//     }
-// }
+void Manager::AddCustomer(const Customer& csm);
+{
+    (this->List_Customer).push_back(csm);
+}
 // void Manager::DeleteCustomer()
 // {
 //     int x;

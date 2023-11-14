@@ -24,4 +24,5 @@ class Customer {
         void setTypeOfCus();
         bool getTypeOfCus();
         void BuyTicket();
+        Trade getTrade();
 };

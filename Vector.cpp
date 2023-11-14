@@ -24,19 +24,48 @@ template <typename T>
 void Vector<T>::print() {
     Node<T>* temp = head;
     while (temp != nullptr) {
-        std::cout << temp->data << " ";
+        cout << temp->data << " ";
         temp = temp->next;
     }
-    std::cout << std::endl;
+    cout << endl;
 }
 
 template <typename T>
-T Vector<T>::operator[](int index) {
+Node<T>* Vector<T>::operator[](int index) {
 
-    if (index > this->size) return -1;
+    if (index > this->size - 1) return nullptr;
 
     Node<T>* temp = head;
-    while (index >= 0) {
+    while (index > 0) {
+
+        temp = temp->next;
+        index --;
+
+    }
+
+    return temp;
+
+}
+
+template <typename T>
+void Vector<T>::setData(Node<T>& value, int index) {
+
+    Node<T>* temp = head;
+    while (index > 0) {
+
+        temp = temp->next;
+        index --;
+
+    }
+    temp->data = value.data;
+
+}
+
+template <typename T>
+T Vector<T>::getData(int index) {
+
+    Node<T>* temp = head;
+    while (index > 0) {
 
         temp = temp->next;
         index --;

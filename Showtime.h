@@ -11,7 +11,7 @@ class Showtime {
         string Date;
         int Prices;
         int AmountOfRoom;
-        Vector<Room> NumOfRoom;
+        Room NumOfRoom;
 
     public:
         void input();

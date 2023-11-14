@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-#include "Date.h"
 #pragma once
 
 using namespace std;
@@ -8,7 +7,7 @@ using namespace std;
 class Ticket {
 
     private:
-        string ChairNumber;
+        string Seat;
         int Prices;
         Film film;
         Date date;

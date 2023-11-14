@@ -12,5 +12,7 @@ class Vector {
         Vector();
         void push_back(const T&);
         void print();
-        T operator[](int);
+        Node<T>* operator[](int);
+        void setData(Node<T>&, int);
+        T getData(int);
 };
