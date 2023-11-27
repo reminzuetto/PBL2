@@ -117,21 +117,9 @@ void Manager::ListCustomer()
     cout << "------------------Danh Sach Khach Hang-------------------------\n";
     for (int i = 0; i < n; i++)
     {
-<<<<<<< HEAD
-        sum += (this->dsphim + i)->getDoanhthu();
-    }
-    cout << "Tong doanh thu la: " << sum << endl;
-}
-void Manager::Display()
-{
-    cout << "------------------Danh Sach Phim-------------------------\n";
-    for (int i = 0; i < this->AmountOfFilm; i++){
-        this->ListOfFilm[i]->data.output();
-=======
         cout << i << ".  ";
         List_Customer[i]->data.output();
         cout << endl;
->>>>>>> aa25136ea44caa779b6817c0b48c1c1744049c87
     }
     cout << "---------------------------------------------------------\n";
 }
