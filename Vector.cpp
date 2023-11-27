@@ -5,30 +5,31 @@ Vector<T>::Vector() : head(nullptr), size(0) {}
 
 template <typename T>
 void Vector<T>::push_back(const T& value) {
+
     Node<T>* newNode = new Node<T>(value);
 
     if (head == nullptr) {
+
         head = newNode;
+
     } 
+
     else {
         Node<T>* temp = head;
-        while (temp->next != nullptr) {
-            temp = temp->next;
-        }
-        temp->next = newNode;
-    }
-    size++;
-}
+        while (temp->getNext() != nullptr) {
 
-// template <typename T>
-// void Vector<T>::print() {
-//     Node<T>* temp = head;
-//     while (temp != nullptr) {
-//         cout << temp->data << " ";
-//         temp = temp->next;
-//     }
-//     cout << endl;
-// }
+            temp = temp->getNext();
+
+        }
+
+        temp->setNext(newNode);
+        newNode->setPrev(temp);
+
+    }
+
+    size++;
+
+}
 
 template <typename T>
 Node<T>* Vector<T>::operator[](int index) {
@@ -38,7 +39,7 @@ Node<T>* Vector<T>::operator[](int index) {
     Node<T>* temp = head;
     while (index > 0) {
 
-        temp = temp->next;
+        temp = temp->getNext();
         index --;
 
     }
@@ -47,31 +48,38 @@ Node<T>* Vector<T>::operator[](int index) {
 
 }
 
-// template <typename T>
-// void Vector<T>::setData(Node<T>& value, int index) {
+template <typename T>
+void Vector<T>::setData(Node<T>& value, int index) {
 
-//     Node<T>* temp = head;
-//     while (index > 0) {
+    Node<T>* temp = head;
+    while (index > 0) {
 
-//         temp = temp->next;
-//         index --;
+        temp = temp->getNext();
+        index --;
 
-//     }
-//     temp->data = value.data;
+    }
+    temp->setData(value->getData());
 
-// }
+}
 
-// template <typename T>
-// T Vector<T>::getData(int index) {
+template <typename T>
+T Vector<T>::getData(int index) {
 
-//     Node<T>* temp = head;
-//     while (index > 0) {
+    Node<T>* temp = head;
+    while (index > 0) {
 
-//         temp = temp->next;
-//         index --;
+        temp = temp->getNext();
+        index --;
 
-//     }
+    }
 
-//     return temp->data;
+    return temp->getData();
 
-// }
+}
+
+template <typename T>
+int Vector<T>::getSize() {
+
+    return size;
+
+}

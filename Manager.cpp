@@ -144,9 +144,8 @@ void Manager::Revenue()
 void Manager::Display()
 {
     cout << "------------------Danh Sach Phim-------------------------\n";
-    for (int i = 0; i < m; i++){
-        cout << i << ".  " << (this->dsphim + i);
-        cout << endl;
+    for (int i = 0; i < this->AmountOfFilm; i++){
+        this->ListOfFilm[i]->data.output();
     }
     cout << "---------------------------------------------------------\n";
 }

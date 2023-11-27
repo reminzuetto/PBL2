@@ -1,16 +1,25 @@
-#include <bits/stdc++.h>
 #pragma once
+#include <bits/stdc++.h>
 
 using namespace std;
 
 template <typename T>
 class Node {
     
-    public:
+    private:
         T data;
-        Node* next;
-        Node() : next(nullptr), data(0) {}
-        Node(const T& data) : next(nullptr), data(data) {}
-        Node(const Node<T>* node) : next(node->next), data(node->data) {}
-        
+        Node<T>* next;
+        Node<T>* prev;
+
+    public:
+        Node();
+        Node(const T&);
+        Node(const Node<T>*);
+        T getData();
+        void setNext(Node<T>*);
+        void setPrev(Node<T>*);
+        Node<T>* getNext();
+        Node<T>* getPrev();
+        bool operator==(const Node<T>&);
+        Node<T>& operator=(const Node<T>&);
 };
