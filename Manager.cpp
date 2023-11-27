@@ -4,26 +4,13 @@
 using namespace std;
 Manager::Manager()
 {
-    this->m = 0;
-    this->dsphim = nullptr;
-    this->ds_membership = nullptr;
-    this->ds_normal = nullptr;
+    this->ListOfFilm = nullptr;
+    this->List_Customer = nullptr;
 }
 Manager::~Manager()
 {
-    delete[] this->dsphim;
-    delete[] this->ds_membership;
-    delete[] this->ds_normal;
-}
-
-void Manager::Display()
-{
-    cout << "------------------Danh Sach Phim-------------------------\n";
-    for (int i = 0; i < m; i++){
-        cout << i << ".  " << (this->dsphim + i);
-        cout << endl;
-    }
-    cout << "---------------------------------------------------------\n";
+    delete[] this->ListOfFilm;
+    delete[] this->List_Customer;
 }
 void Manager::UpdateData()
 {
@@ -32,15 +19,21 @@ void Manager::UpdateData()
     tc.open("TotalCustomer.txt",ios::in);
     fl.open("FilmList.txt",ios::in);
     cl.open("CustomerList.txt",ios::in);
-    tsp >> this-> m;
-    this->dsphim = new Film[this->m];
-    for (int i = 0; i < this->m; i++)
+    tf >> this->AmountOfFilm;
+    for (int i = 0; i < this->AmountOfFilm; i++)
     {
-        (this->dsphim + 1)->doc(fl);
+        this->ListOfFilm[i]->data->doc(fl);
+    }
+    for (int i = 0; i < this->AmountOfFilm; i++)
+    {
+        for (auto& film : ListOfFilm) {
+            for (auto& showtime : film->DSSC) {
+                showtime.doc(tf);
+        }
+    }
     }
     tf.close();
     fl.close();
-    
 }
 void Manager::AddFilm()
 {
@@ -58,7 +51,7 @@ void Manager::DeleteFilm()
     cin >> x;
     for (int i = x; i < this->m - 1; i++)
     {
-        *(this->dsphim + i) = *(this->dsphim + i + 1);
+        *(this->ListOfFilm + i) = *(this->ListOfFilm + i + 1);
     }
     this->m--;
     ofstream fl;
@@ -66,7 +59,7 @@ void Manager::DeleteFilm()
     fl << this->m;
     for (int i = 0; i < this->m; i++)
     {
-        fl << *(this->dsphim + i);
+        fl << *(this->ListOfFilm + i);
     }
     fl.close();
 }
@@ -100,11 +93,11 @@ void Manager::SearchFilm()
     string name;
     cout << "Nhap ten phim can tim: ";
     cin >> name;
-    for (int i = 0; i < this->m; i++)
+    for (int i = 0; i < AmountOfFilm; i++)
     {
-        if ((this->dsphim + i)->getTenphim() == name)
+        if ((this->ListOfFilm[i]->data == name))
         {
-            cout << *(this->dsphim + i);
+            ListOfFilm->data.output();
             return;
         }
     }
@@ -114,7 +107,7 @@ void Manager::ListFilm()
 {
     cout << "------------------Danh Sach Phim-------------------------\n";
     for (int i = 0; i < m; i++){
-        cout << i << ".  " << (this->dsphim + i);
+        ListOfFilm->data.output();
         cout << endl;
     }
     cout << "---------------------------------------------------------\n";
@@ -122,21 +115,9 @@ void Manager::ListFilm()
 void Manager::ListCustomer()
 {
     cout << "------------------Danh Sach Khach Hang-------------------------\n";
-    for (int i = 0; i < n; i++){
-        cout << i << ".  " << (this->ds_membership + i);
-        cout << endl;
-    }
-    for (int i = 0; i < p; i++){
-        cout << i << ".  " << (this->ds_normal + i);
-        cout << endl;
-    }
-    cout << "---------------------------------------------------------\n";
-}
-void Manager::Revenue()
-{
-    int sum = 0;
-    for (int i = 0; i < this->m; i++)
+    for (int i = 0; i < n; i++)
     {
+<<<<<<< HEAD
         sum += (this->dsphim + i)->getDoanhthu();
     }
     cout << "Tong doanh thu la: " << sum << endl;
@@ -146,9 +127,23 @@ void Manager::Display()
     cout << "------------------Danh Sach Phim-------------------------\n";
     for (int i = 0; i < this->AmountOfFilm; i++){
         this->ListOfFilm[i]->data.output();
+=======
+        cout << i << ".  ";
+        List_Customer[i]->data.output();
+        cout << endl;
+>>>>>>> aa25136ea44caa779b6817c0b48c1c1744049c87
     }
     cout << "---------------------------------------------------------\n";
 }
+// void Manager::Revenue()
+// {
+//     int sum = 0;
+//     for (int i = 0; i < this->m; i++)
+//     {
+//         sum += ;
+//     }
+//     cout << "Tong doanh thu la: " << sum << endl;
+// }
 void Manager::AddCustomer(const Customer& csm);
 {
     (this->List_Customer).push_back(csm);

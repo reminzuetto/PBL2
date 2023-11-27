@@ -60,7 +60,7 @@ void Film::input() {
     cout << "Nhap so luong suat chieu : "; getline(cin, this->AmountOfShowtime);
     for (long long i = 0; i < this->AmountOfShowtime; i++) {
 
-        DSSC[i]->data.output();
+        DSSC[i]->data.input();
 
     }
 
