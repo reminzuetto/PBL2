@@ -19,24 +19,31 @@ Room& Room::operator=(const Room& r) {
 
 }
 
-istream& operator>>(istream& i, const int& a) {
+void Room::setNumOfRoom(const int& r) {
 
-    i >> a;
-    Room r;
-    r.setAmountOfChair(a);
+    this->NumOfRoom = r;
 
-    return i;
+}
+
+int Room::getNumOfRoom() {
+
+    return this->NumOfRoom;
 
 }
 
 void Room::Input() {
     
+    cout << "Nhap so phong : ";
+    cin >> this->NumOfRoom;
+    
+    cout << "Nhap so luong ghe : ";
     cin >> this->AmountOfChair;
 
 }
 
 void Room::Output() {
 
-    cout << "So luong ghe : " << this->AmountOfChair;
+    cout << "Phong : " << this->NumOfRoom << " ";
+    cout << "So luong ghe : " << this->AmountOfChair << endl;
 
 }

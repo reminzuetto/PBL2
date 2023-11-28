@@ -50,33 +50,33 @@ int Showtime::getPrices() {
 
 void Showtime::setNumOfRoom(const Room& r) {
 
-    this->NumOfRoom = r;
+    this->room = r;
 
 }
 
 Room Showtime::getNumOfRoom() {
 
-    return this->NumOfRoom;
+    return this->room;
 
 }
 
 void Showtime::Input() {
 
-    string d, t;
-    int amst, p;
-    Room r;
+    cout << "Nhap ngay chieu : ";
+    cin >> this->Date;
 
-    getline(cin, this->Date);
-
+    cout << "Nhap so luong suat chieu trong ngay : ";
     cin >> this->AmountOfShowtime;
 
     for (long long i = 0; i < this->AmountOfShowtime; i ++) {
 
-        getline(cin, this->Time);
+        cout << "Nhap suat chieu " << i + 1 << " : ";
+        cin >> this->Time;
 
+        cout << "Nhap gia ve suat chieu " << i + 1 << " : ";
         cin >> this->Prices;
 
-        this->NumOfRoom.Input();
+        this->room.Input();
 
     }
 }
@@ -87,11 +87,23 @@ void Showtime::Output() {
     cout << "So luong suat chieu : " << this->AmountOfShowtime << endl;
     for (long long i = 0; i < this->AmountOfShowtime; i++) {
 
-        cout << "Suat chieu " << i << " : " << this->Time << " ";
+        cout << "Suat chieu " << i + 1 << " : " << this->Time << " ";
         cout << "Gia ve : " << this->Prices << " ";
-        cout << "Phong : ";
-        this->NumOfRoom.Output();
+        this->room.Output();
+        cout << endl;
  
     }
+
+}
+
+Showtime& Showtime::operator= (const Showtime& s) {
+
+    this->Date = s.Date;
+    this->AmountOfShowtime = s.AmountOfShowtime;
+    this->Time = s.Time;
+    this->Prices = s.Prices;
+    this->room = s.room;
+
+    return *this;
 
 }

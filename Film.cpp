@@ -50,17 +50,24 @@ int Film::getAmountOfDate() {
 
 void Film::input() {
 
+    cout << "Nhap ten phim : "; 
     getline(cin, this->FilmName);
 
+    cout << "Nhap thoi luong phim : ";
     cin >> this->duration;
 
+    cin.ignore();
+    cout << "Nhap the loai phim : ";
     getline(cin, this->TypeOfFilm);
 
+    cout << "Nhap so luong ngay chieu : ";
     cin >> this->AmountOfDate;
 
     for (long long i = 0; i < this->AmountOfDate; i++) {
 
-        DSSC[i]->getData().Input();
+        Showtime s;
+        s.Input();
+        DSSC.push_back(s);
 
     }
 
@@ -78,7 +85,9 @@ void Film::output() {
 
     for (long long i=0 ;i < this->AmountOfDate;++i){
 
-        DSSC[i]->getData().Output();
+        Showtime s;
+        s = (DSSC[i]->getData());
+        s.Output();
 
     }
 

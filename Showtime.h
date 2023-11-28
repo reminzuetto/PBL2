@@ -1,5 +1,5 @@
 #pragma once
-#include "Room.cpp"
+#include "Room.h"
 
 using namespace std;
 
@@ -10,7 +10,7 @@ class Showtime {
         int AmountOfShowtime;
         string Time;
         int Prices;
-        Room NumOfRoom;
+        Room room;
 
     public:
         void Input();
@@ -25,4 +25,5 @@ class Showtime {
         int getPrices();
         void setNumOfRoom(const Room&);
         Room getNumOfRoom();
+        Showtime& operator=(const Showtime&);
 };
