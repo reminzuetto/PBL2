@@ -97,7 +97,7 @@ void Manager::SearchFilm()
     {
         if ((this->ListOfFilm[i]->data == name))
         {
-            ListOfFilm->data.output();
+            ListOfFilm.getData().output();
             return;
         }
     }
@@ -107,7 +107,7 @@ void Manager::ListFilm()
 {
     cout << "------------------Danh Sach Phim-------------------------\n";
     for (int i = 0; i < m; i++){
-        ListOfFilm->data.output();
+        ListOfFilm[i]->getData().output();
         cout << endl;
     }
     cout << "---------------------------------------------------------\n";
@@ -118,7 +118,7 @@ void Manager::ListCustomer()
     for (int i = 0; i < n; i++)
     {
         cout << i << ".  ";
-        List_Customer[i]->data.output();
+        List_Customer[i]->getData().output();
         cout << endl;
     }
     cout << "---------------------------------------------------------\n";

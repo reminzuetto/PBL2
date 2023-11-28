@@ -1,14 +1,13 @@
-#include <iostream>
-#include "Showtime.h"
-#include "Vector.h"
 #pragma once
+#include "Showtime.cpp"
+#include "Vector.cpp"
 
 class Film {
 
     private:
         string FilmName;
         int duration;
-        int AmountOfShowtime;
+        int AmountOfDate;
         string TypeOfFilm;
         Vector<Showtime> DSSC;
     
@@ -18,9 +17,9 @@ class Film {
         void setDuration(int&);
         int getDuration();
         void setTypeOfFilm(string&);
-        stSring getTypeOfFilm();
-        void setAmountOfShowtime(int&);
-        int getAmountOfShowtime();
+        string getTypeOfFilm();
+        void setAmountOfDate(int&);
+        int getAmountOfDate();
         void input();
         void output();
 };

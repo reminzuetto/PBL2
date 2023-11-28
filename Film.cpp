@@ -1,9 +1,5 @@
 #include "Film.h"
 
-Film::Film() {
-
-}
-
 void Film::setFilmName(string& s) {
 
     this->FilmName = s;
@@ -40,27 +36,31 @@ string Film::getTypeOfFilm() {
 
 }
 
-void Film::setAmountOfShowtime(int& amount) {
+void Film::setAmountOfDate(int& amount) {
 
-    this->AmountOfShowtime = amount;
+    this->AmountOfDate = amount;
 
 }
 
-int Film::getAmountOfShowtime() {
+int Film::getAmountOfDate() {
 
-    return this->AmountOfShowtime;
+    return this->AmountOfDate;
 
 }
 
 void Film::input() {
 
-    cout << "Nhap ten phim : "; getline(cin, this->FilmName);
-    cout << "Nhap thoi luong : "; cin >> this->duration;
-    cout << "Nhap the loai phim : "; getline(cin, this->TypeOfFilm);
-    cout << "Nhap so luong suat chieu : "; getline(cin, this->AmountOfShowtime);
-    for (long long i = 0; i < this->AmountOfShowtime; i++) {
+    getline(cin, this->FilmName);
 
-        DSSC[i]->data.output();
+    cin >> this->duration;
+
+    getline(cin, this->TypeOfFilm);
+
+    cin >> this->AmountOfDate;
+
+    for (long long i = 0; i < this->AmountOfDate; i++) {
+
+        DSSC[i]->getData().Input();
 
     }
 
@@ -69,19 +69,17 @@ void Film::input() {
 void Film::output() {
 
     cout << "Ten phim : " << this->FilmName << endl;
-    cout << "Thoi luong : " << this->duration << endl;
-    cout << "The loai phim : " << this->TypeOfFilm << endl;
-    for (long long i=0 ;i < this->AmountOfShowtime;++i){
 
-        DSSC[i]->data.output();
+    cout << "Thoi luong : " << this->duration << endl;
+
+    cout << "The loai phim : " << this->TypeOfFilm << endl;
+
+    cout << "Cac suat chieu trong tuan : " << endl;
+
+    for (long long i=0 ;i < this->AmountOfDate;++i){
+
+        DSSC[i]->getData().Output();
 
     }
-}
-void Film::doc(ifstream& inFile) {
-    getline(inFile, filmName);
-    inFile >> duration;
-    inFile.ignore(); 
-    getline(inFile, TypeOfFilm);
-    inFile >> AmountOfShowtime;
-    inFile.ignore();
+
 }
