@@ -1,28 +1,29 @@
-#include "Room.h"
-#include "Vector.h"
 #pragma once
+#include "Room.h"
 
 using namespace std;
 
 class Showtime {
 
     private:
-        string Time;
         string Date;
+        int AmountOfShowtime;
+        string Time;
         int Prices;
-        Room NumOfRoom;
+        Room room;
 
     public:
-        void input();
-        void output();
-        void setTime();
-        string getTime();
-        void setDate();
+        void Input();
+        void Output();
+        void setDate(const string&);
         string getDate();
-        void setPrices();
+        void setAmountOfShowtime(const int&);
+        int getAmountOfShowtime();
+        void setTime(const string&);
+        string getTime();
+        void setPrices(const int&);
         int getPrices();
-        void setAmountOfRoom();
-        int getAmountOfRoom();
-        void setNumOfRoom();
+        void setNumOfRoom(const Room&);
         Room getNumOfRoom();
+        Showtime& operator=(const Showtime&);
 };

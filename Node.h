@@ -8,18 +8,18 @@ class Node {
     
     private:
         T data;
-        Node<T>* next;
-        Node<T>* prev;
+        Node* next;
+        Node* prev;
 
     public:
         Node();
         Node(const T&);
-        Node(const Node<T>*);
+        Node(const Node*);
         T getData();
-        void setNext(Node<T>*);
-        void setPrev(Node<T>*);
+        void setNext(Node*);
+        void setPrev(Node*);
         Node<T>* getNext();
         Node<T>* getPrev();
-        bool operator==(const Node<T>&);
-        Node<T>& operator=(const Node<T>&);
+        bool operator==(const Node&);
+        Node& operator=(const Node&);
 };
