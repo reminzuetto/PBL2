@@ -40,7 +40,7 @@ void Manager::AddFilm()
     ofstream fl;
     fl.open("FilmList.txt",ios::app);
     Film f;
-    f.nhap();
+    f.doc();
     fl << f;
     fl.close();
 }
@@ -79,7 +79,7 @@ void Manager::EditFilm()
     inFile.close();
 
     cout << "Nhap thong tin can chinh sua: ";
-    films[x].nhap();
+    films[x].doc();
 
     ofstream outFile;
     outFile.open("FilmList.txt",ios::out);
@@ -97,7 +97,7 @@ void Manager::SearchFilm()
     {
         if ((this->ListOfFilm[i]->data == name))
         {
-            ListOfFilm->data.output();
+            this->ListOfFilm[i]->getData().output();
             return;
         }
     }
@@ -106,8 +106,8 @@ void Manager::SearchFilm()
 void Manager::ListFilm()
 {
     cout << "------------------Danh Sach Phim-------------------------\n";
-    for (int i = 0; i < m; i++){
-        ListOfFilm->data.output();
+    for (int i = 0; i < ListOfFilm.getSize(); i++){
+        ListOfFilm[i]->getData();
         cout << endl;
     }
     cout << "---------------------------------------------------------\n";
@@ -115,10 +115,10 @@ void Manager::ListFilm()
 void Manager::ListCustomer()
 {
     cout << "------------------Danh Sach Khach Hang-------------------------\n";
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < List_Customer.getSize(); i++)
     {
-        cout << i << ".  ";
-        List_Customer[i]->data.output();
+        cout << i + 1 << ".  ";
+        cout << List_Customer[i]->getData();
         cout << endl;
     }
     cout << "---------------------------------------------------------\n";
@@ -132,7 +132,7 @@ void Manager::ListCustomer()
 //     }
 //     cout << "Tong doanh thu la: " << sum << endl;
 // }
-void Manager::AddCustomer(const Customer& csm);
+void Manager::AddCustomer(const Customer& csm)
 {
     (this->List_Customer).push_back(csm);
 }
