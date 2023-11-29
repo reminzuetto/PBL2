@@ -48,17 +48,17 @@ int Showtime::getAmountOfShowtime() {
 
 // }
 
-void Showtime::setNumOfRoom(const Room& r) {
+// void Showtime::setNumOfRoom(const Room& r) {
 
-    this->room = r;
+//     this->room = r;
 
-}
+// }
 
-Room Showtime::getNumOfRoom() {
+// Room Showtime::getNumOfRoom() {
 
-    return this->room;
+//     return this->room;
 
-}
+// }
 
 void Showtime::Input() {
 
@@ -80,7 +80,9 @@ void Showtime::Input() {
         cin >> p;
         Prices.push_back(p);
 
-        this->room.Input();
+        Room r;
+        r.Input();
+        room.push_back(r);
 
     }
 }
@@ -93,7 +95,9 @@ void Showtime::Output() {
 
         cout << "Suat chieu " << i + 1 << " : " << this->Time[i].getData() << " ";
         cout << "Gia ve : " << this->Prices[i].getData() << " ";
-        this->room.Output();
+        Room r;
+        r = this->room[i].getData();
+        r.Output();
         cout << endl;
  
     }

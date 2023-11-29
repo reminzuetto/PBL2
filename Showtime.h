@@ -11,7 +11,7 @@ class Showtime {
         int AmountOfShowtime;
         Vector<string> Time;
         Vector<int> Prices;
-        Room room;
+        Vector<Room> room;
 
     public:
         void Input();
@@ -24,7 +24,7 @@ class Showtime {
         // string getTime();
         // void setPrices(const int&);
         // int getPrices();
-        void setNumOfRoom(const Room&);
-        Room getNumOfRoom();
+        // void setNumOfRoom(const Room&);
+        // Room getNumOfRoom();
         Showtime& operator=(const Showtime&);
 };
