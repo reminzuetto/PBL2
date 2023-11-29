@@ -24,29 +24,29 @@ int Showtime::getAmountOfShowtime() {
 
 }
 
-void Showtime::setTime(const string& t) {
+// void Showtime::setTime(const string& t) {
 
-    this->Time = t;
+//     this->Time = t;
 
-}
+// }
 
-string Showtime::getTime() {
+// string Showtime::getTime() {
 
-    return this->Time;
+//     return this->Time;
 
-}
+// }
 
-void Showtime::setPrices(const int& p) {
+// void Showtime::setPrices(const int& p) {
 
-    this->Prices = p;
+//     this->Prices = p;
 
-}
+// }
 
-int Showtime::getPrices() {
+// int Showtime::getPrices() {
 
-    return this->Prices;
+//     return this->Prices;
 
-}
+// }
 
 void Showtime::setNumOfRoom(const Room& r) {
 
@@ -71,10 +71,14 @@ void Showtime::Input() {
     for (long long i = 0; i < this->AmountOfShowtime; i ++) {
 
         cout << "Nhap suat chieu " << i + 1 << " : ";
-        cin >> this->Time;
+        string s;
+        cin >> s;
+        Time.push_back(s);
 
         cout << "Nhap gia ve suat chieu " << i + 1 << " : ";
-        cin >> this->Prices;
+        int p;
+        cin >> p;
+        Prices.push_back(p);
 
         this->room.Input();
 
@@ -87,8 +91,8 @@ void Showtime::Output() {
     cout << "So luong suat chieu : " << this->AmountOfShowtime << endl;
     for (long long i = 0; i < this->AmountOfShowtime; i++) {
 
-        cout << "Suat chieu " << i + 1 << " : " << this->Time << " ";
-        cout << "Gia ve : " << this->Prices << " ";
+        cout << "Suat chieu " << i + 1 << " : " << this->Time[i].getData() << " ";
+        cout << "Gia ve : " << this->Prices[i].getData() << " ";
         this->room.Output();
         cout << endl;
  
