@@ -34,10 +34,10 @@ int Room::getNumOfRoom() {
 
 void Room::Input() {
     
-    cout << "Nhap so phong : ";
+    //cout << "Nhap so phong : ";
     cin >> this->NumOfRoom;
     
-    cout << "Nhap so luong ghe : ";
+    //cout << "Nhap so luong ghe : ";
     cin >> this->AmountOfChair;
 
 }

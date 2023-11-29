@@ -62,20 +62,20 @@ int Showtime::getAmountOfShowtime() {
 
 void Showtime::Input() {
 
-    cout << "Nhap ngay chieu : ";
+    //cout << "Nhap ngay chieu : ";
     cin >> this->Date;
 
-    cout << "Nhap so luong suat chieu trong ngay : ";
+    //cout << "Nhap so luong suat chieu trong ngay : ";
     cin >> this->AmountOfShowtime;
 
     for (long long i = 0; i < this->AmountOfShowtime; i ++) {
 
-        cout << "Nhap suat chieu " << i + 1 << " : ";
+        //cout << "Nhap suat chieu " << i + 1 << " : ";
         string s;
         cin >> s;
         Time.push_back(s);
 
-        cout << "Nhap gia ve suat chieu " << i + 1 << " : ";
+        //cout << "Nhap gia ve suat chieu " << i + 1 << " : ";
         int p;
         cin >> p;
         Prices.push_back(p);

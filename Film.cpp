@@ -50,11 +50,15 @@ int Film::getAmountOfDate() {
 
 void Film::input() {
 
-    cout << "Nhap ten phim : "; getline(cin, this->FilmName);
-    cout << "Nhap thoi luong : "; cin >> this->duration;
+    //cout << "Nhap ten phim : "; 
+    getline(cin, this->FilmName);
+    //cout << "Nhap thoi luong : "; 
+    cin >> this->duration;
     cin.ignore();
-    cout << "Nhap the loai phim : "; getline(cin, this->TypeOfFilm);
-    cout << "Nhap so luong ngay chieu trong tuan : "; cin >> this->AmountOfDate;
+    //cout << "Nhap the loai phim : "; 
+    getline(cin, this->TypeOfFilm);
+    //cout << "Nhap so luong ngay chieu trong tuan : "; 
+    cin >> this->AmountOfDate;
     for (long long i = 0; i < this->AmountOfDate; i++) {
         
         Showtime s;
