@@ -99,11 +99,10 @@ void Showtime::Output() {
 Showtime& Showtime::operator= (const Showtime& s) {
 
     this->Date = s.Date;
-    this->AmountOfShowtime = s.AmountOfShowtime;
     this->Time = s.Time;
-    this->Prices = s.Prices;
     this->room = s.room;
-
+    this->Prices = s.Prices;
+    this->AmountOfShowtime = s.AmountOfShowtime;
     return *this;
 
 }

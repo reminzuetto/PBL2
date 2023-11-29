@@ -15,11 +15,12 @@ class Node {
         Node();
         Node(const T&);
         Node(const Node*);
+        void setData(const T&);
         T getData();
         void setNext(Node*);
         void setPrev(Node*);
-        Node<T>* getNext();
-        Node<T>* getPrev();
+        Node* getNext();
+        Node* getPrev();
         bool operator==(const Node&);
-        Node& operator=(const Node&);
+        //Node<T>& operator=(const Node&);
 };

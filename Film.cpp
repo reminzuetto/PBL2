@@ -63,11 +63,13 @@ void Film::input() {
     cout << "Nhap so luong ngay chieu : ";
     cin >> this->AmountOfDate;
 
-    for (long long i = 0; i < this->AmountOfDate; i++) {
+    int i = 0;
+    while (i < this->AmountOfDate) {
 
         Showtime s;
         s.Input();
-        DSSC.push_back(s);
+        this->DSSC.push_back(s);
+        i++;
 
     }
 
@@ -83,11 +85,11 @@ void Film::output() {
 
     cout << "Cac suat chieu trong tuan : " << endl;
 
-    for (long long i=0 ;i < this->AmountOfDate;++i){
+    int i = 0;
+    while(i < this->AmountOfDate) {
 
-        Showtime s;
-        s = (DSSC[i]->getData());
-        s.Output();
+        this->DSSC[i].getData().Output();
+        i ++;
 
     }
 

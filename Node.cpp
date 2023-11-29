@@ -23,6 +23,13 @@ bool Node<T>::operator==(const Node<T>& node) {
 }
 
 template <typename T>
+void Node<T>::setData(const T& d) {
+
+    this->data = d;
+
+}
+
+template <typename T>
 T Node<T>::getData() {
 
     return this->data;
@@ -33,7 +40,6 @@ template <typename T>
 void Node<T>::setNext(Node<T>* node) {
 
     this->next = node;
-
 }
 
 template <typename T>
@@ -48,6 +54,7 @@ void Node<T>::setPrev(Node<T>* node) {
 
     this->prev = node;
     
+    
 }
 
 template <typename T>
@@ -57,12 +64,12 @@ Node<T>* Node<T>::getPrev() {
 
 }
 
-template <typename T>
-Node<T>& Node<T>::operator=(const Node<T>& node) {
+// template <typename T>
+// Node<T>& Node<T>::operator=(const Node<T>& node) {
 
-    this->data = node.data;
-    this->next = node.next;
-    this->prev = node.prev;
-    return *this;
+//     this->data = node.data;
+//     this->next = node.next;
+//     this->prev = node.prev;
+//     return *this;
     
-}
+// }

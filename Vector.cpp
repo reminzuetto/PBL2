@@ -32,34 +32,26 @@ void Vector<T>::push_back(const T& value) {
 }
 
 template <typename T>
-Node<T>* Vector<T>::operator[](int index) {
-
-    if (index > this->size - 1) return nullptr;
-
+Node<T>& Vector<T>::operator[](int index) {
     Node<T>* temp = head;
     while (index > 0) {
-
         temp = temp->getNext();
-        index --;
-
+        index--;
     }
-
-    return temp;
-
+    return *temp;
 }
 
 template <typename T>
-void Vector<T>::setData(Node<T>& value, int index) {
-
+void Vector<T>::setData(const T& value, int index) {
     Node<T>* temp = head;
-    while (index > 0) {
-
+    while (index > 0 && temp != nullptr) {
         temp = temp->getNext();
-        index --;
-
+        index--;
     }
-    temp->setData(value->getData());
 
+    if (temp != nullptr) {
+        temp->setData(value);
+    }
 }
 
 template <typename T>
