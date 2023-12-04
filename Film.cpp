@@ -14,13 +14,13 @@ string Film::getFilmName() {
 
 void Film::setDuration(int& d) {
 
-    this->duration = d;
+    this->Duration = d;
 
 }
 
 int Film::getDuration() {
 
-    return this->duration;
+    return this->Duration;
 
 }
 
@@ -48,12 +48,12 @@ int Film::getAmountOfDate() {
 
 }
 
-void Film::input() {
+void Film::Input() {
 
     //cout << "Nhap ten phim : "; 
     getline(cin, this->FilmName);
     //cout << "Nhap thoi luong : "; 
-    cin >> this->duration;
+    cin >> this->Duration;
     cin.ignore();
     //cout << "Nhap the loai phim : "; 
     getline(cin, this->TypeOfFilm);
@@ -69,10 +69,10 @@ void Film::input() {
 
 }
 
-void Film::output() {
+void Film::Output() {
 
     cout << "Ten phim : " << this->FilmName << endl;
-    cout << "Thoi luong : " << this->duration << endl;
+    cout << "Thoi luong : " << this->Duration << endl;
     cout << "The loai phim : " << this->TypeOfFilm << endl;
     for (long long i=0 ;i < this->AmountOfDate;i++){
 
@@ -82,11 +82,12 @@ void Film::output() {
 
     }
 }
-// void Film::doc(ifstream& inFile) {
-//     getline(inFile, filmName);
-//     inFile >> duration;
-//     inFile.ignore(); 
-//     getline(inFile, TypeOfFilm);
-//     inFile >> AmountOfShowtime;
-//     inFile.ignore();
-// }
+
+void Film::doc(ifstream& inFile) {
+    getline(inFile, filmName);
+    inFile >> Duration;
+    inFile.ignore(); 
+    getline(inFile, TypeOfFilm);
+    inFile >> AmountOfShowtime;
+    inFile.ignore();
+}

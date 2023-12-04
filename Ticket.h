@@ -1,31 +1,29 @@
 #pragma once
 #include <bits/stdc++.h>
+#include "Film.h"
 
 using namespace std;
 
 class Ticket {
 
     private:
-        string Seat;
-        int Prices;
-        Film film;
-        Date date;
+        Film FilmName;
         Showtime showtime;
         Room room;
+        string Seat;
+        int Prices;
 
     public:
         void input();
         void output();
-        void setChairNumber(string = "");
-        string getChairNumber();
-        void setPrices(int = "");
-        int getPrices();
-        void setDate();
-        Date getDate();
         void setFilm();
         Film getFilm();
         void setShowtime();
         Showtime getShowtime();
         void setRoom();
         Room getRoom();
+        void setSeat(string = "");
+        string getSeat();
+        void setPrices(int = "");
+        int getPrices();
 };

@@ -6,12 +6,14 @@ class Film {
 
     private:
         string FilmName;
-        int duration;
+        int Duration;
         int AmountOfDate;
         string TypeOfFilm;
         Vector<Showtime> DSSC;
     
     public:
+        void Input();
+        void Output();
         void setFilmName(string&);
         string getFilmName();
         void setDuration(int&);
@@ -20,7 +22,5 @@ class Film {
         string getTypeOfFilm();
         void setAmountOfDate(int&);
         int getAmountOfDate();
-        void input();
-        void output();
-       // void doc(ifstream& inFile);
+        void doc(ifstream& inFile);
 };
