@@ -10,7 +10,6 @@ class Customer {
         int Age;
         string PhoneNumber;
         bool TypeOfCus;
-        int TotalPrice;
         Vector <Trade> ListOfTrade;
         
     public:
