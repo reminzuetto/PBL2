@@ -64,63 +64,47 @@ Trade Customer::getTrade(int i) const {
     return this->ListOfTrade[i];
 
 }
-
-ostream& operator<<(ostream& os, const Customer& cus) {
-
-    os << "Name: " << cus.Name << endl;
-    os << "Age: " << cus.Age << endl;
-    os << "Phone Number: " << cus.PhoneNumber << endl;
-    os << "Type of Customer: ";
-    if (cus.TypeOfCus == 0)
-        os << "Student" << endl;
+ostream& operator<<(ostream& os, const Customer& cus)
+{
+    os << "Ten: " << cus.Name << endl;
+    os << "Tuoi: " << cus.Age << endl;
+    os << "So dien thoai: " << cus.PhoneNumber << endl;
+    os << "Loai khach hang: ";
+    if (cus.TypeOfCus == "1")
+        os << "Khach hang thanh vien" << endl;
     else
-        os << "Adult" << endl;
-    os << "List of Trade: " << endl;
+        os << "Khach hang binh thuong" << endl;
+    os << "Lich su giao dich: " << endl;
     for (int i = 0; i < cus.ListOfTrade.size(); i++)
     {
         os << cus.ListOfTrade[i];
     }
     return os;
-
 }
-
-void Customer::Input() {
-
-    string name, phone;
-    int age;
-    char c;
-    bool type;
-    cout << "Nhap ho ten khach hang : ";
-    getline(cin, name);
-    setName(name);
-
-    cout << "Nhap tuoi khach hang : ";
-    cin >> age;
-    setAge(age);
-
-    cout << "Nhap so dien thoai khach hang : ";
-    cin.ignore();
-    getline(cin, phone);
-    setPhoneNumber(phone);
-
-    cout << "Quy khach hang co the thanh vien khong?\nY la co, N la khong. [Y/N] : ";
-    cin >> c;
-    if (c == 'Y') type = true;
-    else type = false;
-    setTypeOfCus(type);
-
+void Input()
+{
+    cout << "Nhap ten khach hang: ";
+    cin >> this->Name;
+    cout << "Nhap tuoi khach hang: ";
+    cin >> this->Age;
+    cout << "Nhap so dien thoai khach hang: ";
+    cin >> this->PhoneNumber;
+    cout << "Nhap loai khach hang: ";
+    cin >> this->TypeOfCus;
 }
-
-void Customer::Output() {
-
-    cout << "Ho ten khach hang : " << getName() << endl;
-
-    cout  << "Tuoi khach hang : " << getAge() << endl;
-
-    cout << "So dien thoai khach hang : " << getPhoneNumber() << endl;
-
-    bool type = getTypeOfCus();
-    if (type == true) cout << "Membership" << endl;
-    else cout << "Normal" << endl;
-
+void Output()
+{
+    cout << "Ten: " << this->Name << endl;
+    cout << "Tuoi: " << this->Age << endl;
+    cout << "So dien thoai: " << this->PhoneNumber << endl;
+    cout << "Loai khach hang: ";
+    if (this->TypeOfCus == 1)
+        cout << "Khach hang thanh vien" << endl;
+    else
+        cout << "Khanh hang binh thuong" << endl;
+    cout << "Lich su giao dich: " << endl;
+    for (int i = 0; i < this->ListOfTrade.size(); i++)
+    {
+        cout << this->ListOfTrade[i];
+    }
 }
