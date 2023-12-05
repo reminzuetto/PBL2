@@ -142,11 +142,11 @@ void Showtime::doc() {
     room.resize(AmountOfShowtime);
     for (int i = 0; i < AmountOfShowtime; i++) {
         cout << "Enter time for showtime " << i+1 << ": ";
-        getline(cin, Time[i]).getData();
+        getline(cin, Time[i]);
         cout << "Enter price for showtime " << i+1 << ": ";
         cin >> Prices[i].getData();
         cin.ignore();
         cout << "Enter details for room " << i+1 << ": ";
-        room[i].getData().doc();
+        room[i],getData().doc();
     }
 }

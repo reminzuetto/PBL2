@@ -147,6 +147,6 @@ void Showtime::doc() {
         cin >> Prices[i].getData();
         cin.ignore();
         cout << "Enter details for room " << i+1 << ": ";
-        room[i].getData().doc();
+        room[i],getData().doc();
     }
 }
