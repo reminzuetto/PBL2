@@ -13,8 +13,8 @@ class Customer {
         Vector <Trade> ListOfTrade;
         
     public:
-        void input();
-        void output();
+        void Input();
+        void Output();
         void setName();
         string getName();
         void setAge();

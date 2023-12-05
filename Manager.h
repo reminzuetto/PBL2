@@ -18,5 +18,4 @@ class Manager {
         void ListFilm();
         void ListCustomer();
         void Revenue();
-        void AddCustomer(const Customer&);
 };

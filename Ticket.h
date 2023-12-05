@@ -7,23 +7,26 @@ using namespace std;
 class Ticket {
 
     private:
-        Film FilmName;
-        Showtime showtime;
-        Room room;
+        string FilmName;
+        string Date;
+        string showtime;
+        int NumOfRoom;
         string Seat;
         int Prices;
 
     public:
-        void input();
-        void output();
-        void setFilm();
-        Film getFilm();
-        void setShowtime();
-        Showtime getShowtime();
-        void setRoom();
-        Room getRoom();
-        void setSeat(string = "");
+        void Input();
+        void Output();
+        void setFilmName(const string&);
+        string getFilmName();
+        void setDate(const string&);
+        string getDate();
+        void setShowtime(const string&);
+        string getShowtime();
+        void setNumOfRoom(const int&);
+        int getNumOfRoom();
+        void setSeat(const string&);
         string getSeat();
-        void setPrices(int = "");
+        void setPrices(const int&);
         int getPrices();
 };

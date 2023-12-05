@@ -59,7 +59,6 @@ ostream& operator<<(ostream& os, const Customer& cus)
         os << "Student" << endl;
     else
         os << "Adult" << endl;
-    os << "Total Price: " << cus.TotalPrice << endl;
     os << "List of Trade: " << endl;
     for (int i = 0; i < cus.ListOfTrade.size(); i++)
     {

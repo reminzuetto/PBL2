@@ -71,7 +71,7 @@ void Manager::EditFilm()
 
     ifstream inFile;
     inFile.open("FilmList.txt",ios::in);
-    vector<Film> films;
+    Vector<Film> films;
     Film temp;
     while (inFile >> temp) {
         films.push_back(temp);
@@ -179,7 +179,7 @@ void Manager::AddCustomer(const Customer& csm)
 //     {
 //         ifstream inFile;
 //         inFile.open("CustomerList.txt",ios::in);
-//         vector<Membership> customers;
+//         Vector<Membership> customers;
 //         Membership temp;
 //         while (inFile >> temp) {
 //             customers.push_back(temp);
@@ -200,7 +200,7 @@ void Manager::AddCustomer(const Customer& csm)
 //     {
 //         ifstream inFile;
 //         inFile.open("CustomerList.txt",ios::in);
-//         vector<Customer> customers;
+//         Vector<Customer> customers;
 //         Customer temp;
 //         while (inFile >> temp) {
 //             customers.push_back(temp);

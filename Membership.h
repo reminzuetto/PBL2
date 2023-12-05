@@ -5,6 +5,7 @@ class Membership : public Customer {
 
     private:
         double Discount;
+        int NewPrice;
 
     public:
         void setDiscount();
