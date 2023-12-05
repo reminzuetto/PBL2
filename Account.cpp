@@ -26,35 +26,26 @@ string Account::getPass() {
 
 void Account::Login() {
 
-    string id, pass;
-    getline(cin, id);
-    setID(this->ID);
-    cin.ignore();
-    getline(cin, pass);
-    setPass(this->Password);
+    cout << "ID : ";
+    getline(cin, this->ID);
+    cout << "Password : ";
+    getline(cin, this->Password);
 
 }
 
 void Account::Register() {
 
-    string id, pass;
-    getline(cin, id);
-    setID(this->ID);
-    cin.ignore();
-    getline(cin, pass);
-    setPass(this->Password);
-    this->CusInfo.Input();
-
-}
-
-Customer Account::getCusInfo() {
-
-    return this->CusInfo;
+    Customer c;
+    cout << "Nhap vao ID cua ban : ";
+    getline(cin, this->ID);
+    cout << "Nhap vao mat khau cua ban : ";
+    getline(cin, this->Password);
+    CusInfo.Input();
 
 }
 
 bool Account::operator==(const Account& account) {
 
-    return (this->ID == account.ID && this->Password == account.ID);
+    return (this->ID == account.ID && this->Password == account.Password);
 
 }

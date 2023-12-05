@@ -51,60 +51,75 @@ bool Customer::getTypeOfCus() {
 
 }
 
-void Customer::BuyTicket() {
+void Customer::setID(const string& id) {
 
-    Trade t;
-    t.input();
-    this->ListOfTrade.push_back(t);
+    this->ID = id;
 
 }
 
-Trade Customer::getTrade(int i) const {
+string Customer::getID() {
 
-    return this->ListOfTrade[i];
+    return this->ID;
 
 }
-ostream& operator<<(ostream& os, const Customer& cus)
-{
-    os << "Ten: " << cus.Name << endl;
-    os << "Tuoi: " << cus.Age << endl;
-    os << "So dien thoai: " << cus.PhoneNumber << endl;
-    os << "Loai khach hang: ";
-    if (cus.TypeOfCus == "1")
-        os << "Khach hang thanh vien" << endl;
-    else
-        os << "Khach hang binh thuong" << endl;
-    os << "Lich su giao dich: " << endl;
-    for (int i = 0; i < cus.ListOfTrade.size(); i++)
-    {
-        os << cus.ListOfTrade[i];
-    }
-    return os;
-}
-void Input()
+
+// void Customer::BuyTicket() {
+
+//     Trade t;
+//     t.input();
+//     this->ListOfTrade.push_back(t);
+
+// }
+
+// Trade Customer::getTrade(int i) const {
+
+//     return this->ListOfTrade[i];
+
+// }
+// ostream& operator<<(ostream& os, const Customer& cus)
+// {
+//     os << "Ten: " << cus.Name << endl;
+//     os << "Tuoi: " << cus.Age << endl;
+//     os << "So dien thoai: " << cus.PhoneNumber << endl;
+//     os << "Loai khach hang: ";
+//     if (cus.TypeOfCus == "1")
+//         os << "Khach hang thanh vien" << endl;
+//     else
+//         os << "Khach hang binh thuong" << endl;
+//     os << "Lich su giao dich: " << endl;
+//     for (int i = 0; i < cus.ListOfTrade.size(); i++)
+//     {
+//         os << cus.ListOfTrade[i];
+//     }
+//     return os;
+// }
+void Customer::Input()
 {
     cout << "Nhap ten khach hang: ";
-    cin >> this->Name;
+    getline(cin, this->Name);
     cout << "Nhap tuoi khach hang: ";
     cin >> this->Age;
     cout << "Nhap so dien thoai khach hang: ";
-    cin >> this->PhoneNumber;
-    cout << "Nhap loai khach hang: ";
-    cin >> this->TypeOfCus;
+    cin.ignore();
+    getline(cin, this->PhoneNumber);
+    cout << "Quy khach co phai la khach hang thanh vien khong?\nY la co, N la khong. [Y/N] : ";
+    char c;
+    cin >> c;
+    if (c == 'Y') setTypeOfCus(true);
+    else setTypeOfCus(false);
 }
-void Output()
+void Customer::Output()
 {
-    cout << "Ten: " << this->Name << endl;
+    cout << "Ten khach hang: " << this->Name << endl;
     cout << "Tuoi: " << this->Age << endl;
-    cout << "So dien thoai: " << this->PhoneNumber << endl;
-    cout << "Loai khach hang: ";
-    if (this->TypeOfCus == 1)
+    cout << "So dien thoai khach hang: " << this->PhoneNumber << endl;
+    if (this->TypeOfCus == true)
         cout << "Khach hang thanh vien" << endl;
     else
         cout << "Khanh hang binh thuong" << endl;
-    cout << "Lich su giao dich: " << endl;
-    for (int i = 0; i < this->ListOfTrade.size(); i++)
-    {
-        cout << this->ListOfTrade[i];
-    }
+    // cout << "Lich su giao dich: " << endl;
+    // for (int i = 0; i < this->ListOfTrade.size(); i++)
+    // {
+    //     cout << this->ListOfTrade[i];
+    // }
 }

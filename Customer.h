@@ -6,15 +6,18 @@ using namespace std;
 class Customer {
 
     private:
+        string ID;
         string Name;
         int Age;
         string PhoneNumber;
         bool TypeOfCus;
-        Vector <Trade> ListOfTrade;
+        //Vector <Trade> ListOfTrade;
         
     public:
         void Input();
         void Output();
+        void setID(const string&);
+        string getID();
         void setName(const string&);
         string getName();
         void setAge(const int&);
@@ -23,7 +26,7 @@ class Customer {
         string getPhoneNumber();
         void setTypeOfCus(const bool&);
         bool getTypeOfCus();
-        void BuyTicket();
-        Trade getTrade(int) const;
-        friend ostream& operator<<(ostream&, const Customer&);
+        // void BuyTicket();
+        // Trade getTrade(int) const;
+        // friend ostream& operator<<(ostream&, const Customer&);
 };
