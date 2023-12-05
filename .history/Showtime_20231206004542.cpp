@@ -145,7 +145,7 @@ void Showtime::doc() {
         getline(cin, Time[i]);
         cout << "Enter price for showtime " << i+1 << ": ";
         cin >> Prices[i];
-        cin.ignore();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n);
         cout << "Enter room for showtime " << i+1 << ": ";
         getline(cin, room[i]);
     }

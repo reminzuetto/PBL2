@@ -22,7 +22,7 @@ class Film {
         string getTypeOfFilm();
         void setAmountOfDate(int&);
         int getAmountOfDate();
-        void doc();
+        void doc(ifstream& inFile);
         void edit(ifstream& inFile);
         friend istream& operator>>(istream&, Film&);
 };

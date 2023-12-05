@@ -136,7 +136,7 @@ void Showtime::doc() {
     getline(cin, Date);
     cout << "Enter amount of showtime: ";
     cin >> AmountOfShowtime;
-    cin.ignore();
+    cin.ignore();  // ignore the newline character left in the buffer
     Time.resize(AmountOfShowtime);
     Prices.resize(AmountOfShowtime);
     room.resize(AmountOfShowtime);
@@ -145,7 +145,7 @@ void Showtime::doc() {
         getline(cin, Time[i]);
         cout << "Enter price for showtime " << i+1 << ": ";
         cin >> Prices[i];
-        cin.ignore();
+        cin.ignore();  // ignore the newline character left in the buffer
         cout << "Enter room for showtime " << i+1 << ": ";
         getline(cin, room[i]);
     }

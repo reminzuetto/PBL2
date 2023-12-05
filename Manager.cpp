@@ -91,14 +91,14 @@ void Manager::DeleteFilm()
     int x;
     cout << "Nhap vi tri phim can xoa: ";
     cin >> x;
-    for (int i = x; i < this->m - 1; i++)
+    for (int i = x; i < this->AmountOfFilm - 1; i++)
     {
         *(this->ListOfFilm + i) = *(this->ListOfFilm + i + 1);
     }
-    this->m--;
+    this->AmountOfFilm--;
     ofstream fl;
     fl.open("FilmList.txt",ios::out);
-    fl << this->m;
+    fl << this->AmountOfFilm;
     for (int i = 0; i < this->m; i++)
     {
         fl << *(this->ListOfFilm + i);
@@ -143,7 +143,7 @@ void Manager::SearchFilm()
             return;
         }
     }
-    cout << "Khong tim thay phim co ten " << name << endl;
+    cout << "Khong tim thay phim co ten " << name << "!" endl;
 }
 void Manager::ListFilm()
 {
@@ -175,10 +175,10 @@ void Manager::ListCustomer()
 //     }
 //     cout << "Tong doanh thu la: " << sum << endl;
 // }
-void Manager::AddCustomer(const Customer& csm)
-{
-    (this->List_Customer).push_back(csm);
-}
+// void Manager::AddCustomer(const Customer& csm)
+// {
+//     (this->List_Customer).push_back(csm);
+// }
 // void Manager::DeleteCustomer()
 // {
 //     int x;

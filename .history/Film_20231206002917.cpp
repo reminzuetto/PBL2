@@ -82,22 +82,13 @@ void Film::Output() {
 
     }
 }
-void Film::doc() {
-    cout << "Enter film name: ";
-    getline(cin, FilmName);
-    cout << "Enter duration: ";
-    cin >> Duration;
-    cin.ignore();
-    cout << "Enter amount of date: ";
-    cin >> AmountOfDate;
-    cin.ignore();
-    cout << "Enter type of film: ";
-    getline(cin, TypeOfFilm);
-    DSSC.resize(AmountOfDate);
-    for (int i = 0; i < AmountOfDate; i++) {
-        cout << "Enter details for showtime " << i+1 << ": ";
-        DSSC[i].doc();
-    }
+void Film::doc(ifstream& inFile) {
+    getline(inFile, filmName);
+    inFile >> Duration;
+    inFile.ignore(); 
+    getline(inFile, TypeOfFilm);
+    inFile >> AmountOfDate;
+    inFile.ignore();
 }
 
 void Film::edit(ifstream& inFile) {
