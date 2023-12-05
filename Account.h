@@ -13,6 +13,8 @@ class Account {
         string getID();
         void setPass(const string&);
         string getPass();
+        void setCus(const Customer&);
+        Customer getCus();
         void Login();
         void Register();
         bool operator==(const Account&);

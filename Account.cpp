@@ -24,6 +24,18 @@ string Account::getPass() {
 
 }
 
+void Account::setCus(const Customer& cus) {
+
+    this->CusInfo = cus;
+
+}
+
+Customer Account::getCus() {
+
+    return this->CusInfo;
+
+}
+
 void Account::Login() {
 
     cout << "ID : ";
