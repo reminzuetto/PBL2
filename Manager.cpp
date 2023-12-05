@@ -71,7 +71,7 @@ void Manager::EditFilm()
 
     ifstream inFile;
     inFile.open("FilmList.txt",ios::in);
-    Vector<Film> films;
+    Vector <Film> films;
     Film temp;
     while (inFile >> temp) {
         films.push_back(temp);
@@ -79,7 +79,7 @@ void Manager::EditFilm()
     inFile.close();
 
     cout << "Nhap thong tin can chinh sua: ";
-    films[x].doc();
+    films[x - 1].edit();
 
     ofstream outFile;
     outFile.open("FilmList.txt",ios::out);
@@ -107,7 +107,8 @@ void Manager::ListFilm()
 {
     cout << "------------------Danh Sach Phim-------------------------\n";
     for (int i = 0; i < ListOfFilm.getSize(); i++){
-        ListOfFilm[i]->getData();
+        cout << i + 1 << endl;
+        this->ListOfFilm[i]->getData().output();
         cout << endl;
     }
     cout << "---------------------------------------------------------\n";

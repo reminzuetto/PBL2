@@ -1,5 +1,5 @@
 #include "Film.h"
-#include "Customer.h"
+#include "Account.h"
 #include "Trade.h"
 #pragma once
 class Manager {

@@ -23,4 +23,5 @@ class Film {
         void setAmountOfDate(int&);
         int getAmountOfDate();
         void doc(ifstream& inFile);
+        void edit(ifstream& inFile);
 };
