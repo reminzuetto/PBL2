@@ -43,7 +43,13 @@ void Account::Register() {
     cin.ignore();
     getline(cin, pass);
     setPass(this->Password);
-    this->cus.Input();
+    this->CusInfo.Input();
+
+}
+
+Customer Account::getCusInfo() {
+
+    return this->CusInfo;
 
 }
 

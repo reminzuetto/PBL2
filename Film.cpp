@@ -87,12 +87,13 @@ void Film::doc(ifstream& inFile) {
     inFile >> Duration;
     inFile.ignore(); 
     getline(inFile, TypeOfFilm);
-    inFile >> AmountOfShowtime;
+    inFile >> AmountOfDate;
     inFile.ignore();
 }
+
 void Film::edit(ifstream& inFile) {
     int choice;
-    cout << "1. Film Name\n2. Duration\n3. Type of Film\n4. Amount of Showtime\n";
+    cout << "1. Film Name\n2. Duration\n3. Type of Film\n4. Amount of Date\n";
     cout << "Nhap loai du lieu muon thay doi:\n";
     cin >> choice;
     cin.ignore(::numeric_limits<::streamsize>::max(), '\n');
@@ -112,8 +113,8 @@ void Film::edit(ifstream& inFile) {
             getline(::cin, TypeOfFilm);
             break;
         case 4:
-            cout << "Enter new amount of showtime: ";
-            cin >> AmountOfShowtime;
+            cout << "Enter new amount of date: ";
+            cin >> AmountOfDate;
             cin.ignore();
             break;
         default:
