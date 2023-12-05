@@ -133,7 +133,7 @@ istream& operator>>(istream& is, Film& f)
     getline(is, f.TypeOfFilm);
     f.DSSC.resize(f.AmountOfDate);
     for (int i = 0; i < f.AmountOfDate; i++) {
-        is >> f.DSSC[i].getData();
+        is >> f.DSSC[i];
     }
     return is;
 }

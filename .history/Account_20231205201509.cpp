@@ -61,11 +61,3 @@ bool Account::operator==(const Account& account) {
     return (this->ID == account.ID && this->Password == account.Password);
 
 }
-
-istream operator>>(istream& is, Account& ac)
-{
-    getline(is, ac.ID);
-    getline(is, ac.Password);
-    is >> ac.CusInfo;
-    return is;
-}

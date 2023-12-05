@@ -123,3 +123,14 @@ void Customer::Output()
     //     cout << this->ListOfTrade[i];
     // }
 }
+istream& operator>>(istream& is, Customer& c)
+{
+    getline(is, c.ID);
+    getline(is, c.Name);
+    is >> c.Age;
+    is.ignore();
+    getline(is, c.PhoneNumber);
+    is >> c.TypeOfCus;
+    is.ignore(numeric_limits<streamsize>::max(), '\n');
+    return is;
+}

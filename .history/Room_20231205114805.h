@@ -18,5 +18,5 @@ class Room {
         int getAmountOfChair();
         //void isAvailable();
         Room& operator=(const Room&);
-        friend istream& operator>>(istream&, Room&);
+
 };

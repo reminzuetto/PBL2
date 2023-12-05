@@ -27,5 +27,4 @@ class Showtime {
         // void setNumOfRoom(const Room&);
         // Room getNumOfRoom();
         Showtime& operator=(const Showtime&);
-        friend istream& operator>>(istream&, Showtime&);
 };

@@ -124,7 +124,7 @@ istream& operator>>(istream& is, Showtime& st)
     st.room.resize(st.AmountOfShowtime);
     for (int i = 0; i < st.AmountOfShowtime; i++)
     {
-        getline(is, st.Time[i].getData());
+        getline(is, st.Time[i]);
         is >> st.Prices[i].getData();
         is.ignore(numeric_limits<streamsize>::max(), '\n');
         is >> st.room[i].getData();

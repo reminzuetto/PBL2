@@ -18,5 +18,5 @@ class Account {
         void Login();
         void Register();
         bool operator==(const Account&);
-        friend istream& operator>>(istream&, Account& );
+
 };

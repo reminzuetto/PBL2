@@ -124,16 +124,10 @@ void Film::edit(ifstream& inFile) {
 }
 istream& operator>>(istream& is, Film& f)
 {
-    getline(is, f.FilmName);
-    string temp;
-    getline(is, temp);
-    f.Duration = stoi(temp);
-    getline(is, temp);
-    f.AmountOfDate = stoi(temp);
-    getline(is, f.TypeOfFilm);
-    f.DSSC.resize(f.AmountOfDate);
-    for (int i = 0; i < f.AmountOfDate; i++) {
-        is >> f.DSSC[i].getData();
-    }
+    getline(is, film.FilmName, ' ');
+    getline(is, film.Duration, ' ');
+    getline(is, film.Duration, ' ');
+    getline(is, film.AmountOfDate, ' ');
+    getline(is, film.TypeOfFilm, '\n');
     return is;
 }

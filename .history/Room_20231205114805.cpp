@@ -48,11 +48,3 @@ void Room::Output() {
     cout << "So luong ghe : " << this->AmountOfChair << endl;
 
 }
-istream& operator>>(istream& is, Room& r)
-{
-    is >> r.NumOfRoom;
-    is.ignore(numeric_limits<streamsize>::max(), '\n');
-    is >> r.AmountOfChair;
-    is.ignore(numeric_limits<streamsize>::max(), '\n');
-    return is;
-}

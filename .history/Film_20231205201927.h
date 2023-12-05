@@ -24,5 +24,5 @@ class Film {
         int getAmountOfDate();
         void doc(ifstream& inFile);
         void edit(ifstream& inFile);
-        friend istream& operator>>(istream&, Film&);
+        friend istream& operator>>(istream& is, Film& f);
 };
