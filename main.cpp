@@ -7,7 +7,7 @@ Manager ql;
 
 void MainMenu() {
 
-    int Select;    . ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    int Select;
     while (true) {
 
 		system("cls");
