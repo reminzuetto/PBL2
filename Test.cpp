@@ -5,24 +5,18 @@ using namespace std;
 
 int main() {
 
-    Account acc;
+    Account acc, list_acc;
     acc.Login();
 
-    ifstream file("Account.txt", ios_base::in);
-
-    Account list_acc;
+    ifstream file;
+    file.open("Account.txt", ios::in);
     bool check = false;
 
-    while(!file.eof()) {
+    while(file >> list_acc) {
 
-        string ID, pass;
-        getline(file, ID);
-        getline(file, pass);
-        list_acc.setID(ID);
-        list_acc.setPass(pass);
         if (list_acc == acc) {
 
-            cout << "Dang nhap thanh cong";
+            cout << "Dang nhap thanh cong" << endl;
             check = true;
             break;
 
@@ -30,6 +24,7 @@ int main() {
 
     }
     
-    if (check == false) cout << "Tai khoan khong ton tai";
+    if (check == false) cout << "Tai khoan khong ton tai" << endl;
+    file.close();
 
 } 

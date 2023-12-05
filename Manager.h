@@ -8,6 +8,7 @@ class Manager {
         int AmountOfFilm;
         Vector <Film> ListOfFilm;
         Vector <Account> List_Account;
+        Vector <Customer> List_Customer;
 
     public:
         void SearchFilm();

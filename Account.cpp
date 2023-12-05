@@ -24,18 +24,6 @@ string Account::getPass() {
 
 }
 
-void Account::setCus(const Customer& cus) {
-
-    this->CusInfo = cus;
-
-}
-
-Customer Account::getCus() {
-
-    return this->CusInfo;
-
-}
-
 void Account::Login() {
 
     cout << "ID : ";
@@ -47,12 +35,22 @@ void Account::Login() {
 
 void Account::Register() {
 
-    Customer c;
     cout << "Nhap vao ID cua ban : ";
     getline(cin, this->ID);
     cout << "Nhap vao mat khau cua ban : ";
     getline(cin, this->Password);
-    CusInfo.Input();
+    cout << "Xac nhan lai mat khau : ";
+    string s;
+    int count = 1;
+    getline(cin, s);
+    while (count < 4) {
+
+        getline(cin, s);
+        count ++;
+
+    }
+
+    if (count == 4) cout << "Ban nhap sai qua nhieu lan";
 
 }
 
@@ -62,10 +60,9 @@ bool Account::operator==(const Account& account) {
 
 }
 
-istream operator>>(istream& is, Account& ac)
+istream& operator>>(istream& is, Account& ac)
 {
     getline(is, ac.ID);
     getline(is, ac.Password);
-    is >> ac.CusInfo;
     return is;
 }
