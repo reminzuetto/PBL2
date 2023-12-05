@@ -1,6 +1,6 @@
 #include "Film.h"
 #include "Account.h"
-#include "Trade.h"
+//#include "Trade.h"
 #pragma once
 class Manager {
 
@@ -11,6 +11,7 @@ class Manager {
         Vector <Customer> List_Customer;
 
     public:
+        void Customer_Login(Account&, Customer&);
         void SearchFilm();
         void UpdateData();
         void AddFilm();

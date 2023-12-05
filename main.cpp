@@ -56,10 +56,14 @@ void MainMenu() {
 
         else if (Select == 2) {
 
+            Account cus_login;
+            Customer cus;
+            cus_login.Login();
+            ql.Customer_Login(cus_login, cus);
+
             int SelectCsm;
             while (true) {
 
-                Customer csm;
                 system("cls");
                 cout << "\n\n\t\t ====== Chuc Nang Cua Khach Hang ======";
                 cout << "\n\n\t1. Mua Ve";
@@ -72,12 +76,12 @@ void MainMenu() {
 
                     case 0: {
                         
-                        ql.AddCustomer(csm);
+                        ql.AddCustomer(cus);
                         break;
 
                     }
-                    case 1: csm.BuyTicket();
-                    case 2: csm.getTrade();
+                    // case 1: cus.BuyTicket();
+                    // case 2: cus.getTrade();
 
                 }
                 

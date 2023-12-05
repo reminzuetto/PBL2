@@ -10,30 +10,72 @@ Manager::Manager()
 Manager::~Manager()
 {
     delete[] this->ListOfFilm;
+    delete[] this->List_Account;
     delete[] this->List_Customer;
 }
+
+void Manager::Customer_Login(Account& acc, Customer &cus) {
+
+    bool check = false;
+    for (int i = 0; i < this->List_Account.getSize(); i ++) {
+
+        if (acc == List_Account[i].getData()) {
+
+            cout << "Dang nhap thanh cong";
+            check = true;
+            break;
+
+        }
+
+    }
+
+    if (check == true) {
+
+        for (int i = 0; i < this->List_Customer.getSize(); i ++) {
+
+            if (acc.getID() == List_Customer[i].getData().getID()) {
+
+                cus = List_Customer[i].getData();
+                break;
+
+            }
+
+        }
+
+    }
+
+}
+
 void Manager::UpdateData()
 {
-    ifstream tf, tc, fl, cl;
-    tf.open("TotalFilm.txt",ios::in);
-    tc.open("TotalCustomer.txt",ios::in);
+    ifstream fl, cl, al;
     fl.open("FilmList.txt",ios::in);
     cl.open("CustomerList.txt",ios::in);
-    tf >> this->AmountOfFilm;
-    for (int i = 0; i < this->AmountOfFilm; i++)
-    {
-        this->ListOfFilm[i]->data->doc(fl);
+    al.open("AccountList.txt", ios::in);
+    fl >> this->AmountOfFilm;
+    Film temp;
+    while (fl >> temp) {
+
+        this->ListOfFilm.push_back(temp);
+
     }
-    for (int i = 0; i < this->AmountOfFilm; i++)
-    {
-        for (auto& film : ListOfFilm) {
-            for (auto& showtime : film->DSSC) {
-                showtime.doc(tf);
-        }
+
+    Customer cus;
+    while (cl >> cus) {
+
+        List_Customer.push_back(cus);
+
     }
+
+    Account acc;
+    while (al >> acc) {
+
+        List_Account.push_back(acc);
+
     }
-    tf.close();
     fl.close();
+    cl.close();
+    al.close();
 }
 void Manager::AddFilm()
 {
