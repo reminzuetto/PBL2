@@ -82,7 +82,6 @@ void Film::Output() {
 
     }
 }
-
 void Film::doc(ifstream& inFile) {
     getline(inFile, filmName);
     inFile >> Duration;
@@ -90,4 +89,35 @@ void Film::doc(ifstream& inFile) {
     getline(inFile, TypeOfFilm);
     inFile >> AmountOfShowtime;
     inFile.ignore();
+}
+void Film::edit(ifstream& inFile) {
+    int choice;
+    cout << "1. Film Name\n2. Duration\n3. Type of Film\n4. Amount of Showtime\n";
+    cout << "Nhap loai du lieu muon thay doi:\n";
+    cin >> choice;
+    cin.ignore(::numeric_limits<::streamsize>::max(), '\n');
+
+    switch (choice) {
+        case 1:
+            cout << "Enter new film name: ";
+            getline(::cin, filmName);
+            break;
+        case 2:
+            cout << "Enter new duration: ";
+            cin >> Duration;
+            cin.ignore();
+            break;
+        case 3:
+            cout << "Enter new type of film: ";
+            getline(::cin, TypeOfFilm);
+            break;
+        case 4:
+            cout << "Enter new amount of showtime: ";
+            cin >> AmountOfShowtime;
+            cin.ignore();
+            break;
+        default:
+            cout << "Invalid choice.\n";
+            break;
+    }
 }
