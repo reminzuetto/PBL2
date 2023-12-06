@@ -76,15 +76,15 @@ int Vector<T>::getSize() {
 
 }
 
-// template <typename T>
-// void Vector<T>::resize(int newSize) {
-//     if (newSize > size) {
-//         for (int i = size; i < newSize; i++) {
-//             push_back(T());
-//         }
-//     } else if (newSize < size) {
-//         for (int i = size - 1; i >= newSize; i--) {
-//             pop_back();
-//         }
-//     }
-// }
+template <typename T>
+void Vector<T>::resize(int newSize) {
+    if (newSize > size) {
+        for (int i = size; i < newSize; i++) {
+            push_back(T());
+        }
+    } else if (newSize < size) {
+        for (int i = size - 1; i >= newSize; i--) {
+            pop_back();
+        }
+    }
+}

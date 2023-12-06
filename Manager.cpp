@@ -121,7 +121,7 @@ void Manager::EditFilm()
     inFile.close();
 
     cout << "Nhap thong tin can chinh sua: ";
-    films[x - 1].edit();
+    films[x - 1].setData().edit();
 
     ofstream outFile;
     outFile.open("FilmList.txt",ios::out);
@@ -137,20 +137,20 @@ void Manager::SearchFilm()
     cin >> name;
     for (int i = 0; i < AmountOfFilm; i++)
     {
-        if ((this->ListOfFilm[i]->data == name))
+        if ((this->ListOfFilm[i].getData() == name))
         {
-            this->ListOfFilm[i]->getData().output();
+            this->ListOfFilm[i].getData().Output();
             return;
         }
     }
-    cout << "Khong tim thay phim co ten " << name << "!" endl;
+    cout << "Khong tim thay phim co ten " << name << "!" << endl;
 }
 void Manager::ListFilm()
 {
     cout << "------------------Danh Sach Phim-------------------------\n";
     for (int i = 0; i < ListOfFilm.getSize(); i++){
         cout << i + 1 << endl;
-        this->ListOfFilm[i]->getData().output();
+        this->ListOfFilm[i].getData().Output();
         cout << endl;
     }
     cout << "---------------------------------------------------------\n";
@@ -161,7 +161,7 @@ void Manager::ListCustomer()
     for (int i = 0; i < List_Customer.getSize(); i++)
     {
         cout << i + 1 << ".  ";
-        cout << List_Customer[i]->getData();
+        List_Customer[i].getData().Output();
         cout << endl;
     }
     cout << "---------------------------------------------------------\n";

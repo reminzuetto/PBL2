@@ -1,7 +1,7 @@
-#pragma once
 #include "Film.h"
 #include "Account.h"
 #include "Customer.h"
+#pragma once
 class Manager {
 
     private:

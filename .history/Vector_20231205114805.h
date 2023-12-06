@@ -15,5 +15,5 @@ class Vector {
         void setData(const T&, int);
         T getData(int);
         int getSize();
-        // void resize(int);
+
 };

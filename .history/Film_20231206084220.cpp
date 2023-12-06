@@ -96,8 +96,7 @@ void Film::doc() {
     DSSC.resize(AmountOfDate);
     for (int i = 0; i < AmountOfDate; i++) {
         cout << "Enter details for showtime " << i+1 << ": ";
-        Showtime temp;
-        DSSC[i].setData(temp.doc());
+        DSSC[i].getData().doc();
     }
 }
 

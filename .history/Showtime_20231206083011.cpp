@@ -132,8 +132,8 @@ istream& operator>>(istream& is, Showtime& st)
         is >> t;
         st.Prices[i].setData(t);
         is.ignore(numeric_limits<streamsize>::max(), '\n');
+        tr = st.room[i].setData();
         is >> tr;
-        st.room[i].setData(tr);
     }
     return is;
 }
