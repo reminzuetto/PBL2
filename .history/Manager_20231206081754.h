@@ -11,6 +11,7 @@ class Manager {
         Vector <Customer> List_Customer;
 
     public:
+        void Customer_Login(Account&, Customer&);
         void SearchFilm();
         void UpdateData();
         void AddFilm();

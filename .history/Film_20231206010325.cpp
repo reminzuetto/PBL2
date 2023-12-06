@@ -96,8 +96,7 @@ void Film::doc() {
     DSSC.resize(AmountOfDate);
     for (int i = 0; i < AmountOfDate; i++) {
         cout << "Enter details for showtime " << i+1 << ": ";
-        Showtime temp;
-        DSSC[i].setData(temp.doc());
+        DSSC[i].getData().doc();
     }
 }
 
@@ -141,9 +140,9 @@ istream& operator>>(istream& is, Film& f)
     getline(is, temp);
     f.AmountOfDate = stoi(temp);
     getline(is, f.TypeOfFilm);
+    f.DSSC.resize(f.AmountOfDate);
     for (int i = 0; i < f.AmountOfDate; i++) {
-        Showtime temp;
-        f.DSSC[i].setData(temp);
+        is >> f.DSSC[i].getData();
     }
     return is;
 }

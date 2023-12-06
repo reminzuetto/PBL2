@@ -12,6 +12,8 @@ class Vector {
         Vector();
         void push_back(const T&);
         Node<T>& operator[](int);
+        void setData(const T&, int);
+        T getData(int);
         int getSize();
         // void resize(int);
 };

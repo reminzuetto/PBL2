@@ -83,22 +83,12 @@ void Film::Output() {
     }
 }
 void Film::doc() {
-    cout << "Enter film name: ";
-    getline(cin, FilmName);
-    cout << "Enter duration: ";
-    cin >> Duration;
-    cin.ignore();
-    cout << "Enter amount of date: ";
-    cin >> AmountOfDate;
-    cin.ignore();
-    cout << "Enter type of film: ";
-    getline(cin, TypeOfFilm);
-    DSSC.resize(AmountOfDate);
-    for (int i = 0; i < AmountOfDate; i++) {
-        cout << "Enter details for showtime " << i+1 << ": ";
-        Showtime temp;
-        DSSC[i].setData(temp.doc());
-    }
+    getline(inFile, filmName);
+    inFile >> Duration;
+    inFile.ignore(); 
+    getline(inFile, TypeOfFilm);
+    inFile >> AmountOfDate;
+    inFile.ignore();
 }
 
 void Film::edit(ifstream& inFile) {
@@ -141,9 +131,9 @@ istream& operator>>(istream& is, Film& f)
     getline(is, temp);
     f.AmountOfDate = stoi(temp);
     getline(is, f.TypeOfFilm);
+    f.DSSC.resize(f.AmountOfDate);
     for (int i = 0; i < f.AmountOfDate; i++) {
-        Showtime temp;
-        f.DSSC[i].setData(temp);
+        is >> f.DSSC[i].getData();
     }
     return is;
 }

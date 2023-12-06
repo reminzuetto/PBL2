@@ -42,21 +42,36 @@ Node<T>& Vector<T>::operator[](int index) {
 }
 
 template <typename T>
-int Vector<T>::getSize() {
+void Vector<T>::setData(const T& value, int index) {
+    Node<T>* temp = head;
+    while (index > 0 && temp != nullptr) {
+        temp = temp->getNext();
+        index--;
+    }
 
-    return this->size;
+    if (temp != nullptr) {
+        temp->setData(value);
+    }
+}
+
+template <typename T>
+T Vector<T>::getData(int index) {
+
+    Node<T>* temp = head;
+    while (index > 0) {
+
+        temp = temp->getNext();
+        index --;
+
+    }
+
+    return temp->getData();
 
 }
 
-// template <typename T>
-// void Vector<T>::resize(int newSize) {
-//     if (newSize > size) {
-//         for (int i = size; i < newSize; i++) {
-//             push_back(T());
-//         }
-//     } else if (newSize < size) {
-//         for (int i = size - 1; i >= newSize; i--) {
-//             pop_back();
-//         }
-//     }
-// }
+template <typename T>
+int Vector<T>::getSize() {
+
+    return size;
+
+}

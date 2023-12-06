@@ -99,7 +99,7 @@ void Showtime::Output() {
         r = this->room[i].getData();
         r.Output();
         cout << endl;
-
+ 
     }
 
 }
@@ -119,21 +119,15 @@ istream& operator>>(istream& is, Showtime& st)
     getline(is, st.Date);
     is >> st.AmountOfShowtime;
     is.ignore(numeric_limits<streamsize>::max(), '\n');
-    // st.Time.resize(st.AmountOfShowtime);
-    // st.Prices.resize(st.AmountOfShowtime);
-    // st.room.resize(st.AmountOfShowtime);
+    st.Time.resize(st.AmountOfShowtime);
+    st.Prices.resize(st.AmountOfShowtime);
+    st.room.resize(st.AmountOfShowtime);
     for (int i = 0; i < st.AmountOfShowtime; i++)
     {
-        int t;;
-        room tr;
-        string temptime;
-        getline(is, temptime);
-        st.Time[i].setData(temptime);
-        is >> t;
-        st.Prices[i].setData(t);
+        getline(is, st.Time[i].getData());
+        is >> st.Prices[i].getData();
         is.ignore(numeric_limits<streamsize>::max(), '\n');
-        is >> tr;
-        st.room[i].setData(tr);
+        is >> st.room[i].getData();
     }
     return is;
 }
@@ -143,19 +137,16 @@ void Showtime::doc() {
     cout << "Enter amount of showtime: ";
     cin >> AmountOfShowtime;
     cin.ignore();
-    // Time.resize(AmountOfShowtime);
-    // Prices.resize(AmountOfShowtime);
-    // room.resize(AmountOfShowtime);
+    Time.resize(AmountOfShowtime);
+    Prices.resize(AmountOfShowtime);
+    room.resize(AmountOfShowtime);
     for (int i = 0; i < AmountOfShowtime; i++) {
         cout << "Enter time for showtime " << i+1 << ": ";
-        getline(cin, Time[i]).setData();
+        getline(cin, Time[i]);
         cout << "Enter price for showtime " << i+1 << ": ";
-        string temp;
-        cin >> temp;
-        Prices[i].setData(temp);
+        cin >> Prices[i];
         cin.ignore();
         cout << "Enter details for room " << i+1 << ": ";
-        room tr;
-        room[i].setData(tr.doc());
+        room[i].doc();
     }
 }

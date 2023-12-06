@@ -126,14 +126,12 @@ istream& operator>>(istream& is, Showtime& st)
     {
         int t;;
         room tr;
-        string temptime;
-        getline(is, temptime);
-        st.Time[i].setData(temptime);
+        getline(is, st.Time[i].setData());
+        t = st.Prices[i].setData();
         is >> t;
-        st.Prices[i].setData(t);
         is.ignore(numeric_limits<streamsize>::max(), '\n');
+        tr = st.room[i].setData();
         is >> tr;
-        st.room[i].setData(tr);
     }
     return is;
 }
@@ -150,12 +148,9 @@ void Showtime::doc() {
         cout << "Enter time for showtime " << i+1 << ": ";
         getline(cin, Time[i]).setData();
         cout << "Enter price for showtime " << i+1 << ": ";
-        string temp;
-        cin >> temp;
-        Prices[i].setData(temp);
+        cin >> Prices[i].setData();
         cin.ignore();
         cout << "Enter details for room " << i+1 << ": ";
-        room tr;
-        room[i].setData(tr.doc());
+        room[i].setData().doc();
     }
 }
