@@ -26,3 +26,4 @@ class Film {
         void edit(ifstream& inFile);
         friend istream& operator>>(istream&, Film&);
 };
+

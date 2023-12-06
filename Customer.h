@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-//#include "Trade.h"
+#include "Trade.h"
 #pragma once
 
 using namespace std;
@@ -11,7 +11,7 @@ class Customer {
         int Age;
         string PhoneNumber;
         bool TypeOfCus;
-        //Vector <Trade> ListOfTrade;
+        Vector <Trade> ListOfTrade;
         
     public:
         void Input();
@@ -27,7 +27,8 @@ class Customer {
         void setTypeOfCus(const bool&);
         bool getTypeOfCus();
         friend istream& operator>>(istream&, Customer&);
-        // void BuyTicket();
-        // Trade getTrade(int) const;
-        // friend ostream& operator<<(ostream&, const Customer&);
+        void BuyTicket();
+        Trade getTrade(int) const;
+        friend ostream& operator<<(ostream&, const Customer&);
 };
+

@@ -20,12 +20,7 @@ class Showtime {
         string getDate();
         void setAmountOfShowtime(const int&);
         int getAmountOfShowtime();
-        // void setTime(const string&);
-        // string getTime();
-        // void setPrices(const int&);
-        // int getPrices();
-        // void setNumOfRoom(const Room&);
-        // Room getNumOfRoom();
         Showtime& operator=(const Showtime&);
         friend istream& operator>>(istream&, Showtime&);
 };
+
