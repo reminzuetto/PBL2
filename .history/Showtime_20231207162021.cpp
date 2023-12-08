@@ -125,7 +125,7 @@ istream& operator>>(istream& is, Showtime& st)
     for (int i = 0; i < st.AmountOfShowtime; i++)
     {
         int t;
-        Room tr;
+        room tr;
         string temptime;
         getline(is, temptime);
         st.Time[i].setData(temptime);
@@ -147,18 +147,15 @@ void Showtime::doc() {
     // Prices.resize(AmountOfShowtime);
     // room.resize(AmountOfShowtime);
     for (int i = 0; i < AmountOfShowtime; i++) {
-        string timeData;
         cout << "Enter time for showtime " << i+1 << ": ";
-        getline(cin, timeData) ;
-        Time[i].setData(timeData);
+        getline(cin, Time[i]).setData();
         cout << "Enter price for showtime " << i+1 << ": ";
         int temp;
         cin >> temp;
         Prices[i].setData(temp);
         cin.ignore();
         cout << "Enter details for room " << i+1 << ": ";
-        Room tr;
-        tr.doc();
-        room[i].setData(tr);
+        room tr;
+        room[i].setData(tr.doc());
     }
 }

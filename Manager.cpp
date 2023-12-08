@@ -121,7 +121,9 @@ void Manager::EditFilm()
     inFile.close();
 
     cout << "Nhap thong tin can chinh sua: ";
-    films[x - 1].setData().edit();
+    Film ef;
+    ef.edit();
+    films[x - 1].setData(ef);
 
     ofstream outFile;
     outFile.open("FilmList.txt",ios::out);

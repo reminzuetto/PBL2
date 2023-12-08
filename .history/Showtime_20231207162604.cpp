@@ -125,7 +125,7 @@ istream& operator>>(istream& is, Showtime& st)
     for (int i = 0; i < st.AmountOfShowtime; i++)
     {
         int t;
-        Room tr;
+        room tr;
         string temptime;
         getline(is, temptime);
         st.Time[i].setData(temptime);
