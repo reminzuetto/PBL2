@@ -84,24 +84,25 @@ void Film::Output() {
 }
 void Film::doc() {
     cout << "Enter film name: ";
-    getline(cin, FilmName);
+    getline(cin, this->FilmName);
     cout << "Enter duration: ";
-    cin >> Duration;
+    cin >> this->Duration;
     cin.ignore();
     cout << "Enter amount of date: ";
-    cin >> AmountOfDate;
+    cin >> this->AmountOfDate;
     cin.ignore();
     cout << "Enter type of film: ";
-    getline(cin, TypeOfFilm);
-    DSSC.resize(AmountOfDate);
+    getline(cin, this->TypeOfFilm);
+    //DSSC.resize(AmountOfDate);
     for (int i = 0; i < AmountOfDate; i++) {
-        cout << "Enter details for showtime " << i+1 << ": ";
+        cout << "Enter details for showtime " << i + 1 << ": ";
         Showtime temp;
-        DSSC[i].setData(temp.doc());
+        temp.doc();
+        DSSC[i].setData(temp);
     }
 }
 
-void Film::edit(ifstream& inFile) {
+void Film::edit() {
     int choice;
     cout << "1. Film Name\n2. Duration\n3. Type of Film\n4. Amount of Date\n";
     cout << "Nhap loai du lieu muon thay doi:\n";
@@ -111,7 +112,7 @@ void Film::edit(ifstream& inFile) {
     switch (choice) {
         case 1:
             cout << "Enter new film name: ";
-            getline(::cin, filmName);
+            getline(cin, this->FilmName);
             break;
         case 2:
             cout << "Enter new duration: ";
@@ -120,7 +121,7 @@ void Film::edit(ifstream& inFile) {
             break;
         case 3:
             cout << "Enter new type of film: ";
-            getline(::cin, TypeOfFilm);
+            getline(cin, TypeOfFilm);
             break;
         case 4:
             cout << "Enter new amount of date: ";

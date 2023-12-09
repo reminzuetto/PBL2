@@ -48,6 +48,13 @@ int Vector<T>::getSize() {
 
 }
 
+template <typename T>
+void Vector<T>::setSize(const int& size) {
+
+    this->size = size;
+
+}
+
 // template <typename T>
 // void Vector<T>::resize(int newSize) {
 //     if (newSize > size) {

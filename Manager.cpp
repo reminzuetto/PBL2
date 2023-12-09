@@ -56,7 +56,7 @@ void Manager::UpdateData()
     Film temp;
     while (fl >> temp) {
 
-        this->ListOfFilm.push_back(temp);
+        ListOfFilm.push_back(temp);
 
     }
 
@@ -93,15 +93,18 @@ void Manager::DeleteFilm()
     cin >> x;
     for (int i = x; i < this->AmountOfFilm - 1; i++)
     {
-        *(this->ListOfFilm + i) = *(this->ListOfFilm + i + 1);
+        ListOfFilm[i] = ListOfFilm[i + 1];
     }
     this->AmountOfFilm--;
+    ListOfFilm.setSize(AmountOfFilm);
     ofstream fl;
     fl.open("FilmList.txt",ios::out);
     fl << this->AmountOfFilm;
     for (int i = 0; i < this->m; i++)
     {
-        fl << *(this->ListOfFilm + i);
+        Film temp;
+        temp = ListOfFilm[i].getData();
+        fl << temp;
     }
     fl.close();
 }
@@ -127,8 +130,10 @@ void Manager::EditFilm()
 
     ofstream outFile;
     outFile.open("FilmList.txt",ios::out);
-    for (const auto& film : films) {
-        outFile << film;
+    for (int i = 0; i < films.getSize(); i++) {
+        Film temp;
+        temp = films[i].getData();
+        outFile << temp;
     }
     outFile.close();
 }
@@ -139,9 +144,11 @@ void Manager::SearchFilm()
     cin >> name;
     for (int i = 0; i < AmountOfFilm; i++)
     {
-        if ((this->ListOfFilm[i].getData() == name))
+        if ((this->ListOfFilm[i].getData().getFilmName() == name))
         {
-            this->ListOfFilm[i].getData().Output();
+            Film temp;
+            temp = this->ListOfFilm[i].getData();
+            temp.Output();
             return;
         }
     }
@@ -152,7 +159,9 @@ void Manager::ListFilm()
     cout << "------------------Danh Sach Phim-------------------------\n";
     for (int i = 0; i < ListOfFilm.getSize(); i++){
         cout << i + 1 << endl;
-        this->ListOfFilm[i].getData().Output();
+        Film temp;
+        temp = this->ListOfFilm[i].getData();
+        temp.Output();
         cout << endl;
     }
     cout << "---------------------------------------------------------\n";
@@ -163,7 +172,9 @@ void Manager::ListCustomer()
     for (int i = 0; i < List_Customer.getSize(); i++)
     {
         cout << i + 1 << ".  ";
-        List_Customer[i].getData().Output();
+        Customer cus;
+        cus = List_Customer[i].getData();
+        cus.Output();
         cout << endl;
     }
     cout << "---------------------------------------------------------\n";
