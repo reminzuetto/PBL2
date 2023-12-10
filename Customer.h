@@ -1,6 +1,6 @@
+#pragma once
 #include <bits/stdc++.h>
 #include "Trade.h"
-#pragma once
 
 using namespace std;
 class Customer {
@@ -27,8 +27,8 @@ class Customer {
         void setTypeOfCus(const bool&);
         bool getTypeOfCus();
         friend istream& operator>>(istream&, Customer&);
-        void BuyTicket();
-        Trade getTrade(int) const;
+        // void BuyTicket();
+        // Trade getTrade(int) const;
         friend ostream& operator<<(ostream&, const Customer&);
 };
 

@@ -155,7 +155,9 @@ ostream& operator<<(ostream& os, Film& f)
     os << f.AmountOfDate << endl;
     os << f.TypeOfFilm << endl;
     for (int i = 0; i < f.AmountOfDate; i++) {
-        os << f.DSSC[i].getData();
+        Showtime temp;
+        temp = f.DSSC[i].getData();
+        os << temp;
     }
     return os;
 }

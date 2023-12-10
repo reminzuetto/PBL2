@@ -1,6 +1,5 @@
 #pragma once
 #include "Node.cpp"
-
 template <typename T>
 class Vector {
 

@@ -1,18 +1,17 @@
 #include <iostream>
 #include "Manager.h"
 
-using namespace std;
-Manager::Manager()
-{
-    this->ListOfFilm = nullptr;
-    this->List_Customer = nullptr;
-}
-Manager::~Manager()
-{
-    delete[] this->ListOfFilm;
-    delete[] this->List_Account;
-    delete[] this->List_Customer;
-}
+// Manager::Manager()
+// {
+//     this->ListOfFilm = nullptr;
+//     this->List_Customer = nullptr;
+// }
+// Manager::~Manager()
+// {
+//     delete[] this->ListOfFilm;
+//     delete[] this->List_Account;
+//     delete[] this->List_Customer;
+// }
 
 void Manager::Customer_Login(Account& acc, Customer &cus) {
 
@@ -21,8 +20,9 @@ void Manager::Customer_Login(Account& acc, Customer &cus) {
 
         if (acc == List_Account[i].getData()) {
 
-            cout << "Dang nhap thanh cong";
+            cout << "Dang nhap thanh cong" << endl;
             check = true;
+            system("pause");
             break;
 
         }
@@ -36,11 +36,19 @@ void Manager::Customer_Login(Account& acc, Customer &cus) {
             if (acc.getID() == List_Customer[i].getData().getID()) {
 
                 cus = List_Customer[i].getData();
-                break;
+                return;
 
             }
 
         }
+
+    }
+
+    else {
+
+        cout << "Dang nhap khong thanh cong" << endl;
+        system("pause");
+        return;
 
     }
 
@@ -52,20 +60,20 @@ void Manager::UpdateData()
     fl.open("FilmList.txt",ios::in);
     cl.open("CustomerList.txt",ios::in);
     al.open("AccountList.txt", ios::in);
-    fl >> this->AmountOfFilm;
     Film temp;
     while (fl >> temp) {
 
         ListOfFilm.push_back(temp);
 
     }
-
+    fl.close();
     Customer cus;
     while (cl >> cus) {
 
         List_Customer.push_back(cus);
 
     }
+    cl.close();
 
     Account acc;
     while (al >> acc) {
@@ -73,9 +81,8 @@ void Manager::UpdateData()
         List_Account.push_back(acc);
 
     }
-    fl.close();
-    cl.close();
     al.close();
+
 }
 void Manager::AddFilm()
 {
@@ -100,7 +107,7 @@ void Manager::DeleteFilm()
     ofstream fl;
     fl.open("FilmList.txt",ios::out);
     fl << this->AmountOfFilm;
-    for (int i = 0; i < this->m; i++)
+    for (int i = 0; i < this->ListOfFilm.getSize(); i++)
     {
         Film temp;
         temp = ListOfFilm[i].getData();

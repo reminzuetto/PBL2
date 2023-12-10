@@ -56,10 +56,13 @@ istream& operator>>(istream& is, Room& r)
     is.ignore(numeric_limits<streamsize>::max(), '\n');
     return is;
 }
-ostream& operator<<(ostream& os, const Room& r)
+ostream& operator<<(ostream& os, Room& r)
 {
-    os << r.NumOfRoom << endl;
-    os << r.AmountOfChair << endl;
+    int num, amount;
+    num = r.getNumOfRoom();
+    amount = r.getAmountOfChair();
+    os << num << endl;
+    os << amount << endl;
     return os;
 }
 void Room::doc() {

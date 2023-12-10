@@ -1,5 +1,5 @@
 #pragma once
-#include "Film.h"
+//#include "Film.h"
 #include "Account.h"
 #include "Customer.h"
 class Manager {
@@ -11,6 +11,9 @@ class Manager {
         Vector <Customer> List_Customer;
 
     public:
+        // Manager();
+        // ~Manager();
+        void Customer_Login(Account&, Customer&);
         void SearchFilm();
         void UpdateData();
         void AddFilm();
@@ -18,5 +21,5 @@ class Manager {
         void EditFilm();
         void ListFilm();
         void ListCustomer();
-        void Revenue();
+        //void Revenue();
 };

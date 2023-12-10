@@ -1,7 +1,12 @@
 #include "Vector.h"
 
 template <typename T>
-Vector<T>::Vector() : head(nullptr), size(0) {}
+Vector<T>::Vector() {
+
+    this->head = nullptr;
+    this->size = 0;
+
+}
 
 template <typename T>
 void Vector<T>::push_back(const T& value) {

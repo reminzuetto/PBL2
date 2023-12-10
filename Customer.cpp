@@ -130,6 +130,10 @@ istream& operator>>(istream& is, Customer& c)
     is >> c.Age;
     is.ignore();
     getline(is, c.PhoneNumber);
+    // string s;
+    // getline(is, s);
+    // if (s == "Membership") c.TypeOfCus = true;
+    // else c.TypeOfCus = false;
     is >> c.TypeOfCus;
     is.ignore(numeric_limits<streamsize>::max(), '\n');
     return is;  
@@ -140,6 +144,9 @@ ostream& operator<<(ostream& os, const Customer& c)
     os << c.Name << endl;
     os << c.Age << endl;
     os << c.PhoneNumber << endl;
+    // string s;
+    // if (c.TypeOfCus == true) s = "Membership";
+    // else s = "Normal";
     os << c.TypeOfCus << endl;
     return os;
 }

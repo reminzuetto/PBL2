@@ -1,5 +1,5 @@
-#include "Customer.h"
 #pragma once
+#include "Customer.h"
 
 class Normal : public Customer {
 

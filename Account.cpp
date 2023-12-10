@@ -26,6 +26,8 @@ string Account::getPass() {
 
 void Account::Login() {
 
+    system("cls");
+    cin.ignore();
     cout << "ID : ";
     getline(cin, this->ID);
     cout << "Password : ";
@@ -62,13 +64,19 @@ bool Account::operator==(const Account& account) {
 
 istream& operator>>(istream& is, Account& ac)
 {
-    getline(is, ac.ID);
-    getline(is, ac.Password);
+    string i, p;
+    getline(is, i);
+    ac.setID(i);
+    getline(is, p);
+    ac.setPass(p);
     return is;
 }
-ostream& operator<<(ostream& os, const Account& ac)
+ostream& operator<<(ostream& os, Account& ac)
 {
-    os << ac.ID << endl;
-    os << ac.Password << endl;
+    string i, p;
+    i = ac.getID();
+    p = ac.getPass();
+    os << i << endl;
+    os << p << endl;
     return os;
 }

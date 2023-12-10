@@ -162,15 +162,25 @@ void Showtime::doc() {
         room[i].setData(tr);
     }
 }
-ostream& operator<<(ostream& os, const Showtime& st)
+ostream& operator<<(ostream& os, Showtime& st)
 {
-    os << st.Date << endl;
-    os << st.AmountOfShowtime << endl;
+    string date;
+    int amountst;
+    date = st.getDate();
+    amountst = st.getAmountOfShowtime();
+    os << date << endl;
+    os << amountst << endl;
     for (int i = 0; i < st.AmountOfShowtime; i++)
     {
-        os << st.Time[i].getData() << endl;
-        os << st.Prices[i].getData() << endl;
-        os << st.room[i];
+        string time;
+        int prices;
+        time = st.Time[i].getData();
+        prices = st.Prices[i].getData();
+        os << time << endl;
+        os << prices << endl;
+        Room r;
+        r = st.room[i].getData();
+        os << r;
     }
     return os;
 }

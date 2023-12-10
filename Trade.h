@@ -1,6 +1,5 @@
 #pragma once
 #include "Ticket.h"
-#include "Vector.cpp"
 class Trade {
 
     private:
