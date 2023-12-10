@@ -132,5 +132,14 @@ istream& operator>>(istream& is, Customer& c)
     getline(is, c.PhoneNumber);
     is >> c.TypeOfCus;
     is.ignore(numeric_limits<streamsize>::max(), '\n');
-    return is;
+    return is;  
+}
+ostream& operator<<(ostream& os, const Customer& c)
+{
+    os << c.ID << endl;
+    os << c.Name << endl;
+    os << c.Age << endl;
+    os << c.PhoneNumber << endl;
+    os << c.TypeOfCus << endl;
+    return os;
 }
