@@ -12,7 +12,6 @@ class Trade {
         int getAmountOfTicket();
         void setCost(const int&);
         int getCost();
-        void CreateTrading();
-        void ContinueTrading();
+        void CreateTrading(Vector <Film>);
         void PrintBill();
 };

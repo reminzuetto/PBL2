@@ -60,6 +60,22 @@ void Vector<T>::setSize(const int& size) {
 
 }
 
+template <typename T>
+Vector<T>& Vector<T>::operator=(Vector<T> v) {
+
+    Node<T>* temp = v.head;
+    while (temp != nullptr) {
+
+        T temp1 = temp->getData();
+        this->push_back(temp1);
+        temp = temp->getNext();
+
+    }
+
+    return *this;
+
+}
+
 // template <typename T>
 // void Vector<T>::resize(int newSize) {
 //     if (newSize > size) {

@@ -30,11 +30,11 @@ int Showtime::getAmountOfShowtime() {
 
 // }
 
-// string Showtime::getTime() {
+Vector<string> Showtime::getTime() {
 
-//     return this->Time;
+    return this->Time;
 
-// }
+}
 
 // void Showtime::setPrices(const int& p) {
 
@@ -42,11 +42,11 @@ int Showtime::getAmountOfShowtime() {
 
 // }
 
-// int Showtime::getPrices() {
+Vector<int> Showtime::getPrices() {
 
-//     return this->Prices;
+    return this->Prices;
 
-// }
+}
 
 // void Showtime::setNumOfRoom(const Room& r) {
 
@@ -54,11 +54,11 @@ int Showtime::getAmountOfShowtime() {
 
 // }
 
-// Room Showtime::getNumOfRoom() {
+Vector<Room> Showtime::getRoom() {
 
-//     return this->room;
+    return this->room;
 
-// }
+}
 
 void Showtime::Input() {
 

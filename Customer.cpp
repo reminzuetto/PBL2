@@ -63,13 +63,13 @@ string Customer::getID() {
 
 }
 
-// void Customer::BuyTicket() {
+void Customer::BuyTicket(Vector <Film> ListFilm) {
 
-//     Trade t;
-//     t.input();
-//     this->ListOfTrade.push_back(t);
+    Trade t;
+    t.CreateTrading(ListFilm);
+    this->ListOfTrade.push_back(t);
 
-// }
+}
 
 // Trade Customer::getTrade(int i) const {
 

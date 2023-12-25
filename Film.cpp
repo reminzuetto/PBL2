@@ -48,6 +48,12 @@ int Film::getAmountOfDate() {
 
 }
 
+Vector<Showtime> Film::getDSSC() {
+
+    return this->DSSC;
+
+}
+
 void Film::Input() {
 
     //cout << "Nhap ten phim : "; 

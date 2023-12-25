@@ -13,6 +13,12 @@
 //     delete[] this->List_Customer;
 // }
 
+Vector <Film> Manager::getListFilm() {
+
+    return this->ListOfFilm;
+
+}
+
 void Manager::Customer_Login(Account& acc, Customer &cus) {
 
     bool check = false;

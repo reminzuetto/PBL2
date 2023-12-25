@@ -22,6 +22,7 @@ class Film {
         string getTypeOfFilm();
         void setAmountOfDate(int&);
         int getAmountOfDate();
+        Vector<Showtime> getDSSC();
         void doc( );
         void edit();
         friend istream& operator>>(istream&, Film&);

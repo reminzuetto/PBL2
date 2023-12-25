@@ -81,7 +81,9 @@ void MainMenu() {
                             break;
 
                         }
-                        // case 1: cus.BuyTicket();
+                        Vector <Film> ListFilm;
+                        ListFilm = ql.getListFilm();
+                        case 1: cus.BuyTicket(ListFilm);
                         // case 2: cus.getTrade();
 
                     }

@@ -1,6 +1,19 @@
-// #include <iostream>
-// #include "Account.h"
+// #include <bits/stdc++.h>
 // #include "Vector.cpp"
+
+
+// using namespace std;
+
+// int main() {
+
+//     Vector <int> v, v1;
+//     v.push_back(1);
+//     v.push_back(3);
+//     v1 = v;
+//     cout << v1[0].getData() << " " << v1[1].getData();
+
+// }
+
 
 // using namespace std;
 

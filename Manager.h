@@ -21,5 +21,6 @@ class Manager {
         void EditFilm();
         void ListFilm();
         void ListCustomer();
+        Vector <Film> getListFilm();
         //void Revenue();
 };
