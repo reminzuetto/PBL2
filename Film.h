@@ -23,6 +23,7 @@ class Film {
         void setAmountOfDate(int&);
         int getAmountOfDate();
         Vector<Showtime> getDSSC();
+        Film SelectFilm(Vector<Film>, int*);
         void doc( );
         void edit();
         friend istream& operator>>(istream&, Film&);

@@ -167,3 +167,22 @@ ostream& operator<<(ostream& os, Film& f)
     }
     return os;
 }
+
+Film Film::SelectFilm(Vector<Film> ListFilm, int* selectFilm) {
+
+    system("cls");
+    for (int i = 0; i < ListFilm.getSize(); i ++) {
+
+        Film f = ListFilm[i].getData();
+        cout << i + 1 << ". " << f.getFilmName() << endl;
+
+    }
+
+    cout << "Moi ban chon phim : ";
+    int tmp;
+    cin >> tmp;
+    *selectFilm = tmp;
+    Film f1 = ListFilm[*selectFilm - 1].getData();
+    return f1;
+
+}

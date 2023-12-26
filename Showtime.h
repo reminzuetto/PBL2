@@ -23,6 +23,7 @@ class Showtime {
         Vector<string> getTime();
         Vector<int> getPrices();
         Vector<Room> getRoom();
+        Showtime SelectShowtime(Vector<Showtime>, int*);
         Showtime& operator=(const Showtime&);
         friend istream& operator>>(istream&, Showtime&);
         friend ostream& operator<<(ostream&, Showtime&);

@@ -184,3 +184,22 @@ ostream& operator<<(ostream& os, Showtime& st)
     }
     return os;
 }
+
+Showtime Showtime::SelectShowtime(Vector<Showtime> ListShowtime, int* Select) {
+
+    system("cls");
+    for (int i = 0; i < ListShowtime.getSize(); i ++) {
+
+        Showtime s;
+        s = ListShowtime[i].getData();
+        cout << i + 1 << ". " << s.getDate() << endl;
+
+    }
+
+    cout << "Moi ban chon ngay chieu : ";
+    int tmp;
+    cin >> tmp;
+    *Select = tmp;
+    Showtime s = ListShowtime[*Select - 1].getData();
+    return *s;
+}
