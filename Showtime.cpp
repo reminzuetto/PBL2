@@ -126,7 +126,7 @@ istream& operator>>(istream& is, Showtime& st)
         string tt;
         int price;
         Room tr;
-        is >> tt;
+        getline(is, tt);
         st.Time.push_back(tt);
         is >> price;
         st.Prices.push_back(price);
