@@ -78,7 +78,7 @@ void Room::doc() {
 bool Room::isChairAvailable(string& viTri)
 {
     bool test = (int)vitri[0] < 65 || (int)vitri[1] > 90 
-    if (vitri.lenght() != 2 || test == 1 ) // them dieu kien dssc do nua vao
+    if (vitri.lenght() != 2 || test == 1 )
     {
         cout << "Nhap sai cu phap, vui long nhap lai" << endl;
         return false;

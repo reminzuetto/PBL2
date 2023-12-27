@@ -76,51 +76,28 @@ void Room::doc() {
 }
 
 bool Room::isChairAvailable(string& viTri)
-{
-    bool test = (int)vitri[0] < 65 || (int)vitri[1] > 90 
-    if (vitri.lenght() != 2 || test == 1 ) // them dieu kien dssc do nua vao
-    {
-        cout << "Nhap sai cu phap, vui long nhap lai" << endl;
-        return false;
+{  
+    int row = toupper(viTri[0]) - 64;
+    int column = stoi(viTri.substr(1));
+    if (this->Chair[(row - 1) * 10 + column - 1].getData() == 0) {
+        this->Chair[(row - 1) * 10 + column - 1].getData() = 1;
+        return 1;
     }
-    else
-    {
-        int row = toupper(viTri[0]) - 64;
-        int column = stoi(viTri.substr(1));
-        if (this->Chair[(row - 1) * 10 + column - 1].getData() == 0) {
-            this->Chair[(row - 1) * 10 + column - 1].getData() = 1;
-            return 1;
-        }
-        else {
-            return 0;
-    }
+    else {
+        return 0;
     }
 }
 void Room::SelectSeat()
 {
-    cout << "Danh sach ghe:\n";
     for (int i = 0; i < this->size / 10; i++)
     {
-        cout << char(64 + i) << ": ";
+        cout << A + i << ":";
         for (int j = 0; j < 10; j++)
         {
-            while (i * 10 + j <= this->size)
-            {
-                if(!this->Chair[i * 10 + j].getData())
-                {
-                    cout << "X ";
-                }
-                else
-                {
-                    cout << "O ";
-                }
-                }
+            cout << this->Chair[i * 10 + j].getData() << " ";
         }
         cout << endl;
     }
-    cout << "Cac vi tri O la vi tri ghe co the chon\n";
-    cout << "\n Vui Long Nhap Theo Cu Phap:\n";
-    cout << "Vi Du: Ghe so 9, Day C: C9.\n";
     cout << "Chon ghe: ";
     string viTri;
     cin >> viTri;
@@ -130,6 +107,6 @@ void Room::SelectSeat()
     }
     else
     {
-        cout << "So ghe nay da duoc dat, vui long chon so ghe khac:" << endl;
+        cout << "Dat ghe that bai" << endl;
     }
 }

@@ -77,23 +77,14 @@ void Room::doc() {
 
 bool Room::isChairAvailable(string& viTri)
 {
-    bool test = (int)vitri[0] < 65 || (int)vitri[1] > 90 
-    if (vitri.lenght() != 2 || test == 1 ) // them dieu kien dssc do nua vao
-    {
-        cout << "Nhap sai cu phap, vui long nhap lai" << endl;
-        return false;
+    int row = toupper(viTri[0]) - 64;
+    int column = stoi(viTri.substr(1));
+    if (this->Chair[(row - 1) * 10 + column - 1].getData() == 0) {
+        this->Chair[(row - 1) * 10 + column - 1].getData() = 1;
+        return 1;
     }
-    else
-    {
-        int row = toupper(viTri[0]) - 64;
-        int column = stoi(viTri.substr(1));
-        if (this->Chair[(row - 1) * 10 + column - 1].getData() == 0) {
-            this->Chair[(row - 1) * 10 + column - 1].getData() = 1;
-            return 1;
-        }
-        else {
-            return 0;
-    }
+    else {
+        return 0;
     }
 }
 void Room::SelectSeat()
