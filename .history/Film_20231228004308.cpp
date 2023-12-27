@@ -141,12 +141,14 @@ void Film::edit() {
 }
 istream& operator>>(istream& is, Film& f)
 {
-    is >> f.FilmName;
+    is >> f.FilmName
     string temp;
-    is >> f.Duration;
-    is >> f.AmountOfDate;
+    getline(is, temp);
+    f.Duration = stoi(temp);
+    getline(is, temp);
+    f.AmountOfDate = stoi(temp);
     is >> f.TypeOfFilm;
-    for (int i = 0; i < f.Duration; i++) {
+    for (int i = 0; i < f.AmountOfDate; i++) {
         Showtime tmp;
         is >> tmp;
         f.DSSC.push_back(tmp);

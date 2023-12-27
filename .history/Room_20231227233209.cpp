@@ -55,8 +55,16 @@ void Room::Output() {
 }
 istream& operator>>(istream& is, Room& r)
 {
-    is >> r.NumOfRoom;
-    is >> r.AmountOfChair;
+    int n, a;
+    string tmp;
+    getline(is, tmp);
+    n = stoi(tmp);
+    r.NumOfRoom = n;
+    //is.ignore(numeric_limits<streamsize>::max(), '\n');
+    getline(is, tmp);
+    a = stoi(tmp);
+    r.AmountOfChair = a;
+    //is.ignore(numeric_limits<streamsize>::max(), '\n');
     return is;
 }
 ostream& operator<<(ostream& os, Room& r)

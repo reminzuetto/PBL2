@@ -14,6 +14,6 @@ int main() {
         fl >> f;
         ListFilm.push_back(f);
     }
-    cout << countFilm << endl;
+    cout << countFilm;
     fl.close();
 }

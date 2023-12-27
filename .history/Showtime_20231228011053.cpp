@@ -123,13 +123,15 @@ istream& operator>>(istream& is, Showtime& st)
     // st.room.resize(st.AmountOfShowtime);
     for (int i = 0; i < st.AmountOfShowtime; i++)
     {
-        string tt;
         int price;
         Room tr;
+        string tt, tp;
         is >> tt;
         st.Time.push_back(tt);
-        is >> price;
+        is >> t;
+        price = stoi(t);
         st.Prices.push_back(price);
+        //is.ignore(numeric_limits<streamsize>::max(), '\n');
         is >> tr;
         st.room.push_back(tr);
     }

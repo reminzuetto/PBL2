@@ -9,11 +9,11 @@ int main() {
     int countFilm;
     fl >> countFilm;
     ListFilm.setSize(countFilm);
-    for (int i = 0; i < countFilm; i++)
-    {
-        fl >> f;
-        ListFilm.push_back(f);
-    }
-    cout << countFilm << endl;
+    // for (int i = 0; i < countFilm; i++)
+    // {
+    //     fl >> f;
+    //     ListFilm.push_back(f);
+    // }
+    cout << countFilm;
     fl.close();
 }

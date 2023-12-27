@@ -144,7 +144,8 @@ istream& operator>>(istream& is, Film& f)
     is >> f.FilmName;
     string temp;
     is >> f.Duration;
-    is >> f.AmountOfDate;
+    getline(is, temp);
+    f.AmountOfDate = stoi(temp);
     is >> f.TypeOfFilm;
     for (int i = 0; i < f.Duration; i++) {
         Showtime tmp;

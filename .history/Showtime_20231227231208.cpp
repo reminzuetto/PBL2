@@ -116,20 +116,25 @@ Showtime& Showtime::operator= (const Showtime& s) {
 }
 istream& operator>>(istream& is, Showtime& st)
 {
-    is >> st.Date;
-    is >> st.AmountOfShowtime;
+    getline(is, st.Date);
+    string tmp;
+    getline(is, tmp);
+    st.AmountOfShowtime = stoi(tmp);
+    is.ignore(numeric_limits<streamsize>::max(), '\n');
     // st.Time.resize(st.AmountOfShowtime);
     // st.Prices.resize(st.AmountOfShowtime);
     // st.room.resize(st.AmountOfShowtime);
     for (int i = 0; i < st.AmountOfShowtime; i++)
     {
-        string tt;
-        int price;
+        int times;
         Room tr;
-        is >> tt;
-        st.Time.push_back(tt);
-        is >> price;
-        st.Prices.push_back(price);
+        string t, temptime;
+        getline(is, temptime);
+        st.Time.push_back(temptime);
+        getline(is, t);
+        times = stoi(t);
+        st.Prices.push_back(times);
+        //is.ignore(numeric_limits<streamsize>::max(), '\n');
         is >> tr;
         st.room.push_back(tr);
     }

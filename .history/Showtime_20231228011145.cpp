@@ -130,6 +130,7 @@ istream& operator>>(istream& is, Showtime& st)
         st.Time.push_back(tt);
         is >> price;
         st.Prices.push_back(price);
+        //is.ignore(numeric_limits<streamsize>::max(), '\n');
         is >> tr;
         st.room.push_back(tr);
     }
