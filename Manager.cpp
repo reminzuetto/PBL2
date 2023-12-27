@@ -67,86 +67,160 @@ void Manager::UpdateData()
     cl.open("CustomerList.txt",ios::in);
     al.open("AccountList.txt", ios::in);
     Film temp;
-    while (fl >> temp) {
-
-        ListOfFilm.push_back(temp);
-
+    int countFilm;
+    fl >> countFilm;
+    this->AmountOfFilm = countFilm;
+    this->ListOfFilm.setSize(countFilm);
+    for (int i = 0; i < countFilm; i++)
+    {
+        fl >> temp;
+        this->ListOfFilm[i].setData(temp);
     }
     fl.close();
     Customer cus;
-    while (cl >> cus) {
-
-        List_Customer.push_back(cus);
-
+    int countCus;
+    cl >> countCus;
+    this->AmountOfCustomer = countCus;
+    this->List_Customer.setSize(countCus);
+    for (int i = 0; i < countCus; i++)
+    {
+        cl >> cus;
+        this->List_Customer[i].setData(cus);
     }
     cl.close();
 
     Account acc;
-    while (al >> acc) {
-
-        List_Account.push_back(acc);
-
+    int countAcc;
+    al >> countAcc;
+    this->AmountOfAccount = countAcc;
+    this->List_Account.setSize(countAcc);
+    for (int i = 0; i < countAcc; i++)
+    {
+        al >> acc;
+        this->List_Account[i].setData(acc);
     }
     al.close();
 
 }
 void Manager::AddFilm()
 {
-    ofstream fl;
-    fl.open("FilmList.txt",ios::app);
+    ifstream inFile("FilmList.txt");
+    if (!inFile.is_open()) {
+        cout << "Error: File not found." << endl;
+        return 1;
+    }
+    int countFilm;
+    inFile >> countFilm;
+    this->AmountOfFilm = countFilm;
+    inFile.ignore();
+    ofstream outFile("FilmList.txt",ios::app);
+    if (!outFile.is_open()) {
+        cerr << "Error: Unable to open file for writing." << endl;
+        return 1;
+    }
+    this->AmountOfFilm++;
     Film f;
     f.doc();
-    fl << f;
-    fl.close();
+    ListOfFilm.push_back(f);
+    outFile << f << endl;
+
+    outFile.seekp(0);
+    outFile << this->AmountOfFilm;
+    inFile.close();
+    outFile.close();
+    cout << "Them phim thanh cong!"<< endl;
 }
 void Manager::DeleteFilm()
 {
+    ifstream inFile("FilmList.txt");
+    if (!inFile.is_open()) {
+        cerr << "Error: File not found." << endl;
+        return 1;
+    }
+    int countFilm;
+    inFile >> countFilm;
+    inFile.ignore();
+    this->AmountOfFilm = countFilm;
+    this->ListOfFilm.setSize(countFilm);
+    for (int i = 0; i < countFilm; i++)
+    {
+        inFile >> temp;
+        this->ListOfFilm[i].setData(temp);
+    }
+    inFile.close();
     int x;
     cout << "Nhap vi tri phim can xoa: ";
     cin >> x;
+    if (x < 1 || x > this->AmountOfFilm)
+    {
+        cout << "Vi tri khong hop le!" << endl;
+        return 1;
+    }
+    Film temp;
     for (int i = x; i < this->AmountOfFilm - 1; i++)
     {
         ListOfFilm[i] = ListOfFilm[i + 1];
     }
     this->AmountOfFilm--;
-    ListOfFilm.setSize(AmountOfFilm);
-    ofstream fl;
-    fl.open("FilmList.txt",ios::out);
-    fl << this->AmountOfFilm;
-    for (int i = 0; i < this->ListOfFilm.getSize(); i++)
+    ListOfFilm.setSize(this->AmountOfFilm);
+    ofstream outFile("FilmList.txt");
+    if (!outFile.is_open()) {
+        cerr << "Error: Unable to open file for writing." << endl;
+        return 1;
+    }
+    outFile << this->AmountOfFilm;
+    for (int i = 0; i < this->AmountOfFilm; i++)
     {
         Film temp;
         temp = ListOfFilm[i].getData();
-        fl << temp;
+        outFile << temp << endl;
     }
-    fl.close();
+    outFile.close();
+    cout << "Xoa phim thanh cong!"<< endl;
 }
 void Manager::EditFilm()
 {
-    int x;
-    cout << "Nhap vi tri phim can chinh sua: ";
-    cin >> x;
-
-    ifstream inFile;
-    inFile.open("FilmList.txt",ios::in);
-    Vector <Film> films;
+    ifstream inFile("FilmList.txt");
+    if (!inFile.is_open()) {
+        cerr << "Error: File not found." << endl;
+        return 1;
+    }
+    int countFilm;
+    inFile >> countFilm;
+    inFile.ignore();
+    this->AmountOfFilm = countFilm;
+    this->ListOfFilm.setSize(countFilm);
     Film temp;
-    while (inFile >> temp) {
-        films.push_back(temp);
+    for (int i = 0; i < countFilm; i++)
+    {
+        inFile >> temp;
+        this->ListOfFilm[i].setData(temp);
     }
     inFile.close();
 
+    int x;
+    cout << "Nhap vi tri phim can chinh sua: ";
+    cin >> x;
+    if (x < 1 || x > this->AmountOfFilm)
+    {
+        cout << "Vi tri khong hop le!" << endl;
+        return 1;
+    }
     cout << "Nhap thong tin can chinh sua: ";
     Film ef;
     ef.edit();
-    films[x - 1].setData(ef);
-
-    ofstream outFile;
-    outFile.open("FilmList.txt",ios::out);
-    for (int i = 0; i < films.getSize(); i++) {
-        Film temp;
-        temp = films[i].getData();
-        outFile << temp;
+    this->ListOfFilm[x - 1].setData(ef);
+    ofstream outFile("FilmList.txt");
+    if (!outFile.is_open()) {
+        cerr << "Error: Unable to open file for writing." << endl;
+        return 1;
+    }
+    outFile << this->AmountOfFilm;
+    for (int i = 0; i < this->AmountOfFilm; i++)
+    {
+        Film f;
+        f = ListOfFilm[i].getData();
+        outFile << f << endl;
     }
     outFile.close();
 }

@@ -14,5 +14,5 @@ int main() {
         fl >> f;
         ListFilm[i].setData(f);
     }
-    fl.close();
+
 }
