@@ -69,3 +69,27 @@ int Ticket::getPrices() {
     return this->Prices;
 
 }
+
+Ticket& Ticket::operator=(const Ticket& t) {
+
+    this->FilmName = t.FilmName;
+    this->Date = t.Date;
+    this->showtime = t.showtime;
+    this->NumOfRoom = t.NumOfRoom;
+    this->Seat = t.Seat;
+    this->Prices = t.Prices;
+
+    return *this;
+
+}
+
+void Ticket::Output() {
+
+    cout << "Ten phim : " << this->FilmName << endl;
+    cout << "Ngay chieu : " << this->Date << endl;
+    cout << "Suat chieu : " << this->showtime << endl;
+    cout << "Phong chieu so : " << this->NumOfRoom << endl;
+    cout << "Vi tri ghe ngoi : " << this->Seat << endl;
+    cout << "Gia ve : " << this->Prices << endl;
+
+}

@@ -62,20 +62,20 @@ Vector<Room> Showtime::getRoom() {
 
 void Showtime::Input() {
 
-    //cout << "Nhap ngay chieu : ";
+    cout << "Nhap ngay chieu : ";
     cin >> this->Date;
 
-    //cout << "Nhap so luong suat chieu trong ngay : ";
+    cout << "Nhap so luong suat chieu trong ngay : ";
     cin >> this->AmountOfShowtime;
 
     for (long long i = 0; i < this->AmountOfShowtime; i ++) {
 
-        //cout << "Nhap suat chieu " << i + 1 << " : ";
+        cout << "Nhap suat chieu " << i + 1 << " : ";
         string s;
         cin >> s;
         Time.push_back(s);
 
-        //cout << "Nhap gia ve suat chieu " << i + 1 << " : ";
+        cout << "Nhap gia ve suat chieu " << i + 1 << " : ";
         int p;
         cin >> p;
         Prices.push_back(p);
@@ -89,7 +89,7 @@ void Showtime::Input() {
 
 void Showtime::Output() {
 
-    cout << "Ngay : " << this->Date << endl;
+    cout << "Ngay chieu : " << this->Date << endl;
     cout << "So luong suat chieu : " << this->AmountOfShowtime << endl;
     for (long long i = 0; i < this->AmountOfShowtime; i++) {
 
@@ -201,5 +201,5 @@ Showtime Showtime::SelectShowtime(Vector<Showtime> ListShowtime, int* Select) {
     cin >> tmp;
     *Select = tmp;
     Showtime s = ListShowtime[*Select - 1].getData();
-    return *s;
+    return s;
 }

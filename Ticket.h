@@ -15,7 +15,7 @@ class Ticket {
         int Prices;
 
     public:
-        void Input();
+        //void Input();
         void Output();
         void setFilmName(const string&);
         string getFilmName();
@@ -29,4 +29,5 @@ class Ticket {
         string getSeat();
         void setPrices(const int&);
         int getPrices();
+        Ticket& operator= (const Ticket&);
 };

@@ -34,14 +34,16 @@ int Room::getNumOfRoom() {
 
 void Room::Input() {
     
-    //cout << "Nhap so phong : ";
+    cout << "Nhap so phong : ";
     cin >> this->NumOfRoom;
-    //cout << "Nhap so luong ghe : ";
+    cout << "Nhap so luong ghe : ";
     cin >> this->AmountOfChair;
     //cout << "Nhap trang thai ghe : ";
     for (int i = 0; i < this->AmountOfChair; i++) {
+        
         bool temp = 0;
         this->Chair.push_back(temp);
+
     }
 }
 
@@ -77,8 +79,8 @@ void Room::doc() {
 
 bool Room::isChairAvailable(string& viTri)
 {
-    bool test = (int)vitri[0] < 65 || (int)vitri[1] > 90 
-    if (vitri.lenght() != 2 || test == 1 ) // them dieu kien dssc do nua vao
+    bool test = (int)viTri[0] < 65 || (int)viTri[0] > 90 ;
+    if (viTri.length() != 2 || test == 1 ) // them dieu kien dssc do nua vao
     {
         cout << "Nhap sai cu phap, vui long nhap lai" << endl;
         return false;
@@ -88,7 +90,7 @@ bool Room::isChairAvailable(string& viTri)
         int row = toupper(viTri[0]) - 64;
         int column = stoi(viTri.substr(1));
         if (this->Chair[(row - 1) * 10 + column - 1].getData() == 0) {
-            this->Chair[(row - 1) * 10 + column - 1].getData() = 1;
+            this->Chair[(row - 1) * 10 + column - 1].setData(1);
             return 1;
         }
         else {
@@ -96,15 +98,15 @@ bool Room::isChairAvailable(string& viTri)
     }
     }
 }
-void Room::SelectSeat()
+string Room::SelectSeat()
 {
     cout << "Danh sach ghe:\n";
-    for (int i = 0; i < this->size / 10; i++)
+    for (int i = 0; i < this->AmountOfChair / 10; i++)
     {
         cout << char(64 + i) << ": ";
         for (int j = 0; j < 10; j++)
         {
-            while (i * 10 + j <= this->size)
+            while (i * 10 + j <= this->AmountOfChair)
             {
                 if(!this->Chair[i * 10 + j].getData())
                 {
@@ -123,13 +125,22 @@ void Room::SelectSeat()
     cout << "Vi Du: Ghe so 9, Day C: C9.\n";
     cout << "Chon ghe: ";
     string viTri;
-    cin >> viTri;
-    if (isChairAvailable(vitri))
-    {
-        cout << "Dat ghe thanh cong" << endl;
+    bool check = false;
+    while (check == false) {
+
+        cin >> viTri;
+        if (isChairAvailable(viTri)) {
+
+            cout << "Dat ghe thanh cong" << endl;
+            check = true;
+        
+        }
+        else {
+
+            cout << "So ghe nay da duoc dat, vui long chon so ghe khac:" << endl;
+        
+        }
+
     }
-    else
-    {
-        cout << "So ghe nay da duoc dat, vui long chon so ghe khac:" << endl;
-    }
+    return viTri;
 }

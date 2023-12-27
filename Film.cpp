@@ -56,14 +56,14 @@ Vector<Showtime> Film::getDSSC() {
 
 void Film::Input() {
 
-    //cout << "Nhap ten phim : "; 
+    cout << "Nhap ten phim : "; 
     getline(cin, this->FilmName);
-    //cout << "Nhap thoi luong : "; 
+    cout << "Nhap thoi luong : "; 
     cin >> this->Duration;
     cin.ignore();
-    //cout << "Nhap the loai phim : "; 
+    cout << "Nhap the loai phim : "; 
     getline(cin, this->TypeOfFilm);
-    //cout << "Nhap so luong ngay chieu trong tuan : "; 
+    cout << "Nhap so luong ngay chieu trong tuan : "; 
     cin >> this->AmountOfDate;
     for (long long i = 0; i < this->AmountOfDate; i++) {
         
@@ -150,7 +150,8 @@ istream& operator>>(istream& is, Film& f)
     getline(is, f.TypeOfFilm);
     for (int i = 0; i < f.AmountOfDate; i++) {
         Showtime temp;
-        f.DSSC[i].setData(temp);
+        is >> temp;
+        f.DSSC.push_back(temp);
     }
     return is;
 }

@@ -1,6 +1,5 @@
 #pragma once
 #include "Room.h"
-#include "Vector.cpp"
 
 using namespace std;
 
