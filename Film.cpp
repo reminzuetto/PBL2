@@ -149,9 +149,9 @@ istream& operator>>(istream& is, Film& f)
     f.AmountOfDate = stoi(temp);
     getline(is, f.TypeOfFilm);
     for (int i = 0; i < f.AmountOfDate; i++) {
-        Showtime temp;
-        is >> temp;
-        f.DSSC.push_back(temp);
+        Showtime tmp;
+        is >> tmp;
+        f.DSSC.push_back(tmp);
     }
     return is;
 }
