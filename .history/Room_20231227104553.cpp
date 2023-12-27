@@ -92,7 +92,7 @@ void Room::SelectSeat()
     cout << "Chon ghe: ";
     string viTri;
     cin >> viTri;
-    if (isChairAvailable(vitri))
+    if (isChairAvailable(&vitri))
     {
         cout << "Dat ghe thanh cong" << endl;
     }

@@ -92,12 +92,13 @@ void Room::SelectSeat()
     cout << "Chon ghe: ";
     string viTri;
     cin >> viTri;
-    if (isChairAvailable(vitri))
-    {
-        cout << "Dat ghe thanh cong" << endl;
+    int row = toupper(viTri[0]) - 64;
+    int column = stoi(viTri.substr(1));
+    if (this->Chair[(row - 1) * 10 + column - 1] == 0) {
+        this->Chair[(row - 1) * 10 + column - 1] = 1;
+        cout << "Dat thanh cong" << endl;
     }
-    else
-    {
-        cout << "Dat ghe that bai" << endl;
+    else {
+        cout << "Ghe da duoc dat" << endl;
     }
 }
