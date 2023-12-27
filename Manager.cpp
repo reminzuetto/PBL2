@@ -74,7 +74,7 @@ void Manager::UpdateData()
     for (int i = 0; i < countFilm; i++)
     {
         fl >> temp;
-        this->ListOfFilm[i].setData(temp);
+        this->ListOfFilm.push_back(temp);
     }
     fl.close();
     Customer cus;
@@ -85,7 +85,7 @@ void Manager::UpdateData()
     for (int i = 0; i < countCus; i++)
     {
         cl >> cus;
-        this->List_Customer[i].setData(cus);
+        this->List_Customer.push_back(cus);
     }
     cl.close();
 
@@ -97,7 +97,7 @@ void Manager::UpdateData()
     for (int i = 0; i < countAcc; i++)
     {
         al >> acc;
-        this->List_Account[i].setData(acc);
+        this->List_Account.push_back(acc);
     }
     al.close();
 

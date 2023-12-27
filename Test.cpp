@@ -12,7 +12,7 @@ int main() {
     for (int i = 0; i < countFilm; i++)
     {
         fl >> f;
-        ListFilm[i].setData(f);
+        ListFilm.push_back(f);
     }
     fl.close();
 }
