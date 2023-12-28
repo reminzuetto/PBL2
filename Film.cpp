@@ -142,13 +142,16 @@ void Film::edit() {
 istream& operator>>(istream& is, Film& f)
 {
     is >> f.FilmName;
-    string temp;
+    string temp =  "";
     is >> f.Duration;
     is >> f.AmountOfDate;
-    cin.ignore();
-    getline(is, temp);
+    while (temp == "") {
+
+        getline(is, temp);
+
+    }
     f.TypeOfFilm = temp;
-    for (int i = 0; i < f.Duration; i++) {
+    for (int i = 0; i < f.AmountOfDate; i++) {
         Showtime tmp;
         is >> tmp;
         f.DSSC.push_back(tmp);

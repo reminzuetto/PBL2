@@ -123,11 +123,14 @@ istream& operator>>(istream& is, Showtime& st)
     // st.room.resize(st.AmountOfShowtime);
     for (int i = 0; i < st.AmountOfShowtime; i++)
     {
-        string tt;
+        string tt = "";
         int price;
         Room tr;
-        cin.ignore();
-        getline(is, tt);
+        while (tt == "") {
+
+            getline(is, tt);
+
+        }
         st.Time.push_back(tt);
         is >> price;
         st.Prices.push_back(price);
@@ -146,7 +149,7 @@ void Showtime::doc() {
     // Prices.resize(AmountOfShowtime);
     // room.resize(AmountOfShowtime);
     for (int i = 0; i < AmountOfShowtime; i++) {
-        string timeData;
+        string timeData = "";
         cout << "Enter time for showtime " << i+1 << ": ";
         getline(cin, timeData) ;
         Time[i].setData(timeData);
