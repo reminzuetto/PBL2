@@ -64,6 +64,11 @@ istream& operator>>(istream& is, Room& r)
 {
     is >> r.NumOfRoom;
     is >> r.AmountOfChair;
+    for (int i = 0; i < r.AmountOfChair; i ++) {
+
+        r.Chair.push_back(0);
+
+    }
     r.Chair.setSize(r.AmountOfChair);
     return is;
 }
@@ -106,7 +111,7 @@ bool Room::isChairAvailable(string& viTri)
 }
 string Room::SelectSeat(Room& r)
 {
-    //system("cls");
+    system("cls");
     cout << "Danh sach ghe:\n";
     for (int i = 0; i < r.AmountOfChair / 10; i++)
     {

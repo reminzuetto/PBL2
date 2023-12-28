@@ -73,6 +73,8 @@ void MainMenu() {
                     cout << "\n\n\t\t ================= END ===============";	
 		            cout << "\n\n\tMoi ban nhap lua chon: ";
                     cin >> SelectCsm;
+                    Vector <Film> ListFilm;
+                    ListFilm = ql.getListFilm();
                     switch(SelectCsm) {
 
                         case 0: {
@@ -81,10 +83,8 @@ void MainMenu() {
                             break;
 
                         }
-                        Vector <Film> ListFilm;
-                        ListFilm = ql.getListFilm();
                         case 1: cus.BuyTicket(ListFilm);
-                        // case 2: cus.getTrade();
+                        case 2: cus.getTrade();
 
                     }
 

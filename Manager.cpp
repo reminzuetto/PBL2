@@ -107,7 +107,7 @@ void Manager::AddFilm()
     ifstream inFile("FilmList.txt");
     if (!inFile.is_open()) {
         cout << "Error: File not found." << endl;
-        return 1;
+        return;
     }
     int countFilm;
     inFile >> countFilm;
@@ -116,7 +116,7 @@ void Manager::AddFilm()
     ofstream outFile("FilmList.txt",ios::app);
     if (!outFile.is_open()) {
         cerr << "Error: Unable to open file for writing." << endl;
-        return 1;
+        return;
     }
     this->AmountOfFilm++;
     Film f;
@@ -135,7 +135,7 @@ void Manager::DeleteFilm()
     ifstream inFile("FilmList.txt");
     if (!inFile.is_open()) {
         cerr << "Error: File not found." << endl;
-        return 1;
+        return;
     }
     int countFilm;
     inFile >> countFilm;
@@ -144,6 +144,7 @@ void Manager::DeleteFilm()
     this->ListOfFilm.setSize(countFilm);
     for (int i = 0; i < countFilm; i++)
     {
+        Film temp;
         inFile >> temp;
         this->ListOfFilm[i].setData(temp);
     }
@@ -154,7 +155,7 @@ void Manager::DeleteFilm()
     if (x < 1 || x > this->AmountOfFilm)
     {
         cout << "Vi tri khong hop le!" << endl;
-        return 1;
+        return;
     }
     Film temp;
     for (int i = x; i < this->AmountOfFilm - 1; i++)
@@ -166,7 +167,7 @@ void Manager::DeleteFilm()
     ofstream outFile("FilmList.txt");
     if (!outFile.is_open()) {
         cerr << "Error: Unable to open file for writing." << endl;
-        return 1;
+        return;
     }
     outFile << this->AmountOfFilm;
     for (int i = 0; i < this->AmountOfFilm; i++)
@@ -183,7 +184,7 @@ void Manager::EditFilm()
     ifstream inFile("FilmList.txt");
     if (!inFile.is_open()) {
         cerr << "Error: File not found." << endl;
-        return 1;
+        return;
     }
     int countFilm;
     inFile >> countFilm;
@@ -204,7 +205,7 @@ void Manager::EditFilm()
     if (x < 1 || x > this->AmountOfFilm)
     {
         cout << "Vi tri khong hop le!" << endl;
-        return 1;
+        return;
     }
     cout << "Nhap thong tin can chinh sua: ";
     Film ef;
@@ -213,7 +214,7 @@ void Manager::EditFilm()
     ofstream outFile("FilmList.txt");
     if (!outFile.is_open()) {
         cerr << "Error: Unable to open file for writing." << endl;
-        return 1;
+        return;
     }
     outFile << this->AmountOfFilm;
     for (int i = 0; i < this->AmountOfFilm; i++)

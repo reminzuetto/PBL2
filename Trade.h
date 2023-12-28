@@ -10,7 +10,7 @@ class Trade {
     public:
         void setAmountOfTicket(const int&);
         int getAmountOfTicket();
-        void setCost();
+        void setCost(Vector<Ticket>);
         int getCost();
         void CreateTrading(Vector <Film>);
         void PrintBill();

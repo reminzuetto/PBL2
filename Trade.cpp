@@ -22,110 +22,125 @@ Trade& Trade::operator=(const Trade& t) {
 }
 
 void Trade::CreateTrading(Vector <Film> ListFilm) {
+    int selectamount = 0;
+    while (selectamount == 0) {
+        system("cls");
+        int a;
+        cout << "Nhap vao so luong ve muon mua : ";
+        cin >> a;
+        selectamount = a;
+        cout << endl;
+        setAmountOfTicket(a);
+        Ticket t;
+        //Lấy tên film
+        Film f;
+        int selectFilm = 0;
+        while (selectFilm == 0) {
+        
+            f.SelectFilm(ListFilm, &selectFilm);
+            t.setFilmName(f.getFilmName());
+            if (selectFilm == 0) break;
+            int selectShowtime = 0;
+            Showtime s;
+            string tempt;
+            int tempp;
+            Room tempr;
+            Vector<Showtime> ListShowtime;
+            Vector<int> Price;
+            Vector<Room> Room;
+            Vector<string> Time;
+            Vector <string> Seat;
 
-    system("cls");
-    int a;
-    cout << "Nhap vao so luong ve muon mua : ";
-    cin >> a;
-    cout << endl;
-    setAmountOfTicket(a);
-    Ticket t;
-    //Lấy tên film
-    Film f;
-    int selectFilm = 0;
-    while (selectFilm == 0) {
-     
-        f.SelectFilm(ListFilm, &selectFilm);
-        t.setFilmName(f.getFilmName());
-        int selectShowtime = 0;
-        Showtime s;
-        string tempt;
-        int tempp;
-        Room tempr;
-        Vector<Showtime> ListShowtime;
-        Vector<int> Price;
-        Vector<Room> Room;
-        Vector<string> Time;
-        Vector <string> Seat;
+            while (selectShowtime == 0) {
 
-        while (selectShowtime == 0) {
+                ListShowtime = f.getDSSC();
+                s.SelectShowtime(ListShowtime, &selectShowtime);
 
-            ListShowtime = f.getDSSC();
-            s.SelectShowtime(ListShowtime, &selectShowtime);
+                if (selectShowtime == 0) {
+
+                    break;
+
+                }
+
+                system("cls");
+                int select = 0;
+                while (select == 0) {
+
+                    Time = s.getTime(); 
+                    Price = s.getPrices();
+                    Room = s.getRoom();
+                    for (int i = 0; i < Time.getSize(); i ++) {
+
+                        cout << i + 1 << ". " << endl;
+                        tempt = Time[i].getData();
+                        cout << "Thoi gian: " << tempt << " ";
+                        tempp = Price[i].getData();
+                        cout << "Gia ve: " << tempp << " ";
+                        tempr = Room[i].getData();
+                        tempr.Output();
+
+                    }
+                    int select;
+                    cout << "Moi ban chon suat chieu : ";
+                    cin >> select;
+                    if (select == 0) {
+
+                        selectShowtime = 0;
+                        break;
+
+                    }
+                    tempt = Time[select - 1].getData();
+                    tempp = Price[select - 1].getData();
+                    tempr = Room[select - 1].getData();
+                    for (int i = 0; i < a; i ++) {
+
+                        string tempseat = tempr.SelectSeat(tempr);
+                        Seat.push_back(tempseat);
+
+                    }
+                    if (select != 0) break;
+
+                }
+
+                if (selectShowtime != 0) break;
+
+            }
+
+            if (selectShowtime == 0) selectFilm = 0;
+            else {
+
+                t.setFilmName(f.getFilmName());
+                t.setDate(s.getDate());
+                t.setShowtime(tempt);
+                t.setPrices(tempp);
+                this->Cost = 0;
+                for (int i = 0; i < Seat.getSize(); i ++) {
+
+                    string tempseat = Seat[i].getData();
+                    t.setNumOfRoom(tempr.getNumOfRoom());
+                    t.setSeat(tempseat);
+                    this->List_Ticket.push_back(t);
+                    this->Cost += tempp;
+
+                }
+
+            }
+
+            if (selectFilm != 0) break;
+
+        }
+
+        if (selectamount != 0) {
             
             system("cls");
-            int select = 0;
-            while (select == 0) {
-
-                Time = s.getTime(); 
-                Price = s.getPrices();
-                Room = s.getRoom();
-                for (int i = 0; i < Time.getSize(); i ++) {
-
-                    cout << i + 1 << ". " << endl;
-                    tempt = Time[i].getData();
-                    cout << "Thoi gian: " << tempt << " ";
-                    tempp = Price[i].getData();
-                    cout << "Gia ve: " << tempp << " ";
-                    tempr = Room[i].getData();
-                    tempr.Output();
-
-                }
-                int select;
-                cout << "Moi ban chon suat chieu : ";
-                cin >> select;
-                if (select == 0) break;
-                tempt = Time[select - 1].getData();
-                tempp = Price[select - 1].getData();
-                tempr = Room[select - 1].getData();
-                for (int i = 0; i < a; i ++) {
-
-                    string tempseat = tempr.SelectSeat(tempr);
-                    Seat.push_back(tempseat);
-
-                }
-
-            }
-            
-            if (select == 0) {
-
-                selectShowtime = 0;
-
-            }
-
-            else if (selectShowtime == 0) {
-
-                break;
-
-            }
-            
+            break;
 
         }
 
-        if (selectShowtime == 0) selectFilm = 0;
-        else {
-
-            t.setFilmName(f.getFilmName());
-            t.setDate(s.getDate());
-            t.setShowtime(tempt);
-            t.setPrices(tempp);
-            for (int i = 0; i < Seat.getSize(); i ++) {
-
-                string tempseat = Seat[i].getData();
-                t.setNumOfRoom(tempr.getNumOfRoom());
-                t.setSeat(tempseat);
-                this->List_Ticket.push_back(t);
-
-            }
-            this->setCost();
-
-        }
-    
     }
-
 }
 
-void Trade::setCost() {
+void Trade::setCost(Vector<Ticket> List_Ticket) {
 
     if (List_Ticket.getSize() != 0) {
 
