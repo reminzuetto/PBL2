@@ -71,11 +71,17 @@ void Customer::BuyTicket(Vector <Film> ListFilm) {
 
 }
 
-// Trade Customer::getTrade(int i) const {
+void Customer::getTrade() {
 
-//     return this->ListOfTrade[i];
+    for (int i = 0; i < ListOfTrade.getSize(); i ++) {
 
-// }
+        Trade t = ListOfTrade[i].getData();
+        t.PrintBill();
+        
+
+    }
+
+}
 // ostream& operator<<(ostream& os, const Customer& cus)
 // {
 //     os << "Ten: " << cus.Name << endl;

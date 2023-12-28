@@ -12,9 +12,19 @@ int Trade::getAmountOfTicket() {
 
 }
 
+Trade& Trade::operator=(const Trade& t) {
+
+    this->AmountOfTicket = t.AmountOfTicket;
+    this->List_Ticket = t.List_Ticket;
+    this->Cost = t.Cost;
+    return *this;
+
+}
+
 void Trade::CreateTrading(Vector <Film> ListFilm) {
 
-    int a, c;
+    system("cls");
+    int a;
     cout << "Nhap vao so luong ve muon mua : ";
     cin >> a;
     cout << endl;
@@ -43,6 +53,7 @@ void Trade::CreateTrading(Vector <Film> ListFilm) {
             ListShowtime = f.getDSSC();
             s.SelectShowtime(ListShowtime, &selectShowtime);
             
+            system("cls");
             int select = 0;
             while (select == 0) {
 
@@ -60,7 +71,6 @@ void Trade::CreateTrading(Vector <Film> ListFilm) {
                     tempr.Output();
 
                 }
-
                 int select;
                 cout << "Moi ban chon suat chieu : ";
                 cin >> select;
@@ -70,7 +80,7 @@ void Trade::CreateTrading(Vector <Film> ListFilm) {
                 tempr = Room[select - 1].getData();
                 for (int i = 0; i < a; i ++) {
 
-                    string tempseat = tempr.SelectSeat();
+                    string tempseat = tempr.SelectSeat(tempr);
                     Seat.push_back(tempseat);
 
                 }
@@ -107,6 +117,7 @@ void Trade::CreateTrading(Vector <Film> ListFilm) {
                 this->List_Ticket.push_back(t);
 
             }
+            this->setCost();
 
         }
     
@@ -143,10 +154,11 @@ void Trade::PrintBill() {
     cout << this->AmountOfTicket << endl;
     for(int i = 0; i < List_Ticket.getSize(); i ++) {
 
-        cout << "Thong tin ve " << i + 1 << ":" << endl;
+        cout << "Ve " << i + 1 << ":" << endl;
         Ticket t = List_Ticket[i].getData();
         t.Output();
 
     }
+    cout << "Tong so tien : " << this->Cost << endl;
 
 }

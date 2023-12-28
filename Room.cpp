@@ -16,6 +16,7 @@ Room& Room::operator=(const Room& r) {
 
     this->NumOfRoom = r.NumOfRoom;
     this->AmountOfChair = r.AmountOfChair;
+    this->Chair = r.Chair;
     return *this;
 
 }
@@ -29,6 +30,12 @@ void Room::setNumOfRoom(const int& r) {
 int Room::getNumOfRoom() {
 
     return this->NumOfRoom;
+
+}
+
+Vector <int> Room::getChair() {
+
+    return Chair;
 
 }
 
@@ -57,6 +64,7 @@ istream& operator>>(istream& is, Room& r)
 {
     is >> r.NumOfRoom;
     is >> r.AmountOfChair;
+    r.Chair.setSize(r.AmountOfChair);
     return is;
 }
 ostream& operator<<(ostream& os, Room& r)
@@ -93,27 +101,26 @@ bool Room::isChairAvailable(string& viTri)
         }
         else {
             return 0;
-    }
+        }
     }
 }
-string Room::SelectSeat()
+string Room::SelectSeat(Room& r)
 {
+    //system("cls");
     cout << "Danh sach ghe:\n";
-    for (int i = 0; i < this->AmountOfChair / 10; i++)
+    for (int i = 0; i < r.AmountOfChair / 10; i++)
     {
         cout << char(65 + i) << ": ";
         for (int j = 0; j < 10; j++)
         {
-            while (i * 10 + j <= this->AmountOfChair)
-            {
-                if(!this->Chair[i * 10 + j].getData())
+                Vector<int> check = r.Chair;
+                if(check[i * 10 + j].getData() == 1)
                 {
                     cout << "X ";
                 }
                 else
                 {
                     cout << "O ";
-                }
                 }
         }
         cout << endl;

@@ -28,7 +28,7 @@ class Customer {
         bool getTypeOfCus();
         friend istream& operator>>(istream&, Customer&);
         void BuyTicket(Vector <Film>);
-        // Trade getTrade(int) const;
+        void getTrade();
         friend ostream& operator<<(ostream&, const Customer&);
 };
 

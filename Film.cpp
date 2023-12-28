@@ -54,6 +54,17 @@ Vector<Showtime> Film::getDSSC() {
 
 }
 
+Film& Film::operator=(const Film& f) {
+
+    this->FilmName = f.FilmName;
+    this->Duration = f.Duration;
+    this->TypeOfFilm = f.TypeOfFilm;
+    this->AmountOfDate = f.AmountOfDate;
+    this->DSSC = f.DSSC;
+    
+    return *this;
+}
+
 void Film::Input() {
 
     cout << "Nhap ten phim : "; 
@@ -141,7 +152,13 @@ void Film::edit() {
 }
 istream& operator>>(istream& is, Film& f)
 {
-    is >> f.FilmName;
+    string fn = "";
+    while (fn == "") {
+
+        getline(is, fn);
+
+    }
+    f.FilmName = fn;
     string temp =  "";
     is >> f.Duration;
     is >> f.AmountOfDate;
@@ -187,6 +204,7 @@ Film Film::SelectFilm(Vector<Film> ListFilm, int* selectFilm) {
     cin >> tmp;
     *selectFilm = tmp;
     Film f1 = ListFilm[*selectFilm - 1].getData();
-    return f1;
+    *this = f1;
+    return *this;
 
 }

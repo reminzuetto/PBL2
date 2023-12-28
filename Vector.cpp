@@ -64,6 +64,12 @@ template <typename T>
 Vector<T>& Vector<T>::operator=(Vector<T> v) {
 
     Node<T>* temp = v.head;
+    if (temp == nullptr) {
+
+        this->size = v.size;
+        return *this;
+
+    }
     while (temp != nullptr) {
 
         T temp1 = temp->getData();

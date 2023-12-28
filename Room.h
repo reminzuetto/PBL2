@@ -9,7 +9,8 @@ class Room {
     private:
         int NumOfRoom;
         int AmountOfChair;
-        Vector<bool> Chair;
+        Vector<int> Chair;
+        
     public:
         void Input();
         void Output();
@@ -18,7 +19,8 @@ class Room {
         void setAmountOfChair(const int&);
         int getAmountOfChair();
         bool isChairAvailable(string&);
-        string SelectSeat();
+        Vector <int> getChair();
+        string SelectSeat(Room&);
         Room& operator=(const Room&);
         friend istream& operator>>(istream&, Room&);
         friend ostream& operator<<(ostream&, Room&);

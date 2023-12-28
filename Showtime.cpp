@@ -192,8 +192,7 @@ Showtime Showtime::SelectShowtime(Vector<Showtime> ListShowtime, int* Select) {
     system("cls");
     for (int i = 0; i < ListShowtime.getSize(); i ++) {
 
-        Showtime s;
-        s = ListShowtime[i].getData();
+        Showtime s = ListShowtime[i].getData();
         cout << i + 1 << ". " << s.getDate() << endl;
 
     }
@@ -202,6 +201,7 @@ Showtime Showtime::SelectShowtime(Vector<Showtime> ListShowtime, int* Select) {
     int tmp;
     cin >> tmp;
     *Select = tmp;
-    Showtime s = ListShowtime[*Select - 1].getData();
-    return s;
+    Showtime k = ListShowtime[*Select - 1].getData();
+    *this = k;
+    return *this;
 }

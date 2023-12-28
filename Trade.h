@@ -14,4 +14,5 @@ class Trade {
         int getCost();
         void CreateTrading(Vector <Film>);
         void PrintBill();
+        Trade& operator=(const Trade&);
 };
