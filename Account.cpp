@@ -64,10 +64,19 @@ bool Account::operator==(const Account& account) {
 
 istream& operator>>(istream& is, Account& ac)
 {
-    string i, p;
-    getline(is, i);
+    string i = "", p = "";
+    while (i == "") {
+        
+        getline(is, i);
+
+    }
     ac.setID(i);
-    getline(is, p);
+
+    while (p == "") {
+    
+        getline(is, p);
+
+    }
     ac.setPass(p);
     return is;
 }

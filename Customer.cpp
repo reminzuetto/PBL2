@@ -131,11 +131,26 @@ void Customer::Output()
 }
 istream& operator>>(istream& is, Customer& c)
 {
-    getline(is, c.ID);
-    getline(is, c.Name);
+    string tempid = "", tempname = "", tempphone = "";
+    while (tempid == "") {
+
+        getline(is, tempid);
+
+    }
+    c.ID = tempid;
+    while (tempname == "") {
+
+        getline(is, tempname);
+
+    }
+    c.Name = tempname;
     is >> c.Age;
-    is.ignore();
-    getline(is, c.PhoneNumber);
+    while (tempphone == "") {
+
+        getline(is, tempphone);
+
+    }
+    c.PhoneNumber = tempphone;
     // string s;
     // getline(is, s);
     // if (s == "Membership") c.TypeOfCus = true;

@@ -1,20 +1,25 @@
-// #include "Customer.h"
+// #include "Account.h"
+// #include "Vector.cpp"
 
 // int main() {
 
-//     Vector <Film> ListFilm;
-//     Film f;
-//     ifstream fl;
-//     fl.open("FilmList.txt", ios::in);
-//     int countFilm;
-//     fl >> countFilm;
-//     for (int i = 0; i < countFilm; i++)
+//     Vector <Account> List_Account;
+//     ifstream al;
+//     al.open("AccountList.txt", ios::in);
+//     Account acc;
+//     int countAcc;
+//     al >> countAcc;
+//     for (int i = 0; i < countAcc; i++)
 //     {
-//         fl >> f;
-//         ListFilm.push_back(f);
+//         al >> acc;
+//         List_Account.push_back(acc);
 //     }
-//     Customer cus;
-//     cus.BuyTicket(ListFilm);
-//     cus.getTrade();
-//     fl.close();
+
+//     for (int i = 0; i < countAcc; i ++) {
+
+//         Account temp = List_Account[i].getData();
+//         cout << temp.getID() << " " << temp.getPass() << endl;
+
+//     }
+//     al.close();
 // }
