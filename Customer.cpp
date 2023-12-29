@@ -51,6 +51,17 @@ bool Customer::getTypeOfCus() {
 
 }
 
+void Customer::setAmountOfCus(int& amount) {
+
+    this->AmountOfCus = amount;
+
+}
+
+int Customer::getAmountOfCus() {
+
+    return this->AmountOfCus;
+
+}
 void Customer::setID(const string& id) {
 
     this->ID = id;
@@ -131,6 +142,7 @@ void Customer::Output()
 }
 istream& operator>>(istream& is, Customer& c)
 {
+    is >> AmountOfCus;
     string tempid = "", tempname = "", tempphone = "";
     while (tempid == "") {
 
@@ -161,6 +173,7 @@ istream& operator>>(istream& is, Customer& c)
 }
 ostream& operator<<(ostream& os, const Customer& c)
 {
+    os << c.AmountOfCus << endl;
     os << c.ID << endl;
     os << c.Name << endl;
     os << c.Age << endl;

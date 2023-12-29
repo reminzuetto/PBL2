@@ -96,12 +96,8 @@ void Ticket::Output() {
 
 istream& operator>>(istream& is, Ticket& t) 
 {
-    string fn = "";
-    while (fn == "") {
-
-        getline(is, fn);
-    }
-    f.FilmName = fn;
+    
+    is >> t.FilmName;
     is >> t.Date;
     is >> t.showtime;
     is >> t.NumOfRoom;

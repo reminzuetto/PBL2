@@ -15,6 +15,4 @@ class Trade {
         void CreateTrading(Vector <Film>);
         void PrintBill();
         Trade& operator=(const Trade&);
-        friend istream& operator>>(istream&, Trade&);
-        friend ostream& operator<<(ostream&, Trade&);
 };

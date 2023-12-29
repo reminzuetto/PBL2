@@ -163,8 +163,7 @@ int Trade::getCost() {
 
 }
 
-void Trade::PrintBill() 
-{
+void Trade::PrintBill() {
 
     cout << "So luong ve da dat : ";
     cout << this->AmountOfTicket << endl;
@@ -179,8 +178,7 @@ void Trade::PrintBill()
 
 }
 
-istream& operator>>(istream& is, Trade& t) 
-{
+istream& operator>>(istream& is, Trade& t) {
 
     int AmountOfTicket;
     is >> AmountOfTicket;

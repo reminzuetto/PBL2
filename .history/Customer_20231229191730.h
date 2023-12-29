@@ -27,8 +27,6 @@ class Customer {
         string getPhoneNumber();
         void setTypeOfCus(const bool&);
         bool getTypeOfCus();
-        void setAmountOfCus();
-        int getAmountOfCus();
         friend istream& operator>>(istream&, Customer&);
         void BuyTicket(Vector <Film>);
         void getTrade();

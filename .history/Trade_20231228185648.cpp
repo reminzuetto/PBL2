@@ -163,8 +163,7 @@ int Trade::getCost() {
 
 }
 
-void Trade::PrintBill() 
-{
+void Trade::PrintBill() {
 
     cout << "So luong ve da dat : ";
     cout << this->AmountOfTicket << endl;
@@ -176,38 +175,5 @@ void Trade::PrintBill()
 
     }
     cout << "Tong so tien : " << this->Cost << endl;
-
-}
-
-istream& operator>>(istream& is, Trade& t) 
-{
-
-    int AmountOfTicket;
-    is >> AmountOfTicket;
-    t.setAmountOfTicket(AmountOfTicket);
-    Vector<Ticket> List_Ticket;
-    for (int i = 0; i < AmountOfTicket; i ++) {
-
-        Ticket tempt;
-        is >> tempt;
-        List_Ticket.push_back(tempt);
-
-    }
-    t.setCost(List_Ticket);
-    t.List_Ticket = List_Ticket;
-    return is;
-
-}
-
-ostream& operator<<(ostream& os, Trade& t) {
-
-    os << t.AmountOfTicket << endl;
-    for (int i = 0; i < t.AmountOfTicket; i ++) {
-
-        Ticket tempt = t.List_Ticket[i].getData();
-        os << tempt;
-
-    }
-    return os;
 
 }
