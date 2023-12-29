@@ -100,11 +100,11 @@ void Film::Output() {
     }
 }
 void Film::doc() {
+    cin.ignore();
     cout << "Enter film name: ";
     getline(cin, this->FilmName);
     cout << "Enter duration: ";
     cin >> this->Duration;
-    cin.ignore();
     cout << "Enter amount of date: ";
     cin >> this->AmountOfDate;
     cin.ignore();

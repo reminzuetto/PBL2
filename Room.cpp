@@ -100,6 +100,7 @@ bool Room::isChairAvailable(string& viTri)
     {
         int row = toupper(viTri[0]) - 64;
         int column = stoi(viTri.substr(1));
+        if ( (row - 1) * 10 + column - 1 > this->AmountOfChair) return 0;
         if (this->Chair[(row - 1) * 10 + column - 1].getData() == 0) {
             this->Chair[(row - 1) * 10 + column - 1].setData(1);
             return 1;

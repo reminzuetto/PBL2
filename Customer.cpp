@@ -51,15 +51,15 @@ bool Customer::getTypeOfCus() {
 
 }
 
-void Customer::setAmountOfCus(int& amount) {
+void Customer::setAmountOfTrade(const int& amount) {
 
-    this->AmountOfCus = amount;
+    this->AmountOfTrade = amount;
 
 }
 
-int Customer::getAmountOfCus() {
+int Customer::getAmountOfTrade() {
 
-    return this->AmountOfCus;
+    return this->AmountOfTrade;
 
 }
 void Customer::setID(const string& id) {
@@ -79,14 +79,16 @@ void Customer::BuyTicket(Vector <Film> ListFilm) {
     Trade t;
     t.CreateTrading(ListFilm);
     this->ListOfTrade.push_back(t);
+    this->AmountOfTrade ++;
 
 }
 
 void Customer::getTrade() {
 
-    for (int i = 0; i < ListOfTrade.getSize(); i ++) {
+    system("cls");
+    for (int i = 0; i < this->AmountOfTrade; i ++) {
 
-        Trade t = ListOfTrade[i].getData();
+        Trade t = this->ListOfTrade[i].getData();
         t.PrintBill();
         
 
@@ -142,7 +144,6 @@ void Customer::Output()
 }
 istream& operator>>(istream& is, Customer& c)
 {
-    is >> AmountOfCus;
     string tempid = "", tempname = "", tempphone = "";
     while (tempid == "") {
 
@@ -163,17 +164,34 @@ istream& operator>>(istream& is, Customer& c)
 
     }
     c.PhoneNumber = tempphone;
-    // string s;
-    // getline(is, s);
-    // if (s == "Membership") c.TypeOfCus = true;
-    // else c.TypeOfCus = false;
-    is >> c.TypeOfCus;
-    is.ignore(numeric_limits<streamsize>::max(), '\n');
+    string temptype = "";
+    while (temptype == "") {
+
+        getline(is, temptype);
+
+    }
+    if (temptype == "Membership") c.TypeOfCus = true;
+    else c.TypeOfCus = false;
+    is >> c.AmountOfTrade;
+    // if (c.AmountOfTrade != 0) {
+
+    //     string s = "GiaoDich/" + c.ID + ".txt";
+    //     ifstream tr;
+    //     tr.open(s, ios::in);
+    //     for (int i = 0; i < c.AmountOfTrade; i ++) {
+
+    //         Trade t;
+    //         tr >> t;
+    //         c.ListOfTrade.push_back(t);
+
+    //     }
+    //     c.ListOfTrade.setSize(c.AmountOfTrade);
+
+    // }
     return is;  
 }
-ostream& operator<<(ostream& os, const Customer& c)
+ostream& operator<<(ostream& os, Customer& c)
 {
-    os << c.AmountOfCus << endl;
     os << c.ID << endl;
     os << c.Name << endl;
     os << c.Age << endl;
@@ -182,5 +200,38 @@ ostream& operator<<(ostream& os, const Customer& c)
     // if (c.TypeOfCus == true) s = "Membership";
     // else s = "Normal";
     os << c.TypeOfCus << endl;
+    os << c.AmountOfTrade << endl;
+    if (c.AmountOfTrade != 0) {
+
+        string s = "GiaoDich/" + c.ID + ".txt";
+        ofstream tr;
+        tr.open(s, ios::out);
+        for (int i = 0; i < c.AmountOfTrade; i ++) {
+
+            Trade t = c.ListOfTrade[i].getData();
+            tr << t;
+
+        }
+
+    }
     return os;
+}
+
+bool Customer::operator==(const Customer& cus) {
+
+    return ( this->ID == cus.ID && this->Name == cus.Name && this->Age == cus.Age && this->PhoneNumber == cus.PhoneNumber && this->TypeOfCus == cus.TypeOfCus && this->AmountOfTrade == cus.AmountOfTrade );
+
+}
+
+Customer& Customer::operator=(const Customer& cus) {
+
+    this->ID = cus.ID;
+    this->Name = cus.Name;
+    this->Age = cus.Age;
+    this->PhoneNumber = cus.PhoneNumber;
+    this->TypeOfCus = cus.TypeOfCus;
+    this->AmountOfTrade = cus.AmountOfTrade;
+
+    return *this;
+
 }

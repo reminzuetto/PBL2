@@ -11,7 +11,7 @@ class Customer {
         int Age;
         string PhoneNumber;
         bool TypeOfCus;
-        int AmountOfCus;
+        int AmountOfTrade;
         Vector <Trade> ListOfTrade;
         
     public:
@@ -27,11 +27,13 @@ class Customer {
         string getPhoneNumber();
         void setTypeOfCus(const bool&);
         bool getTypeOfCus();
-        void setAmountOfCus();
-        int getAmountOfCus();
+        void setAmountOfTrade(const int&);
+        int getAmountOfTrade();
         friend istream& operator>>(istream&, Customer&);
         void BuyTicket(Vector <Film>);
         void getTrade();
-        friend ostream& operator<<(ostream&, const Customer&);
+        friend ostream& operator<<(ostream&, Customer&);
+        bool operator== (const Customer&);
+        Customer& operator=(const Customer&);
 };
 

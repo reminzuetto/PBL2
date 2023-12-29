@@ -267,6 +267,27 @@ void Manager::ListCustomer()
     }
     cout << "---------------------------------------------------------\n";
 }
+
+void Manager::AddCustomer(Customer& cus) {
+
+    for (int i = 0; i < List_Customer.getSize(); i ++) {
+
+        if (cus == List_Customer[i].getData()) {
+
+            List_Customer[i].setData(cus);
+            return;
+
+        }
+
+    }
+
+    List_Customer.push_back(cus);
+    ofstream cl;
+    cl.open("AccountList.txt", ios::out);
+    cl << cus;
+
+}
+
 // void Manager::Revenue()
 // {
 //     int sum = 0;

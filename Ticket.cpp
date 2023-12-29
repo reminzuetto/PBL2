@@ -101,7 +101,7 @@ istream& operator>>(istream& is, Ticket& t)
 
         getline(is, fn);
     }
-    f.FilmName = fn;
+    t.FilmName = fn;
     is >> t.Date;
     is >> t.showtime;
     is >> t.NumOfRoom;

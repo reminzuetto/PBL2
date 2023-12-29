@@ -193,8 +193,9 @@ istream& operator>>(istream& is, Trade& t)
         List_Ticket.push_back(tempt);
 
     }
-    t.setCost(List_Ticket);
-    t.List_Ticket = List_Ticket;
+    int tempcost;
+    is >> tempcost;
+    t.Cost = tempcost;
     return is;
 
 }
@@ -208,6 +209,7 @@ ostream& operator<<(ostream& os, Trade& t) {
         os << tempt;
 
     }
+    os << t.Cost << endl;
     return os;
 
 }

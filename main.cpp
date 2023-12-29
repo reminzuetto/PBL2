@@ -79,12 +79,15 @@ void MainMenu() {
 
                         case 0: {
 
-                            //ql.AddCustomer(cus);
+                            ql.AddCustomer(cus);
                             break;
 
                         }
                         case 1: cus.BuyTicket(ListFilm);
-                        case 2: cus.getTrade();
+                        case 2: {
+                            cus.getTrade();
+                            system("pause");
+                        }
 
                     }
 
