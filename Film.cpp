@@ -197,7 +197,10 @@ void Film::edit() {
             getline(cin, temp);
             for (int i = 0; i < this->AmountOfDate; i++) {
                 if (temp == this->Date[i].getData()) {
-                    this->DSSC[i].EditShowtime();
+                    
+                    Showtime s = this->DSSC[i].getData();
+                    s.EditShowtime();
+                    this->DSCC[i].getData() = s;
                     return;
                 }
             }
@@ -289,6 +292,8 @@ void Film::AddShowtime(Showtime& st)
             {
                 this->Date.push_back(tempDate);
                 this->AmountOfDate++;
+                Showtime st;
+                st.Input();
                 this->DSSC.push_back(st);
                 return;
             }
@@ -300,6 +305,7 @@ void Film::AddShowtime(Showtime& st)
 
 void Film::EditShowtime()
 {
+
     cout << "1. Thay doi thoi gian chieu\n2. Thay doi gia\n3. Thay doi phong chieu\n";
     cout << "Nhap lua chon: ";
     int choice;
@@ -324,7 +330,7 @@ void Film::EditShowtime()
             this->Prices.push_back(temp2);
             cout << "Nhap phong chieu cua thoi gian chieu: ";
             Room temp3;
-            cin >> temp3;
+            temp3.Input();
             this->room.push_back(temp3);
             break;
         }

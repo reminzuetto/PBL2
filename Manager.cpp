@@ -272,12 +272,14 @@ void Manager::ListCustomer()
 
 void Manager::AddCustomer(Customer& cus) {
 
+    bool check = false;
     Vector<Customer> temp;
 
     for (int i = 0; i < AmountOfCustomer; i ++) {
 
         if (cus == List_Customer[i].getData()) {
 
+            check = true;
             temp.push_back(cus);
 
         }
@@ -290,11 +292,18 @@ void Manager::AddCustomer(Customer& cus) {
         }
 
     }
-
+    if (check == false) temp.push_back(cus);
+    AmountOfCustomer = temp.getSize();
     List_Customer = temp;
     ofstream cl;
     cl.open("CustomerList.txt", ios::out);
-    cl << cus;
+    cl << AmountOfCustomer;
+    for (int i = 0; i < AmountOfCustomer; i ++) {
+
+        Customer c = List_Customer[i].getData();
+        cl << c << endl;
+
+    }
 
 }
 void Manager::DeleteFilm()
