@@ -244,6 +244,7 @@ Customer& Customer::operator=(const Customer& cus) {
     this->PhoneNumber = cus.PhoneNumber;
     this->TypeOfCus = cus.TypeOfCus;
     this->AmountOfTrade = cus.AmountOfTrade;
+    this->ListOfTrade = cus.ListOfTrade;
 
     return *this;
 
