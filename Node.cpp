@@ -64,12 +64,10 @@ Node<T>* Node<T>::getPrev() {
 
 }
 
-// template <typename T>
-// Node<T>& Node<T>::operator=(const Node<T>& node) {
+template <typename T>
+Node<T>& Node<T>::operator=(const Node<T>& node) {
 
-//     this->data = node.data;
-//     this->next = node.next;
-//     this->prev = node.prev;
-//     return *this;
+    this->data = node.data;
+    return *this;
     
-// }
+}

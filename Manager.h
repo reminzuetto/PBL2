@@ -13,7 +13,7 @@ class Manager {
         Vector <Customer> List_Customer;
 
     public:
-        // Manager();
+        Manager();
         // ~Manager();
         void Customer_Login(Account&, Customer&);
         void SearchFilm();

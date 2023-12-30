@@ -61,13 +61,20 @@ void Vector<T>::setSize(const int& size) {
 }
 
 template <typename T>
-Vector<T>& Vector<T>::operator=(Vector<T> v) {
+Vector<T>& Vector<T>::operator=(const Vector<T>& v) {
 
     Node<T>* temp = v.head;
     if (temp == nullptr) {
 
         this->size = v.size;
         return *this;
+
+    }
+    while (this->head != nullptr) {
+
+        Node<T>* temp2 = this->head;
+        this->head = this->head->getNext();
+        //delete temp2;
 
     }
     while (temp != nullptr) {
@@ -81,6 +88,29 @@ Vector<T>& Vector<T>::operator=(Vector<T> v) {
     return *this;
 
 }
+
+// template <typename T>
+// Vector<T>& Vector<T>::operator=(const Vector<T>& v) {
+//     if (this != &v) { // Self-assignment check
+//         // Clear current vector
+//         while (head != nullptr) {
+//             Node<T>* temp = head;
+//             head = head->getNext();
+//             delete temp;
+//         }
+
+//         // Copy elements from v to this
+//         Node<T>* temp = v.head;
+//         while (temp != nullptr) {
+//             push_back(temp->getData());
+//             temp = temp->getNext();
+//         }
+
+//         size = v.size;
+//     }
+
+//     return *this;
+// }
 
 // template <typename T>
 // void Vector<T>::resize(int newSize) {

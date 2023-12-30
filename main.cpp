@@ -23,7 +23,7 @@ void MainMenu() {
             int SelectMng;
             while (true) {
 
-
+                bool check = false;
                 system("cls");
                 cout << "\n\n\t\t ====== Chuc Nang Cua Quan Ly ======";
                 cout << "\n\n\t1. Them Phim";	
@@ -40,7 +40,10 @@ void MainMenu() {
 
                 switch(SelectMng) {
 
-                    case 0: break;
+                    case 0:  {
+                        check = true;
+                        break;
+                    }
                     case 1: ql.AddFilm();
                     case 2: ql.DeleteFilm();
                     case 3: ql.EditFilm();
@@ -49,6 +52,7 @@ void MainMenu() {
                     case 6: ql.ListCustomer();
 
                 }
+                if (check == true) break;
 
             }
 
@@ -65,6 +69,7 @@ void MainMenu() {
                 int SelectCsm;
                 while (true) {
 
+                    bool check = false;
                     system("cls");
                     cout << "\n\n\t\t ====== Chuc Nang Cua Khach Hang ======";
                     cout << "\n\n\t1. Mua Ve";
@@ -80,6 +85,7 @@ void MainMenu() {
                         case 0: {
 
                             ql.AddCustomer(cus);
+                            check = true;
                             break;
 
                         }
@@ -90,6 +96,8 @@ void MainMenu() {
                         }
 
                     }
+
+                    if (check == true) break;
 
                 }
             }

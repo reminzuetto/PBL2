@@ -1,11 +1,18 @@
 #include <iostream>
 #include "Manager.h"
 
-// Manager::Manager()
-// {
-//     this->ListOfFilm = nullptr;
-//     this->List_Customer = nullptr;
-// }
+Manager::Manager()
+{
+    this->AmountOfFilm = 0;
+    this->AmountOfCustomer = 0;
+    this->AmountOfAccount = 0;
+    Vector <Film> f;
+    Vector <Account> a;
+    Vector <Customer> c;
+    this->ListOfFilm = f;
+    this->List_Account = a;
+    this->List_Customer = c;
+}
 // Manager::~Manager()
 // {
 //     delete[] this->ListOfFilm;
@@ -22,7 +29,7 @@ Vector <Film> Manager::getListFilm() {
 void Manager::Customer_Login(Account& acc, Customer &cus) {
 
     bool check = false;
-    for (int i = 0; i < this->List_Account.getSize(); i ++) {
+    for (int i = 0; i < this->AmountOfAccount; i ++) {
 
         if (acc == List_Account[i].getData()) {
 
@@ -37,7 +44,7 @@ void Manager::Customer_Login(Account& acc, Customer &cus) {
 
     if (check == true) {
 
-        for (int i = 0; i < this->List_Customer.getSize(); i ++) {
+        for (int i = 0; i < this->AmountOfCustomer; i ++) {
 
             if (acc.getID() == List_Customer[i].getData().getID()) {
 
@@ -70,7 +77,6 @@ void Manager::UpdateData()
     int countFilm;
     fl >> countFilm;
     this->AmountOfFilm = countFilm;
-    this->ListOfFilm.setSize(countFilm);
     for (int i = 0; i < countFilm; i++)
     {
         fl >> temp;
@@ -81,7 +87,6 @@ void Manager::UpdateData()
     int countCus;
     cl >> countCus;
     this->AmountOfCustomer = countCus;
-    this->List_Customer.setSize(countCus);
     for (int i = 0; i < countCus; i++)
     {
         cl >> cus;
@@ -93,7 +98,6 @@ void Manager::UpdateData()
     int countAcc;
     al >> countAcc;
     this->AmountOfAccount = countAcc;
-    this->List_Account.setSize(countAcc);
     for (int i = 0; i < countAcc; i++)
     {
         al >> acc;
@@ -245,7 +249,7 @@ void Manager::SearchFilm()
 void Manager::ListFilm()
 {
     cout << "------------------Danh Sach Phim-------------------------\n";
-    for (int i = 0; i < ListOfFilm.getSize(); i++){
+    for (int i = 0; i < AmountOfFilm; i++){
         cout << i + 1 << endl;
         Film temp;
         temp = this->ListOfFilm[i].getData();
@@ -257,7 +261,7 @@ void Manager::ListFilm()
 void Manager::ListCustomer()
 {
     cout << "------------------Danh Sach Khach Hang-------------------------\n";
-    for (int i = 0; i < List_Customer.getSize(); i++)
+    for (int i = 0; i < AmountOfCustomer; i++)
     {
         cout << i + 1 << ".  ";
         Customer cus;
@@ -270,20 +274,28 @@ void Manager::ListCustomer()
 
 void Manager::AddCustomer(Customer& cus) {
 
-    for (int i = 0; i < List_Customer.getSize(); i ++) {
+    Vector<Customer> temp;
+
+    for (int i = 0; i < AmountOfCustomer; i ++) {
 
         if (cus == List_Customer[i].getData()) {
 
-            List_Customer[i].setData(cus);
-            return;
+            temp.push_back(cus);
+
+        }
+
+        else {
+
+            Customer c = List_Customer[i].getData();
+            temp.push_back(c);
 
         }
 
     }
 
-    List_Customer.push_back(cus);
+    List_Customer = temp;
     ofstream cl;
-    cl.open("AccountList.txt", ios::out);
+    cl.open("CustomerList.txt", ios::out);
     cl << cus;
 
 }

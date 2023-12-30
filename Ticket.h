@@ -15,6 +15,7 @@ class Ticket {
         int Prices;
 
     public:
+        Ticket();
         //void Input();
         void Output();
         void setFilmName(const string&);

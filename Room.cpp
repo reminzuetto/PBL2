@@ -1,5 +1,14 @@
 #include "Room.h"
 
+Room::Room() {
+
+    this->NumOfRoom = 0;
+    this->AmountOfChair = 0;
+    Vector <int> c;
+    this->Chair = c;
+
+}
+
 void Room::setAmountOfChair(const int& amc) {
 
     this->AmountOfChair = amc;
@@ -64,14 +73,16 @@ istream& operator>>(istream& is, Room& r)
 {
     is >> r.NumOfRoom;
     is >> r.AmountOfChair;
+    Vector <int> ch;
     for (int i = 0; i < r.AmountOfChair; i ++) {
 
-        r.Chair.push_back(0);
+        ch.push_back(0);
 
     }
-    r.Chair.setSize(r.AmountOfChair);
+    r.Chair = ch;
     return is;
 }
+
 ostream& operator<<(ostream& os, Room& r)
 {
     int num, amount;

@@ -1,5 +1,14 @@
 #include "Trade.h"
 
+Trade::Trade() {
+
+    this->AmountOfTicket = 0;
+    Vector<Ticket> tk;
+    this->List_Ticket = tk;
+    this->Cost = 0;
+
+}
+
 void Trade::setAmountOfTicket(const int& AoT) {
 
     this->AmountOfTicket = AoT;
@@ -29,6 +38,7 @@ void Trade::CreateTrading(Vector <Film> ListFilm) {
         cout << "Nhap vao so luong ve muon mua : ";
         cin >> a;
         selectamount = a;
+        if (a == 0) return;
         cout << endl;
         setAmountOfTicket(a);
         Ticket t;
@@ -37,8 +47,18 @@ void Trade::CreateTrading(Vector <Film> ListFilm) {
         int selectFilm = 0;
         while (selectFilm == 0) {
         
-            f.SelectFilm(ListFilm, &selectFilm);
-            t.setFilmName(f.getFilmName());
+            system("cls");
+            for (int i = 0; i < ListFilm.getSize(); i ++) {
+
+                Film f = ListFilm[i].getData();
+                cout << i + 1 << ". " << f.getFilmName() << endl;
+
+            }
+            cout << "Moi ban chon phim : ";
+            cin >> selectFilm;
+            Film f1 = ListFilm[selectFilm - 1].getData();
+            t.setFilmName(f1.getFilmName());
+
             if (selectFilm == 0) break;
             int selectShowtime = 0;
             Showtime s;
@@ -46,15 +66,29 @@ void Trade::CreateTrading(Vector <Film> ListFilm) {
             int tempp;
             Room tempr;
             Vector<Showtime> ListShowtime;
+            Vector <string> Day;
             Vector<int> Price;
             Vector<Room> Room;
             Vector<string> Time;
             Vector <string> Seat;
-
+            Day = f1.getDate();
+            ListShowtime = f1.getDSSC();
             while (selectShowtime == 0) {
 
-                ListShowtime = f.getDSSC();
-                s.SelectShowtime(ListShowtime, &selectShowtime);
+                
+                system("cls");
+                for (int i = 0; i < ListShowtime.getSize(); i ++) {
+                
+                    string dt = Day[i].getData();
+                    cout << i + 1 << ". " << dt << endl;
+
+                }
+
+                cout << "Moi ban chon ngay chieu : ";
+                cin >> selectShowtime;
+                string dt = Day[selectShowtime - 1].getData();
+                t.setDate(dt);
+                Showtime s = ListShowtime[selectShowtime - 1].getData();
 
                 if (selectShowtime == 0) {
 
@@ -64,11 +98,11 @@ void Trade::CreateTrading(Vector <Film> ListFilm) {
 
                 system("cls");
                 int select = 0;
+                Time = s.getTime(); 
+                Price = s.getPrices();
+                Room = s.getRoom();
                 while (select == 0) {
 
-                    Time = s.getTime(); 
-                    Price = s.getPrices();
-                    Room = s.getRoom();
                     for (int i = 0; i < Time.getSize(); i ++) {
 
                         cout << i + 1 << ". " << endl;
@@ -110,7 +144,6 @@ void Trade::CreateTrading(Vector <Film> ListFilm) {
             else {
 
                 t.setFilmName(f.getFilmName());
-                t.setDate(s.getDate());
                 t.setShowtime(tempt);
                 t.setPrices(tempp);
                 this->Cost = 0;

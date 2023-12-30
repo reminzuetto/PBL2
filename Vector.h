@@ -13,6 +13,6 @@ class Vector {
         Node<T>& operator[](int);
         void setSize(const int&);
         int getSize();
-        Vector<T>& operator=(Vector<T>);
+        Vector<T>& operator=(const Vector<T>&);
         // void resize(int);
 };

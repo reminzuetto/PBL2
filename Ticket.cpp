@@ -1,5 +1,16 @@
 #include "Ticket.h"
 
+Ticket::Ticket() {
+
+    this->FilmName = "";
+    this->Date = "";
+    this->showtime = "";
+    this->NumOfRoom = 0;
+    this->Seat = "";
+    this->Prices = 0;
+
+}
+
 void Ticket::setFilmName(const string& FilmName) {
 
     this->FilmName = FilmName;

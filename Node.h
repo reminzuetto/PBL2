@@ -22,4 +22,5 @@ class Node {
         Node* getNext();
         Node* getPrev();
         bool operator==(const Node&);
+        Node& operator=(const Node&);
 };

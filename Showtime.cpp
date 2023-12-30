@@ -1,14 +1,14 @@
 #include "Showtime.h"
 
-void Showtime::setDate(const string& d) {
+Showtime::Showtime() {
 
-    this->Date = d;
-
-}
-
-string Showtime::getDate() {
-
-    return this->Date;
+    this->AmountOfShowtime = 0;
+    Vector<string> t;
+    Vector<int> p;
+    Vector<Room> r;
+    this->Time = t;
+    this->Prices = p;
+    this->room = r;
 
 }
 
@@ -62,9 +62,6 @@ Vector<Room> Showtime::getRoom() {
 
 void Showtime::Input() {
 
-    cout << "Nhap ngay chieu : ";
-    cin >> this->Date;
-
     cout << "Nhap so luong suat chieu trong ngay : ";
     cin >> this->AmountOfShowtime;
 
@@ -89,7 +86,6 @@ void Showtime::Input() {
 
 void Showtime::Output() {
 
-    cout << "Ngay chieu : " << this->Date << endl;
     cout << "So luong suat chieu : " << this->AmountOfShowtime << endl;
     for (long long i = 0; i < this->AmountOfShowtime; i++) {
 
@@ -106,7 +102,6 @@ void Showtime::Output() {
 
 Showtime& Showtime::operator= (const Showtime& s) {
 
-    this->Date = s.Date;
     this->Time = s.Time;
     this->room = s.room;
     this->Prices = s.Prices;
@@ -116,11 +111,12 @@ Showtime& Showtime::operator= (const Showtime& s) {
 }
 istream& operator>>(istream& is, Showtime& st)
 {
-    is >> st.Date;
     is >> st.AmountOfShowtime;
     // st.Time.resize(st.AmountOfShowtime);
     // st.Prices.resize(st.AmountOfShowtime);
     // st.room.resize(st.AmountOfShowtime);
+    Vector<string> tm;
+    Vector<int> pr;
     for (int i = 0; i < st.AmountOfShowtime; i++)
     {
         string tt = "";
@@ -131,17 +127,17 @@ istream& operator>>(istream& is, Showtime& st)
             getline(is, tt);
 
         }
-        st.Time.push_back(tt);
+        tm.push_back(tt);
         is >> price;
-        st.Prices.push_back(price);
+        pr.push_back(price);
         is >> tr;
         st.room.push_back(tr);
     }
+    st.Time = tm;
+    st.Prices = pr;
     return is;
 }
 void Showtime::doc() {
-    cout << "Enter date: ";
-    getline(cin, Date);
     cout << "Enter amount of showtime: ";
     cin >> AmountOfShowtime;
     cin.ignore();
@@ -166,11 +162,8 @@ void Showtime::doc() {
 }
 ostream& operator<<(ostream& os, Showtime& st)
 {
-    string date;
     int amountst;
-    date = st.getDate();
     amountst = st.getAmountOfShowtime();
-    os << date << endl;
     os << amountst << endl;
     for (int i = 0; i < st.AmountOfShowtime; i++)
     {
@@ -185,23 +178,4 @@ ostream& operator<<(ostream& os, Showtime& st)
         os << r;
     }
     return os;
-}
-
-Showtime Showtime::SelectShowtime(Vector<Showtime> ListShowtime, int* Select) {
-
-    system("cls");
-    for (int i = 0; i < ListShowtime.getSize(); i ++) {
-
-        Showtime s = ListShowtime[i].getData();
-        cout << i + 1 << ". " << s.getDate() << endl;
-
-    }
-
-    cout << "Moi ban chon ngay chieu : ";
-    int tmp;
-    cin >> tmp;
-    *Select = tmp;
-    Showtime k = ListShowtime[*Select - 1].getData();
-    *this = k;
-    return *this;
 }

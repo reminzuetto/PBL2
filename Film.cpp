@@ -1,5 +1,18 @@
 #include "Film.h"
 
+Film::Film() {
+
+    this->FilmName = "";
+    this->Duration = 0;
+    this->AmountOfDate = 0;
+    this->TypeOfFilm = "";
+    Vector<Showtime> dsc;
+    Vector<string> dt;
+    this->DSSC = dsc;
+    this->Date = dt;
+
+}
+
 void Film::setFilmName(string& s) {
 
     this->FilmName = s;
@@ -48,9 +61,15 @@ int Film::getAmountOfDate() {
 
 }
 
-Vector<Showtime> Film::getDSSC() {
+Vector<Showtime>& Film::getDSSC() {
 
     return this->DSSC;
+
+}
+
+Vector <string> Film::getDate() {
+
+    return this->Date;
 
 }
 
@@ -61,6 +80,7 @@ Film& Film::operator=(const Film& f) {
     this->TypeOfFilm = f.TypeOfFilm;
     this->AmountOfDate = f.AmountOfDate;
     this->DSSC = f.DSSC;
+    this->Date = f.Date;
     
     return *this;
 }
@@ -77,7 +97,11 @@ void Film::Input() {
     cout << "Nhap so luong ngay chieu trong tuan : "; 
     cin >> this->AmountOfDate;
     for (long long i = 0; i < this->AmountOfDate; i++) {
-        
+
+        string dt;
+        cin.ignore();
+        getline(cin, dt);
+        Date.push_back(dt);
         Showtime s;
         s.Input();
         DSSC.push_back(s);
@@ -93,6 +117,9 @@ void Film::Output() {
     cout << "The loai phim : " << this->TypeOfFilm << endl;
     for (long long i=0 ;i < this->AmountOfDate;i++){
 
+        string dt;
+        dt = Date[i].getData();
+        cout << "Ngay chieu : " << dt << endl;
         Showtime s;
         s = DSSC[i].getData();
         s.Output();
@@ -112,10 +139,15 @@ void Film::doc() {
     getline(cin, this->TypeOfFilm);
     //DSSC.resize(AmountOfDate);
     for (int i = 0; i < AmountOfDate; i++) {
+        cin.ignore();
+        cout << "Enter the date: ";
+        string dt;
+        getline(cin, dt);
+        Date.push_back(dt);
         cout << "Enter details for showtime " << i + 1 << ": ";
         Showtime temp;
         temp.doc();
-        DSSC[i].setData(temp);
+        DSSC.push_back(temp);
     }
 }
 
@@ -168,13 +200,25 @@ istream& operator>>(istream& is, Film& f)
 
     }
     f.TypeOfFilm = temp;
+    Vector<string> dat;
+    Vector<Showtime> DSC;
     for (int i = 0; i < f.AmountOfDate; i++) {
+        string dt = "";
+        while (dt == "") {
+
+            getline(is, dt);
+
+        }
+        dat.push_back(dt);
         Showtime tmp;
         is >> tmp;
-        f.DSSC.push_back(tmp);
+        DSC.push_back(tmp);
     }
+    f.Date = dat;
+    f.DSSC = DSC;
     return is;
 }
+
 ostream& operator<<(ostream& os, Film& f)
 {
     os << f.FilmName << endl;
@@ -182,29 +226,13 @@ ostream& operator<<(ostream& os, Film& f)
     os << f.AmountOfDate << endl;
     os << f.TypeOfFilm << endl;
     for (int i = 0; i < f.AmountOfDate; i++) {
+        
+        string dt;
+        dt = f.Date[i].getData();
+        os << dt;
         Showtime temp;
         temp = f.DSSC[i].getData();
         os << temp;
     }
     return os;
-}
-
-Film Film::SelectFilm(Vector<Film> ListFilm, int* selectFilm) {
-
-    system("cls");
-    for (int i = 0; i < ListFilm.getSize(); i ++) {
-
-        Film f = ListFilm[i].getData();
-        cout << i + 1 << ". " << f.getFilmName() << endl;
-
-    }
-
-    cout << "Moi ban chon phim : ";
-    int tmp;
-    cin >> tmp;
-    *selectFilm = tmp;
-    Film f1 = ListFilm[*selectFilm - 1].getData();
-    *this = f1;
-    return *this;
-
 }

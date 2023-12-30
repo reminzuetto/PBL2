@@ -15,6 +15,7 @@ class Customer {
         Vector <Trade> ListOfTrade;
         
     public:
+        Customer();
         void Input();
         void Output();
         void setID(const string&);

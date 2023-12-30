@@ -9,9 +9,11 @@ class Film {
         int Duration;
         int AmountOfDate;
         string TypeOfFilm;
+        Vector <string> Date;
         Vector<Showtime> DSSC;
     
     public:
+        Film();
         void Input();
         void Output();
         void setFilmName(string&);
@@ -22,8 +24,9 @@ class Film {
         string getTypeOfFilm();
         void setAmountOfDate(int&);
         int getAmountOfDate();
-        Vector<Showtime> getDSSC();
-        Film SelectFilm(Vector<Film>, int*);
+        Vector <string> getDate();
+        Vector<Showtime>& getDSSC();
+        //Film SelectFilm(Vector<Film>, int*);
         void doc( );
         void edit();
         Film& operator=(const Film&);

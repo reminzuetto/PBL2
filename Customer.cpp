@@ -3,6 +3,19 @@
 
 using namespace std;
 
+Customer::Customer() {
+
+    this->ID = "";
+    this->Name = "";
+    this->Age = 0;
+    this->PhoneNumber = "";
+    this->TypeOfCus = false;
+    this->AmountOfTrade = 0;
+    Vector<Trade> temptrade;
+    this->ListOfTrade = temptrade;
+
+}
+
 void Customer::setName(const string& name) {
 
     this->Name = name;
@@ -196,10 +209,10 @@ ostream& operator<<(ostream& os, Customer& c)
     os << c.Name << endl;
     os << c.Age << endl;
     os << c.PhoneNumber << endl;
-    // string s;
-    // if (c.TypeOfCus == true) s = "Membership";
-    // else s = "Normal";
-    os << c.TypeOfCus << endl;
+    string s;
+    if (c.TypeOfCus == true) s = "Membership";
+    else s = "Normal";
+    os << s << endl;
     os << c.AmountOfTrade << endl;
     if (c.AmountOfTrade != 0) {
 

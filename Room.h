@@ -12,6 +12,7 @@ class Room {
         Vector<int> Chair;
         
     public:
+        Room();
         void Input();
         void Output();
         void setNumOfRoom(const int&);

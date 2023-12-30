@@ -8,6 +8,7 @@ class Trade {
         int Cost;
 
     public:
+        Trade();
         void setAmountOfTicket(const int&);
         int getAmountOfTicket();
         void setCost(Vector<Ticket>);
