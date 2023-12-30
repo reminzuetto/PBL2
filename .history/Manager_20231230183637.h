@@ -18,12 +18,12 @@ class Manager {
         void Customer_Login(Account&, Customer&);
         void SearchFilm();
         void UpdateData();
+        void DeleteFilm();
         void AddFilm();
         void EditFilm();
-        void DeleteFilm();
+        void AddShowtime(Film&);
+        void EditShowtime(Film&s);
         void AddCustomer(Customer&);
-        void EditCustomer(Customer&);
-        void DeleteCustomer();
         void ListFilm();
         void ListCustomer();
         Vector <Film> getListFilm();

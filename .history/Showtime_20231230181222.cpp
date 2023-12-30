@@ -146,15 +146,15 @@ void Showtime::doc() {
     // room.resize(AmountOfShowtime);
     for (int i = 0; i < AmountOfShowtime; i++) {
         string timeData = "";
-        cout << "Nhap thoi gian cua suat chieu" << i+1 << ": ";
+        cout << "Nhap thoi gian suat chieu " << i+1 << ": ";
         getline(cin, timeData) ;
         Time[i].setData(timeData);
-        cout << "Nhap gia tien cua suat chieu " << i+1 << ": ";
+        cout << "Enter price for showtime " << i+1 << ": ";
         int temp;
         cin >> temp;
         Prices[i].setData(temp);
         cin.ignore();
-        cout << "Nhap thong tin phong chieu cua suat chieu " << i+1 << ": ";
+        cout << "Enter details for room " << i+1 << ": ";
         Room tr;
         tr.doc();
         room[i].setData(tr);

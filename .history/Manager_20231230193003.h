@@ -22,8 +22,6 @@ class Manager {
         void EditFilm();
         void DeleteFilm();
         void AddCustomer(Customer&);
-        void EditCustomer(Customer&);
-        void DeleteCustomer();
         void ListFilm();
         void ListCustomer();
         Vector <Film> getListFilm();

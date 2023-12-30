@@ -179,3 +179,27 @@ ostream& operator<<(ostream& os, Showtime& st)
     }
     return os;
 }
+
+void Showtime::edit() {
+    cout << "Nhap vao so luong suat chieu: ";
+    cin >> AmountOfShowtime;
+    cin.ignore();
+    // Time.resize(AmountOfShowtime);
+    // Prices.resize(AmountOfShowtime);
+    // room.resize(AmountOfShowtime);
+    for (int i = 0; i < AmountOfShowtime; i++) {
+        string timeData = "";
+        cout << "Nhap thoi gian cua suat chieu" << i+1 << ": ";
+        getline(cin, timeData) ;
+        Time[i].setData(timeData);
+        cout << "Nhap gia tien cua suat chieu " << i+1 << ": ";
+        int temp;
+        cin >> temp;
+        Prices[i].setData(temp);
+        cin.ignore();
+        cout << "Nhap thong tin phong chieu cua suat chieu " << i+1 << ": ";
+        Room tr;
+        tr.doc();
+        room[i].setData(tr);
+    }
+}

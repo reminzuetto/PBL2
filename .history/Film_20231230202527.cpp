@@ -298,7 +298,7 @@ void Film::AddShowtime(Showtime& st)
     }
 }
 
-void Film::EditShowtime()
+void Film::EditShowtime(Showtime& st)
 {
     cout << "1. Thay doi thoi gian chieu\n2. Thay doi gia\n3. Thay doi phong chieu\n";
     cout << "Nhap lua chon: ";

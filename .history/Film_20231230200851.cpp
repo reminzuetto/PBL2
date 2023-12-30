@@ -197,7 +197,7 @@ void Film::edit() {
             getline(cin, temp);
             for (int i = 0; i < this->AmountOfDate; i++) {
                 if (temp == this->Date[i].getData()) {
-                    this->DSSC[i].EditShowtime();
+                    EditShowtime(this->DSSC[i]);
                     return;
                 }
             }
@@ -298,7 +298,7 @@ void Film::AddShowtime(Showtime& st)
     }
 }
 
-void Film::EditShowtime()
+void Film::EditShowtime(Showtime& st)
 {
     cout << "1. Thay doi thoi gian chieu\n2. Thay doi gia\n3. Thay doi phong chieu\n";
     cout << "Nhap lua chon: ";

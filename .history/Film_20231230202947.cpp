@@ -367,7 +367,7 @@ void Film::EditShowtime()
         cout << "Nhap phong chieu muon thay doi gia: ";
         Room temp2;
         cin >> temp2;
-        for (int i = 0; i < this->AmountOfShowtime; i++) {
+        for (int i = 0; i < this->AmountOfDate; i++) {
             if (temp == this->Time[i].getData() && temp2 == this->room[i]) {
                 int temp3;
                 cout << "Nhap gia tien moi: ";

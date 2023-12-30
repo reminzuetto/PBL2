@@ -6,7 +6,7 @@ using namespace std;
 class Showtime {
 
     private:
-        int AmountOfShowtime;
+        int AmountOfTime;
         Vector<string> Time;
         Vector<int> Prices;
         Vector<Room> room;
@@ -16,9 +16,9 @@ class Showtime {
         void Input();
         void Output();
         Vector <string> getDate();
-        void setAmountOfShowtime(const int&);
-        int getAmountOfShowtime();
-        void EditShowtime(Showtime&);
+        void setAmountOfTime(const int&);
+        int getAmountOfTime();
+        void EditShowtime(Showtime&);   
         Vector<string> getTime();
         Vector<int> getPrices();
         Vector<Room> getRoom();

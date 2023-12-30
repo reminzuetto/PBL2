@@ -18,7 +18,6 @@ class Showtime {
         Vector <string> getDate();
         void setAmountOfShowtime(const int&);
         int getAmountOfShowtime();
-        void EditShowtime(Showtime&);
         Vector<string> getTime();
         Vector<int> getPrices();
         Vector<Room> getRoom();
@@ -27,4 +26,5 @@ class Showtime {
         friend istream& operator>>(istream&, Showtime&);
         friend ostream& operator<<(ostream&, Showtime&);
         void doc();
+        void edit();
 };

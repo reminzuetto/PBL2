@@ -197,7 +197,7 @@ void Film::edit() {
             getline(cin, temp);
             for (int i = 0; i < this->AmountOfDate; i++) {
                 if (temp == this->Date[i].getData()) {
-                    this->DSSC[i].EditShowtime();
+                    EditShowtime(this->DSSC[i]);
                     return;
                 }
             }
@@ -298,7 +298,7 @@ void Film::AddShowtime(Showtime& st)
     }
 }
 
-void Film::EditShowtime()
+void Film::EditShowtime(Showtime& st)
 {
     cout << "1. Thay doi thoi gian chieu\n2. Thay doi gia\n3. Thay doi phong chieu\n";
     cout << "Nhap lua chon: ";
@@ -380,19 +380,10 @@ void Film::EditShowtime()
         break;
     }
     case 3: {
-        cout << "Nhap thoi gian chieu cua phong muon thay doi: ";
-        string temp1;
-        cin >> temp1;
-        for (int i = 0; i < this->AmountOfShowtime; i++) {
-            if (temp1 == this->Time[i].getData()) {
-                cout << "Nhap phong chieu muon thay doi: ";
-                Room temp2;
-                cin >> temp2;
-                this->room[i].setData(temp2);
-                return;
-            }
-        }
-        cout << "Khong co thoi gian nay trong lich chieu.\n";
+        cout << "Nhap phong chieu moi: ";
+        Room temp;
+        cin >> temp;
+        st.setRoom(temp);
         break;
     }
     default:

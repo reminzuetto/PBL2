@@ -24,8 +24,8 @@ class Film {
         string getTypeOfFilm();
         void setAmountOfDate(int&);
         int getAmountOfDate();
+        void EditFilm();
         void AddShowtime(Showtime&);
-        void EditShowtime();
         Vector <string> getDate();
         Vector<Showtime>& getDSSC();
         //Film SelectFilm(Vector<Film>, int*);

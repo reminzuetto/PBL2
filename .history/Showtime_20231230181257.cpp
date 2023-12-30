@@ -154,7 +154,7 @@ void Showtime::doc() {
         cin >> temp;
         Prices[i].setData(temp);
         cin.ignore();
-        cout << "Nhap thong tin phong chieu cua suat chieu " << i+1 << ": ";
+        cout << "Nhap thong tin phong chieu " << i+1 << ": ";
         Room tr;
         tr.doc();
         room[i].setData(tr);
