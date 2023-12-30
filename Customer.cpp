@@ -249,3 +249,37 @@ Customer& Customer::operator=(const Customer& cus) {
     return *this;
 
 }
+
+void Customer::edit() {
+    cout << "1. Ten\n2. Tuoi\n3. So dien thoai\n4. Loai khach hang:\n";
+    int choice;
+    cin >> choice;
+    cin.ignore();
+    switch (choice)
+    {
+    case 1:
+        cout << "Nhap ten moi: ";
+        getline(cin, this->Name);
+        break;
+    case 2:
+        cout << "Nhap tuoi moi: ";
+        cin >> this->Age;
+        break;
+    case 3:
+        cout << "Nhap so dien thoai moi: ";
+        cin.ignore();
+        getline(cin, this->PhoneNumber);
+        break;
+    case 4:
+        cout << "Nhap loai khach hang moi: ";
+        cin.ignore();
+        string s;
+        getline(cin, s);
+        if (s == "Membership") this->TypeOfCus = true;
+        else this->TypeOfCus = false;
+        break;
+    default;
+    break;                
+}
+} 
+

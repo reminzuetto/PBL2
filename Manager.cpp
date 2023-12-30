@@ -306,6 +306,51 @@ void Manager::AddCustomer(Customer& cus) {
     }
 
 }
+void Manager::EditCustomer()
+{
+    ifstream inFile("CustomerList.txt");
+    if (!inFile.is_open()) {
+        cerr << "Error: File not found." << endl;
+        return;
+    }
+    int countCus;
+    inFile >> countCus;
+    inFile.ignore();
+    this->AmountOfCustomer = countCus;
+    this->List_Customer.setSize(countCus);
+    Customer temp;
+    for (int i = 0; i < countCus; i++)
+    {
+        inFile >> temp;
+        this->List_Customer[i].setData(temp);
+    }
+    inFile.close();
+
+    int x;
+    cout << "Nhap vi tri khach hang can chinh sua: ";
+    cin >> x;
+    if (x < 1 || x > this->AmountOfCustomer)
+    {
+        cout << "Vi tri khong hop le!" << endl;
+        return;
+    }
+    Customer ec;
+    ec = this->List_Customer[x - 1].getdata().edit();
+    this->List_Customer[x - 1].setData(ec);
+    ofstream outFile("CustomerList.txt");
+    if (!outFile.is_open()) {
+        cerr << "Error: Unable to open file for writing." << endl;
+        return;
+    }
+    outFile << this->AmountOfCustomer;
+    for (int i = 0; i < this->AmountOfCustomer; i++)
+    {
+        Customer c;
+        c = List_Customer[i].getData();
+        outFile << c << endl;
+    }
+    outFile.close();
+}
 void Manager::DeleteFilm()
 {
     ifstream inFile("FilmList.txt");
