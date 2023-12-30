@@ -198,9 +198,8 @@ void Film::edit() {
             for (int i = 0; i < this->AmountOfDate; i++) {
                 if (temp == this->Date[i].getData()) {
                     
-                    Showtime s = this->DSSC[i].getData();
-                    s.EditShowtime();
-                    this->DSCC[i].getData() = s;
+                    Showtime *s = &(this->DSSC[i].getData());
+                    s->EditShowtime();
                     return;
                 }
             }
@@ -292,8 +291,6 @@ void Film::AddShowtime(Showtime& st)
             {
                 this->Date.push_back(tempDate);
                 this->AmountOfDate++;
-                Showtime st;
-                st.Input();
                 this->DSSC.push_back(st);
                 return;
             }
@@ -301,108 +298,4 @@ void Film::AddShowtime(Showtime& st)
             return;
         }
     }
-}
-
-void Film::EditShowtime()
-{
-
-    cout << "1. Thay doi thoi gian chieu\n2. Thay doi gia\n3. Thay doi phong chieu\n";
-    cout << "Nhap lua chon: ";
-    int choice;
-    cin >> choice;
-    switch (choice)
-    {
-    case 1: {
-        cout <<"1. Them thoi gian chieu\n2. Thay doi thoi gian chieu\n3. Xoa thoi gian chieu\n";
-        cout << "Nhap lua chon: ";
-        int temp;
-        cin >> temp;
-        switch (temp)
-        {
-        case 1: {
-            string temp;
-            cout << "Nhap thoi gian chieu muon them: ";
-            cin >> temp;
-            this->Time.push_back(temp);
-            cout << "Nhap gia tien cua thoi gian chieu: ";
-            int temp2;
-            cin >> temp2;
-            this->Prices.push_back(temp2);
-            cout << "Nhap phong chieu cua thoi gian chieu: ";
-            Room temp3;
-            temp3.Input();
-            this->room.push_back(temp3);
-            break;
-        }
-        case 2: {
-            string temp;
-            cout << "Nhap thoi gian chieu muon thay doi: ";
-            cin >> temp;
-            for (int i = 0; i < this->AmountOfShowtime; i++) {
-                if (temp == this->Time[i].getData()) {
-                    string temp2;
-                    cout << "Nhap thoi gian chieu moi: ";
-                    cin >> temp2;
-                    this->Time[i].setData(temp2);
-                    return;
-                }
-            }
-            cout << "Khong co thoi gian nay trong lich chieu.\n";
-            break;
-        }
-        case 3: {
-            string temp;
-            cout << "Nhap thoi gian chieu muon xoa: ";
-            cin >> temp;
-            for (int i = 0; i < this->AmountOfShowtime; i++) {
-                if (temp == this->Time[i].getData()) {
-                    this->Time.erase(i);
-                    this->Prices.erase(i);
-                    this->room.erase(i);
-                    return;
-                }
-            }
-            cout << "Khong co thoi gian nay trong lich chieu.\n";
-            break;
-        }
-    }
-    case 2: {
-        cout << "Nhap thoi gian chieu muon thay doi gia: ";
-        string temp1;
-        cin >> temp;
-        cout << "Nhap phong chieu muon thay doi gia: ";
-        Room temp2;
-        cin >> temp2;
-        for (int i = 0; i < this->AmountOfShowtime; i++) {
-            if (temp == this->Time[i].getData() && temp2 == this->room[i]) {
-                int temp3;
-                cout << "Nhap gia tien moi: ";
-                cin >> temp3;
-                this->Prices[i].setData(temp3);
-                return;
-            }
-        }
-        cout << "Khong co thoi gian nay trong lich chieu.\n";
-        break;
-    }
-    case 3: {
-        cout << "Nhap thoi gian chieu cua phong muon thay doi: ";
-        string temp1;
-        cin >> temp1;
-        for (int i = 0; i < this->AmountOfShowtime; i++) {
-            if (temp1 == this->Time[i].getData()) {
-                cout << "Nhap phong chieu muon thay doi: ";
-                Room temp2;
-                cin >> temp2;
-                this->room[i].setData(temp2);
-                return;
-            }
-        }
-        cout << "Khong co thoi gian nay trong lich chieu.\n";
-        break;
-    }
-    default:
-        break;
-    }
-}
 }

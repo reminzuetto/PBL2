@@ -89,6 +89,36 @@ Vector<T>& Vector<T>::operator=(const Vector<T>& v) {
 
 }
 
+template <typename T>
+void Vector<T>::erase(const int& index) {
+    if (index < 0 || index >= size) {
+        return;
+    }
+
+    Node<T>* temp = head;
+
+    for (int i = 0; i < index; i++) {
+        temp = temp->getNext();
+    }
+
+    Node<T>* prevNode = temp->getPrev();
+    Node<T>* nextNode = temp->getNext();
+
+    if (prevNode != nullptr) {
+        prevNode->setNext(nextNode);
+    } 
+    else {
+        head = nextNode;
+    }
+
+    if (nextNode != nullptr) {
+        nextNode->setPrev(prevNode);
+    }
+
+    //delete temp;
+
+    size--;
+}
 // template <typename T>
 // Vector<T>& Vector<T>::operator=(const Vector<T>& v) {
 //     if (this != &v) { // Self-assignment check

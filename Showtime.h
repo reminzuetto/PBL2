@@ -18,7 +18,7 @@ class Showtime {
         Vector <string> getDate();
         void setAmountOfShowtime(const int&);
         int getAmountOfShowtime();
-        void EditShowtime(Showtime&);
+        void EditShowtime();
         Vector<string> getTime();
         Vector<int> getPrices();
         Vector<Room> getRoom();
