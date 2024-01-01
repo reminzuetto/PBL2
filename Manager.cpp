@@ -574,3 +574,26 @@ void Manager::DeleteFilm()
     cout << "Xoa phim thanh cong!"<< endl;
     system("pause");
 }
+
+void Manager::Revenue() {
+
+    system("cls");
+    int sum = 0;
+    for (int i = 0; i < List_Customer.getSize(); i ++) {
+
+        Customer cus = List_Customer[i].getData();
+        Vector <Trade> t = cus.getTrade();
+        for (int j = 0; j < t.getSize(); j ++) {
+
+            Trade tr = t[j].getData();
+            int c = tr.getCost();
+            sum += c;
+
+        }
+
+    }
+
+    cout << "Tong doanh thu tinh den hien tai la : " << sum << endl;
+    system("pause");
+
+}

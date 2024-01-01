@@ -31,7 +31,7 @@ void MainMenu() {
                 cout << "\n\n\t2. Xoa Phim";	
                 cout << "\n\n\t3. Chinh Sua Phim";	
 		        cout << "\n\n\t4. Hien Thi Danh Sach Phim Hien Tai";
-                cout << "\n\n\t5. Kiem Tra Doanh Thu  ";
+                cout << "\n\n\t5. Tong Doanh Thu  ";
                 cout << "\n\n\t6. Danh Sach Khach Hang";
                 cout << "\n\n\t0. Ket Thuc";
                 cout << "\n\n\t\t ================= END ===============";	
@@ -49,7 +49,7 @@ void MainMenu() {
                     case 2: {ql.DeleteFilm(); break;}
                     case 3: {ql.EditFilm(); break;}
                     case 4: {ql.ListFilm(); break;}
-                    //case 5: ql.Revenue();
+                    case 5: {ql.Revenue(); break;}
                     case 6: {ql.ListCustomer(); break;}
 
                 }
