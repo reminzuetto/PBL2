@@ -27,38 +27,100 @@ string Account::getPass() {
 void Account::Login() {
 
     system("cls");
-    cin.ignore();
     cout << "ID : ";
-    getline(cin, this->ID);
+    string tid, tp;
+    while (tid == "") {
+
+        getline(cin, tid);
+
+    }
+    this->ID = tid;
     cout << "Password : ";
-    getline(cin, this->Password);
+    while (tp == "") {
+
+        getline(cin, tp);
+
+    }
+    this->Password = tp;
 
 }
 
-void Account::Register() {
+void Account::Register(int* tmp) {
 
+    string tid, tp;
     cout << "Nhap vao ID cua ban : ";
-    getline(cin, this->ID);
+    while (tid == "") {
+
+        getline(cin, tid);
+
+    }
+    this->ID = tid;
     cout << "Nhap vao mat khau cua ban : ";
-    getline(cin, this->Password);
+    while (tp == "") {
+
+        getline(cin, tp);
+
+    }
+    this->Password = tp;
     cout << "Xac nhan lai mat khau : ";
     string s;
-    int count = 1;
-    getline(cin, s);
-    while (count < 4) {
+    while (s == "") {
 
         getline(cin, s);
-        count ++;
+
+    }
+    if (s != this->Password) {
+
+        int count = 0;
+        while (count < 4) {
+
+            cout << "Xac nhan lai mat khau : ";
+            s = "";
+            while (s == "") {
+
+                getline(cin, s);
+
+            }
+            if (s == this->Password) {
+                
+                *tmp = 1;
+                return;
+            
+            }
+            else count ++;
+
+        }
+
+        if (count == 4) {
+            
+            cout << "Ban nhap sai qua 5 lan. Tao tai khoan that bai" << endl;
+            system("pause");
+            return;
+
+        }
 
     }
 
-    if (count == 4) cout << "Ban nhap sai qua nhieu lan";
+    else {
+
+        *tmp = 1;
+        return;
+
+    }
 
 }
 
 bool Account::operator==(const Account& account) {
 
     return (this->ID == account.ID && this->Password == account.Password);
+
+}
+
+Account& Account::operator=(const Account& ac) {
+
+    this->ID = ac.ID;
+    this->Password = ac.Password;
+    return *this;
 
 }
 

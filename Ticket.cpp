@@ -111,6 +111,7 @@ istream& operator>>(istream& is, Ticket& t)
     while (fn == "") {
 
         getline(is, fn);
+        
     }
     t.FilmName = fn;
     is >> t.Date;
@@ -124,12 +125,12 @@ istream& operator>>(istream& is, Ticket& t)
 ostream& operator<<(ostream& os, Ticket& t) 
 {
 
-    os << "Ten phim : " << t.FilmName << endl;
-    os << "Ngay chieu : " << t.Date << endl;
-    os << "Suat chieu : " << t.showtime << endl;
-    os << "Phong chieu so : " << t.NumOfRoom << endl;
-    os << "Vi tri ghe ngoi : " << t.Seat << endl;
-    os << "Gia ve : " << t.Prices << endl;
+    os << t.FilmName << endl;
+    os << t.Date << endl;
+    os << t.showtime << endl;
+    os << t.NumOfRoom << endl;
+    os << t.Seat << endl;
+    os << t.Prices << endl;
 
     return os;
 

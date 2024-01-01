@@ -2,25 +2,25 @@
 
 // int main() {
 
-//     Vector <Film> List_Account;
+//     Vector <Film> List_Film;
 //     ifstream al;
 //     al.open("FilmList.txt", ios::in);
-//     Film acc;
-//     int countAcc;
-//     al >> countAcc;
-//     for (int i = 0; i < countAcc; i++)
+//     Film f;
+//     int countFilm;
+//     al >> countFilm;
+//     for (int i = 0; i < countFilm; i++)
 //     {
-//         al >> acc;
-//         List_Account.push_back(acc);
+//         al >> f;
+//         List_Film.push_back(f);
 //     }
 
-//     Vector <Showtime> List_Film;
-//     List_Film = List_Account[1].getData().getDSSC();
-//     for (int i = 0; i < List_Film.getSize(); i ++) {
+//     Film h = List_Film[0].getData();
+//     h.Output();
+//     string s = "Avenger";
+//     h.setFilmName(s);
+//     List_Film[0].setData(h);
 
-//         Showtime s = List_Film[i].getData();
-//         s.Output();
-
-//     }
+//     Film k = List_Film[0].getData();
+//     k.Output();
 //     al.close();
 // }

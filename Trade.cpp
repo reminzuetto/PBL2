@@ -24,9 +24,15 @@ int Trade::getAmountOfTicket() {
 Trade& Trade::operator=(const Trade& t) {
 
     this->AmountOfTicket = t.AmountOfTicket;
-    this->List_Ticket = t.List_Ticket;
     this->Cost = t.Cost;
+    this->List_Ticket = t.List_Ticket;
     return *this;
+
+}
+
+Vector <Ticket> Trade::getTicket() {
+
+    return this->List_Ticket;
 
 }
 
@@ -57,8 +63,8 @@ void Trade::CreateTrading(Vector <Film> ListFilm) {
             cout << "Moi ban chon phim : ";
             cin >> selectFilm;
             Film f1 = ListFilm[selectFilm - 1].getData();
-            t.setFilmName(f1.getFilmName());
-
+            string fn = f1.getFilmName();
+            t.setFilmName(fn);
             if (selectFilm == 0) break;
             int selectShowtime = 0;
             Showtime s;
@@ -142,20 +148,22 @@ void Trade::CreateTrading(Vector <Film> ListFilm) {
 
             if (selectShowtime == 0) selectFilm = 0;
             else {
-
-                t.setFilmName(f.getFilmName());
+                
                 t.setShowtime(tempt);
                 t.setPrices(tempp);
-                this->Cost = 0;
+                int tempc = 0;
+                Vector <Ticket> temptk;
                 for (int i = 0; i < Seat.getSize(); i ++) {
 
                     string tempseat = Seat[i].getData();
                     t.setNumOfRoom(tempr.getNumOfRoom());
                     t.setSeat(tempseat);
-                    this->List_Ticket.push_back(t);
-                    this->Cost += tempp;
+                    temptk.push_back(t);
+                    tempc += tempp;
 
                 }
+                this->List_Ticket = temptk;
+                this->Cost = tempc;
 
             }
 
@@ -173,20 +181,9 @@ void Trade::CreateTrading(Vector <Film> ListFilm) {
     }
 }
 
-void Trade::setCost(Vector<Ticket> List_Ticket) {
+void Trade::setCost(const int& cost) {
 
-    if (List_Ticket.getSize() != 0) {
-
-        for (int i = 0; i < List_Ticket.getSize(); i ++) {
-
-            Ticket t = List_Ticket[i].getData();
-            this->Cost += t.getPrices();
-
-        }
-
-    }
-
-    else this->Cost = 0;
+    this->Cost = cost;
 
 }
 
@@ -218,17 +215,16 @@ istream& operator>>(istream& is, Trade& t)
     int AmountOfTicket;
     is >> AmountOfTicket;
     t.setAmountOfTicket(AmountOfTicket);
-    Vector<Ticket> List_Ticket;
+    Vector<Ticket> Ltk;
     for (int i = 0; i < AmountOfTicket; i ++) {
 
         Ticket tempt;
         is >> tempt;
-        List_Ticket.push_back(tempt);
+        Ltk.push_back(tempt);
 
     }
-    int tempcost;
-    is >> tempcost;
-    t.Cost = tempcost;
+    t.List_Ticket = Ltk;
+    is >> t.Cost;
     return is;
 
 }
@@ -244,5 +240,69 @@ ostream& operator<<(ostream& os, Trade& t) {
     }
     os << t.Cost << endl;
     return os;
+
+}
+
+void Trade::Update(Film& newFilm, Film& oldFilm) {
+
+    int tempc = 0;
+    for (int i = 0; i < this->AmountOfTicket; i ++) {
+
+        Ticket t = this->List_Ticket[i].getData();
+        if (t.getFilmName() == oldFilm.getFilmName()) {
+
+            string tfn = newFilm.getFilmName();
+            t.setFilmName(tfn);
+            Vector <string> odt = oldFilm.getDate();
+            Vector <Showtime> ost = oldFilm.getDSSC();
+            Vector <string> ndt = newFilm.getDate();
+            Vector <Showtime> nst = newFilm.getDSSC();
+            int index;
+            for (int j = 0; j < oldFilm.getAmountOfDate(); j ++) {
+
+                if (t.getDate() == odt[j].getData()) {
+
+                    string td = ndt[j].getData();
+                    t.setDate(td);
+                    index = j;
+                    break;
+
+                }
+
+            }
+
+            Showtime ot = ost[index].getData();
+            Showtime st = nst[index].getData();
+            Vector<string> odtime = ot.getTime();
+            Vector<string> ndtime = st.getTime();
+            Vector<Room> ndroom = st.getRoom();
+            Vector<int> ndprices = st.getPrices();
+            for (int j = 0; j < ot.getAmountOfShowtime(); j ++) {
+
+                if (t.getShowtime() == odtime[j].getData()) {
+
+                    string tm = ndtime[j].getData();
+                    t.setShowtime(tm);
+                    int tp = ndprices[j].getData();
+                    t.setPrices(tp);
+                    tempc += tp;
+                    Room tr = ndroom[j].getData();
+                    int nr = tr.getNumOfRoom();
+                    t.setNumOfRoom(nr);
+                    break;
+
+                }
+
+            }
+
+            this->List_Ticket[i].setData(t);
+
+        }
+
+        else continue;
+
+    }
+
+    this->Cost = tempc;
 
 }

@@ -30,6 +30,7 @@ class Film {
         //Film SelectFilm(Vector<Film>, int*);
         void doc( );
         void edit();
+        bool operator==(const Film&);
         Film& operator=(const Film&);
         friend istream& operator>>(istream&, Film&);
         friend ostream& operator<<(ostream&, Film&);

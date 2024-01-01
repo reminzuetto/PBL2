@@ -69,7 +69,11 @@ void Showtime::Input() {
 
         cout << "Nhap suat chieu " << i + 1 << " : ";
         string s;
-        cin >> s;
+        while (s == "") {
+
+            getline(cin, s);
+
+        }
         Time.push_back(s);
 
         cout << "Nhap gia ve suat chieu " << i + 1 << " : ";
@@ -97,6 +101,12 @@ void Showtime::Output() {
         cout << endl;
 
     }
+
+}
+
+bool Showtime::operator==(const Showtime& s) {
+
+    return (this->Time == s.Time && this->Prices == s.Prices && this->room == s.room);
 
 }
 
@@ -212,75 +222,139 @@ void Showtime::EditShowtime()
             break;
         }
         case 2: {
-            string temp;
+            for (int i = 0; i < this->AmountOfShowtime; i ++) {
+
+                string tt = Time[i].getData();
+                cout << i + 1 << ". "<< tt <<endl;
+
+            }
+            int temp;
             cout << "Nhap thoi gian chieu muon thay doi: ";
             cin >> temp;
-            for (int i = 0; i < this->AmountOfShowtime; i++) {
-                if (temp == this->Time[i].getData()) {
-                    string temp2;
-                    cout << "Nhap thoi gian chieu moi: ";
-                    cin >> temp2;
-                    //this->Time[i].setData(temp2);
-                    this->Time[i].getData() = temp2;
-                    return;
-                }
+            if (temp <= 0 || temp > AmountOfShowtime) {
+
+                cout << "Khong ton tai suat chieu nay!" << endl;
+                system("pause");
+                return;
+
             }
+            string temp2;
+            cout << "Nhap thoi gian chieu moi: ";
+            cin >> temp2;
+            this->Time[temp - 1].setData(temp2);
+            return;
             cout << "Khong co thoi gian nay trong lich chieu.\n";
             break;
         }
         case 3: {
-            string temp;
+            for (int i = 0; i < this->AmountOfShowtime; i ++) {
+
+                string tt = Time[i].getData();
+                cout << i + 1 << ". " << "Thoi gian chieu : " << tt << " ";
+                int tp = Prices[i].getData();
+                cout << "Gia ve : " << tp << " ";
+                Room tr = room[i].getData();
+                tr.Output();
+
+            }
+            int temp;
             cout << "Nhap thoi gian chieu muon xoa: ";
             cin >> temp;
-            for (int i = 0; i < this->AmountOfShowtime; i++) {
-                if (temp == this->Time[i].getData()) {
-                    this->Time.erase(i);
-                    this->Prices.erase(i);
-                    this->room.erase(i);
-                    return;
-                }
+            if (temp <= 0 || temp > AmountOfShowtime) {
+
+                cout << "Khong ton tai suat chieu nay!" << endl;
+                system("pause");
+                return;
+
             }
-            cout << "Khong co thoi gian nay trong lich chieu.\n";
+            AmountOfShowtime--;
+            for (int i = temp - 1; i < AmountOfShowtime; i ++) {
+
+                Time[i] = Time[i + 1];
+                Prices[i] = Prices[i + 1];
+                room[i] = room[i + 1];
+
+            }
+            Time.setSize(AmountOfShowtime);
+            Prices.setSize(AmountOfShowtime);
+            room.setSize(AmountOfShowtime);
+            return;
             break;
         }
     }
     case 2: {
-        cout << "Nhap thoi gian chieu muon thay doi gia: ";
-        string temp1;
-        cin >> temp;
-        cout << "Nhap phong chieu muon thay doi gia: ";
-        Room temp2;
-        cin >> temp2;
-        for (int i = 0; i < this->AmountOfShowtime; i++) {
-            if (temp == this->Time[i].getData() && temp2 == this->room[i]) {
-                int temp3;
-                cout << "Nhap gia tien moi: ";
-                cin >> temp3;
-                this->Prices[i].setData(temp3);
-                return;
-            }
+        for (int i = 0; i < this->AmountOfShowtime; i ++) {
+
+                string tt = Time[i].getData();
+                cout << i + 1 << ". " << "Thoi gian chieu : " << tt << " ";
+                int tp = Prices[i].getData();
+                cout << "Gia ve : " << tp << " ";
+                Room tr = room[i].getData();
+                tr.Output();
+
         }
-        cout << "Khong co thoi gian nay trong lich chieu.\n";
+        int temp;
+        cout << "Nhap suat chieu ma ban muon thay doi gia : ";
+        cin >> temp;
+        if (temp <= 0 || temp > AmountOfShowtime) {
+
+                cout << "Khong ton tai suat chieu nay!" << endl;
+                system("pause");
+                return;
+
+        }
+        cout << "Nhap gia tien moi: ";
+        int temp3;
+        cin >> temp3;
+        this->Prices[temp - 1].setData(temp3);
+        return;
         break;
     }
     case 3: {
-        cout << "Nhap thoi gian chieu cua phong muon thay doi: ";
-        string temp1;
-        cin >> temp1;
-        for (int i = 0; i < this->AmountOfShowtime; i++) {
-            if (temp1 == this->Time[i].getData()) {
-                cout << "Nhap phong chieu muon thay doi: ";
-                Room temp2;
-                cin >> temp2;
-                this->room[i].setData(temp2);
-                return;
-            }
+        for (int i = 0; i < this->AmountOfShowtime; i ++) {
+
+                string tt = Time[i].getData();
+                cout << i + 1 << ". " << "Thoi gian chieu : " << tt << " ";
+                int tp = Prices[i].getData();
+                cout << "Gia ve : " << tp << " ";
+                Room tr = room[i].getData();
+                tr.Output();
+
         }
-        cout << "Khong co thoi gian nay trong lich chieu.\n";
+        cout << "Nhap thoi gian chieu cua phong muon thay doi: ";
+        int temp;
+        cin >> temp;
+        if (temp <= 0 || temp > AmountOfShowtime) {
+
+                cout << "Khong ton tai suat chieu nay!" << endl;
+                system("pause");
+                return;
+
+        }
+        Room temp2;
+        temp2.Input();
+        this->room[temp - 1].setData(temp2);
+        return;
         break;
     }
     default:
         break;
     }
 }
+}
+
+void Showtime::AddShowtime(Showtime& st) {
+
+    this->AmountOfShowtime += st.AmountOfShowtime;
+    for (int i = 0; i < st.AmountOfShowtime; i ++) {
+
+        string tt = st.Time[i].getData();
+        this->Time.push_back(tt);
+        int tp = st.Prices[i].getData();
+        this->Prices.push_back(tp);
+        Room tr = st.room[i].getData();
+        this->room.push_back(tr);
+
+    }
+
 }

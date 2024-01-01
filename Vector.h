@@ -15,5 +15,6 @@ class Vector {
         int getSize();
         Vector<T>& operator=(const Vector<T>&);
         void erase(const int&);
+        bool operator==(const Vector<T>&);
         // void resize(int);
 };

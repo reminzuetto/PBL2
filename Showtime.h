@@ -18,11 +18,13 @@ class Showtime {
         Vector <string> getDate();
         void setAmountOfShowtime(const int&);
         int getAmountOfShowtime();
+        void AddShowtime(Showtime&);
         void EditShowtime();
         Vector<string> getTime();
         Vector<int> getPrices();
         Vector<Room> getRoom();
         //Showtime SelectShowtime(Vector<Showtime>, int*);
+        bool operator==(const Showtime&);
         Showtime& operator=(const Showtime&);
         friend istream& operator>>(istream&, Showtime&);
         friend ostream& operator<<(ostream&, Showtime&);

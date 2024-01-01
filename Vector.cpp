@@ -85,6 +85,8 @@ Vector<T>& Vector<T>::operator=(const Vector<T>& v) {
 
     }
 
+    this->size = v.size;
+
     return *this;
 
 }
@@ -118,6 +120,36 @@ void Vector<T>::erase(const int& index) {
     //delete temp;
 
     size--;
+}
+
+template <typename T>
+bool Vector<T>::operator==(const Vector<T>& other) {
+    if (this->size != other.size) {
+        return false;
+    }
+
+    Node<T>* temp1 = this->head;
+    Node<T>* temp2 = other.head;
+
+    while (temp1 != nullptr && temp2 != nullptr) {
+
+        if (temp1->getData() == temp2->getData()) {
+
+            temp1 = temp1->getNext();
+            temp2 = temp2->getNext();
+            
+        }
+
+        else {
+
+            return false;
+
+        }
+
+    }
+
+    return true;
+
 }
 // template <typename T>
 // Vector<T>& Vector<T>::operator=(const Vector<T>& v) {

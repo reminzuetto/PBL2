@@ -15,6 +15,7 @@ class Node {
         Node();
         Node(const T&);
         Node(const Node*);
+        //~Node(); 
         void setData(const T&);
         T getData();
         void setNext(Node*);

@@ -23,6 +23,7 @@ class Room {
         Vector <int> getChair();
         string SelectSeat(Room&);
         Room& operator=(const Room&);
+        bool operator==(const Room&);
         friend istream& operator>>(istream&, Room&);
         friend ostream& operator<<(ostream&, Room&);
         void doc();

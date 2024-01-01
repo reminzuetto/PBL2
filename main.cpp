@@ -20,9 +20,10 @@ void MainMenu() {
 		cin >> Select;
         if(Select == 1) {
 
-            int SelectMng;
-            while (true) {
+           while (true) {
 
+                
+                int SelectMng = 0;
                 bool check = false;
                 system("cls");
                 cout << "\n\n\t\t ====== Chuc Nang Cua Quan Ly ======";
@@ -31,7 +32,7 @@ void MainMenu() {
                 cout << "\n\n\t3. Chinh Sua Phim";	
 		        cout << "\n\n\t4. Hien Thi Danh Sach Phim Hien Tai";
                 cout << "\n\n\t5. Kiem Tra Doanh Thu  ";
-                cout << "\n\n\t6. Danh Sach Khach Hang Da Mua Ve";
+                cout << "\n\n\t6. Danh Sach Khach Hang";
                 cout << "\n\n\t0. Ket Thuc";
                 cout << "\n\n\t\t ================= END ===============";	
 		        cout << "\n\n\tMoi ban nhap lua chon: ";
@@ -44,12 +45,12 @@ void MainMenu() {
                         check = true;
                         break;
                     }
-                    case 1: ql.AddFilm();
-                    case 2: ql.DeleteFilm();
-                    case 3: ql.EditFilm();
-                    case 4: ql.ListFilm();
+                    case 1: {ql.AddFilm(); break;}
+                    case 2: {ql.DeleteFilm(); break;}
+                    case 3: {ql.EditFilm(); break;}
+                    case 4: {ql.ListFilm(); break;}
                     //case 5: ql.Revenue();
-                    case 6: ql.ListCustomer();
+                    case 6: {ql.ListCustomer(); break;}
 
                 }
                 if (check == true) break;
@@ -63,17 +64,19 @@ void MainMenu() {
             Account cus_login;
             Customer cus;
             cus_login.Login();
-            ql.Customer_Login(cus_login, cus);
+            int tmp = 0;
+            ql.Customer_Login(cus_login, cus, &tmp);
             if (cus_login.getID() == cus.getID()) {
 
-                int SelectCsm;
                 while (true) {
-
+ 
+                    int SelectCsm = 0;
                     bool check = false;
                     system("cls");
                     cout << "\n\n\t\t ====== Chuc Nang Cua Khach Hang ======";
                     cout << "\n\n\t1. Mua Ve";
                     cout << "\n\n\t2. Kiem Tra Ve Da Dat";
+                    cout << "\n\n\t3. Chinh Sua Thong Tin";
                     cout << "\n\n\t0. Ket Thuc";
                     cout << "\n\n\t\t ================= END ===============";	
 		            cout << "\n\n\tMoi ban nhap lua chon: ";
@@ -89,10 +92,18 @@ void MainMenu() {
                             break;
 
                         }
-                        case 1: cus.BuyTicket(ListFilm);
+                        case 1: {cus.BuyTicket(ListFilm); break;}
                         case 2: {
-                            cus.getTrade();
+                            cus.PrintTrade();
                             system("pause");
+                            break;
+                        }
+
+                        case 3: {
+
+                            ql.EditCustomer(cus);
+                            break;
+
                         }
 
                     }

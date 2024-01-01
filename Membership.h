@@ -5,11 +5,11 @@ class Membership : public Customer {
 
     private:
         double Discount;
-        int NewPrice;
+        double NewPrice;
 
     public:
-        void setDiscount();
+        void setDiscount(double = 0.2);
         double getDiscount();
-        void setNewPrice();
-        int getNewPrice();
+        void setNewPrice(double);
+        double getNewPrice();
 };

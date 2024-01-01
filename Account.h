@@ -14,7 +14,8 @@ class Account {
         void setPass(const string&);
         string getPass();
         void Login();
-        void Register();
+        void Register(int*);
+        Account& operator=(const Account&);
         bool operator==(const Account&);
         friend istream& operator>>(istream&, Account& );
         friend ostream& operator<<(ostream&, Account& );

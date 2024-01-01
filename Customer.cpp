@@ -96,7 +96,7 @@ void Customer::BuyTicket(Vector <Film> ListFilm) {
 
 }
 
-void Customer::getTrade() {
+void Customer::PrintTrade() {
 
     system("cls");
     for (int i = 0; i < this->AmountOfTrade; i ++) {
@@ -106,6 +106,18 @@ void Customer::getTrade() {
         
 
     }
+
+}
+
+Vector <Trade> Customer::getTrade() {
+
+    return this->ListOfTrade;
+
+}
+
+void Customer::setTrade(Vector<Trade> T) {
+
+    this->ListOfTrade = T;
 
 }
 // ostream& operator<<(ostream& os, const Customer& cus)
@@ -127,13 +139,23 @@ void Customer::getTrade() {
 // }
 void Customer::Input()
 {
+    string tname, tphone;
     cout << "Nhap ten khach hang: ";
-    getline(cin, this->Name);
+    while (tname == "") {
+
+        getline(cin, tname);
+
+    }
+    this->Name = tname;
     cout << "Nhap tuoi khach hang: ";
     cin >> this->Age;
     cout << "Nhap so dien thoai khach hang: ";
-    cin.ignore();
-    getline(cin, this->PhoneNumber);
+    while (tphone == "") {
+
+        getline(cin, tphone);
+
+    }
+    this->PhoneNumber = tphone;
     cout << "Quy khach co phai la khach hang thanh vien khong?\nY la co, N la khong. [Y/N] : ";
     char c;
     cin >> c;
@@ -186,21 +208,23 @@ istream& operator>>(istream& is, Customer& c)
     if (temptype == "Membership") c.TypeOfCus = true;
     else c.TypeOfCus = false;
     is >> c.AmountOfTrade;
-    // if (c.AmountOfTrade != 0) {
+    if (c.AmountOfTrade != 0) {
 
-    //     string s = "GiaoDich/" + c.ID + ".txt";
-    //     ifstream tr;
-    //     tr.open(s, ios::in);
-    //     for (int i = 0; i < c.AmountOfTrade; i ++) {
+        string s = "GiaoDich/" + tempid + ".txt";
+        ifstream tr;
+        tr.open(s, ios::in);
+        Vector <Trade> ltrade;
+        for (int l = 0; l < c.AmountOfTrade; l ++) {
 
-    //         Trade t;
-    //         tr >> t;
-    //         c.ListOfTrade.push_back(t);
+            Trade t;
+            tr >> t;
+            ltrade.push_back(t);
 
-    //     }
-    //     c.ListOfTrade.setSize(c.AmountOfTrade);
+        }
+        c.ListOfTrade = ltrade;
+        tr.close();
 
-    // }
+    }
     return is;  
 }
 ostream& operator<<(ostream& os, Customer& c)
@@ -232,7 +256,7 @@ ostream& operator<<(ostream& os, Customer& c)
 
 bool Customer::operator==(const Customer& cus) {
 
-    return ( this->ID == cus.ID && this->Name == cus.Name && this->Age == cus.Age && this->PhoneNumber == cus.PhoneNumber && this->TypeOfCus == cus.TypeOfCus && this->AmountOfTrade == cus.AmountOfTrade );
+    return ( this->ID == cus.ID && this->Name == cus.Name && this->Age == cus.Age && this->PhoneNumber == cus.PhoneNumber && this->TypeOfCus == cus.TypeOfCus);
 
 }
 
@@ -253,6 +277,7 @@ Customer& Customer::operator=(const Customer& cus) {
 void Customer::edit() {
     cout << "1. Ten\n2. Tuoi\n3. So dien thoai\n4. Loai khach hang:\n";
     int choice;
+    string s;
     cin >> choice;
     cin.ignore();
     switch (choice)
@@ -273,13 +298,11 @@ void Customer::edit() {
     case 4:
         cout << "Nhap loai khach hang moi: ";
         cin.ignore();
-        string s;
         getline(cin, s);
         if (s == "Membership") this->TypeOfCus = true;
         else this->TypeOfCus = false;
         break;
-    default;
-    break;                
-}
+    default: break;                
+    }
 } 
 

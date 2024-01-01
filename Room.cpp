@@ -21,6 +21,12 @@ int Room::getAmountOfChair() {
 
 }
 
+bool Room::operator==(const Room& r) {
+
+    return (this->AmountOfChair == r.AmountOfChair && this->NumOfRoom == r.NumOfRoom);
+
+}
+
 Room& Room::operator=(const Room& r) {
 
     this->NumOfRoom = r.NumOfRoom;

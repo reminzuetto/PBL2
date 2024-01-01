@@ -73,6 +73,12 @@ Vector <string> Film::getDate() {
 
 }
 
+bool Film::operator==(const Film& f) {
+
+    return (this->FilmName == f.FilmName && this->Duration == f.Duration && this->TypeOfFilm == f.TypeOfFilm && this->AmountOfDate == f.AmountOfDate);
+
+}
+
 Film& Film::operator=(const Film& f) {
 
     this->FilmName = f.FilmName;
@@ -88,19 +94,30 @@ Film& Film::operator=(const Film& f) {
 void Film::Input() {
 
     cout << "Nhap ten phim : "; 
-    getline(cin, this->FilmName);
+    while (this->FilmName == "") {
+        
+        getline(cin, this->FilmName);
+
+    }
     cout << "Nhap thoi luong : "; 
     cin >> this->Duration;
-    cin.ignore();
     cout << "Nhap the loai phim : "; 
-    getline(cin, this->TypeOfFilm);
+    while (this->TypeOfFilm == "") {
+
+        getline(cin, this->TypeOfFilm);
+
+    }
     cout << "Nhap so luong ngay chieu trong tuan : "; 
     cin >> this->AmountOfDate;
     for (long long i = 0; i < this->AmountOfDate; i++) {
 
+        cout << "Nhap ngay chieu : ";
         string dt;
-        cin.ignore();
-        getline(cin, dt);
+        while (dt == "") {
+            
+            getline(cin, dt);
+        
+        }
         Date.push_back(dt);
         Showtime s;
         s.Input();
@@ -153,67 +170,72 @@ void Film::doc() {
 
 void Film::edit() {
     int choice;
-    cout << "1. Ten phim\n2. Thoi luong phim\n3. The loai phim\n4. Suat chieu phim";
-    cout << "Nhap loai du lieu muon thay doi:\n";
+    cout << "1. Ten phim\n2. Thoi luong phim\n3. The loai phim\n4. Suat chieu phim\n0. Ket thuc\n";
+    cout << "Nhap loai du lieu muon thay doi:";
     cin >> choice;
     cin.ignore(::numeric_limits<::streamsize>::max(), '\n');
     switch (choice) {
-    case 1: {
-        cout << "Nhap ten phim moi: ";
-        string temp;
-        getline(cin, temp);
-        this->FilmName = temp;
-        break;
-    }
-    case 2: {
-        cout << "Nhap thoi luong phim moi: ";
-        int temp;
-        cin >> temp;
-        this->Duration = temp;
-        break;
-    }
-    case 3: {
-        cout << "Nhap the loai phim moi: ";
-        string temp;
-        getline(cin, temp);
-        this->TypeOfFilm = temp;
-        break;
-    }
-    case 4: {
-        cout << "1. Them suat chieu\n2. Thay doi suat chieu\n";
-        cout << "Nhap lua chon:";
-        int temp;
-        cin >> temp;
-        switch (temp) {
         case 1: {
-            Showtime temp;
-            temp.Input();
-            this->AddShowtime(temp);
-            break;
-        }
+                cout << "Nhap ten phim moi: ";
+                string temp;
+                getline(cin, temp);
+                this->FilmName = temp;
+                break;
+            }
         case 2: {
-            cout << "Nhap ngay muon thay doi: ";
-            string temp;
-            getline(cin, temp);
-            for (int i = 0; i < this->AmountOfDate; i++) {
-                if (temp == this->Date[i].getData()) {
-                    
-                    Showtime *s = &(this->DSSC[i].getData());
-                    s->EditShowtime();
-                    return;
+                cout << "Nhap thoi luong phim moi: ";
+                int temp;
+                cin >> temp;
+                this->Duration = temp;
+                break;
+            }
+        case 3: {
+                cout << "Nhap the loai phim moi: ";
+                string temp;
+                getline(cin, temp);
+                this->TypeOfFilm = temp;
+                break;
+            }
+        case 4: {
+                cout << "1. Them suat chieu\n2. Thay doi suat chieu\n";
+                cout << "Nhap lua chon:";
+                int temp;
+                cin >> temp;
+                switch (temp) {
+                    case 1: {
+                            Showtime temp;
+                            temp.Input();
+                            this->AddShowtime(temp);
+                            break;
+                        }
+                    case 2: {
+                            for (int i = 0; i < this->AmountOfDate; i ++) {
+
+                                string s = this->Date[i].getData();
+                                cout << i + 1 << ". " << s << endl;
+
+                            }
+
+                            cout << "Nhap ngay muon thay doi: ";
+                            int temp;
+                            cin >> temp;
+                            Showtime s = this->DSSC[temp - 1].getData();
+                            s.EditShowtime();
+                            this->DSSC[temp - 1].setData(s);
+                            return;
+                            cout << "Khong co ngay nay trong lich chieu.\n";
+                            break;
+                        }
+
+                    case 0: break;
+
                 }
             }
-            cout << "Khong co ngay nay trong lich chieu.\n";
-            break;
-        }
-        break;
-    }
 
-    default:
-        break;
+        case 0: break;
     }
 }
-}
+
 istream& operator>>(istream& is, Film& f)
 {
     string fn = "";
@@ -261,7 +283,7 @@ ostream& operator<<(ostream& os, Film& f)
         
         string dt;
         dt = f.Date[i].getData();
-        os << dt;
+        os << dt << endl;
         Showtime temp;
         temp = f.DSSC[i].getData();
         os << temp;
@@ -278,7 +300,9 @@ void Film::AddShowtime(Showtime& st)
     {
         if (tempDate == this->Date[i].getData())
         {
-            this->DSSC[i].push_back(st);
+            Showtime s = this->DSSC[i].getData();
+            s.AddShowtime(st);
+            this->DSSC[i].setData(s);
             return;
         }
         else

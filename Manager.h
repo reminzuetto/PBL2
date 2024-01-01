@@ -15,7 +15,7 @@ class Manager {
     public:
         Manager();
         // ~Manager();
-        void Customer_Login(Account&, Customer&);
+        void Customer_Login(Account&, Customer&, int*);
         void SearchFilm();
         void UpdateData();
         void AddFilm();

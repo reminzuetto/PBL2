@@ -30,9 +30,11 @@ class Customer {
         bool getTypeOfCus();
         void setAmountOfTrade(const int&);
         int getAmountOfTrade();
+        void PrintTrade();
         friend istream& operator>>(istream&, Customer&);
         void BuyTicket(Vector <Film>);
-        void getTrade();
+        void setTrade(Vector<Trade>);
+        Vector<Trade> getTrade();
         friend ostream& operator<<(ostream&, Customer&);
         bool operator== (const Customer&);
         Customer& operator=(const Customer&);

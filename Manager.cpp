@@ -26,19 +26,141 @@ Vector <Film> Manager::getListFilm() {
 
 }
 
-void Manager::Customer_Login(Account& acc, Customer &cus) {
+void Manager::Customer_Login(Account& acc, Customer &cus, int* ind) {
 
-    bool check = false;
+    bool check = false, check1 = false;
+    Account tempacc;
     for (int i = 0; i < this->AmountOfAccount; i ++) {
+        
+        tempacc = List_Account[i].getData();
+        if (acc.getID() == tempacc.getID()) {
 
-        if (acc == List_Account[i].getData()) {
-
-            cout << "Dang nhap thanh cong" << endl;
-            check = true;
-            system("pause");
+            check1 = true;
             break;
 
         }
+
+    }
+
+    if (check1 == true) {
+
+        if (acc.getPass() == tempacc.getPass()) {
+
+            check = true;
+            *ind = 1;
+            cout << "Dang nhap thanh cong" << endl;
+            system("pause");
+
+        }
+
+        else {
+
+            cout << "Sai tai khoan hoac mat khau. Vui long nhap lai." << endl;
+            system("pause");
+            Account racc;
+            int count = 0;
+            int i = 0;
+            while (count < 4) {
+
+                racc.Login();
+                if (racc.getID() != tempacc.getID()) {
+                    Customer_Login(racc, cus, &i);
+                    if (i == 0) return;
+                    else {
+                        
+                        acc = racc;
+                        return;
+
+                    }
+                    break;
+                
+                }
+
+                else if (racc.getPass() == tempacc.getPass()) {
+
+                    cout << "Dang nhap thanh cong" << endl;
+                    system("pause");
+                    acc = racc;
+                    check = true;
+                    *ind = 1;
+                    break;
+
+                }
+
+                else {
+
+                    count++;
+                    if (count == 4) {
+                        
+                        cout << "Ban da nhap sai qua 5 lan. Vui long thu lai sau." << endl;
+                        system("pause");
+                        return;
+
+                    }
+                    else cout << "Sai tai khoan hoac mat khau. Vui long nhap lai." << endl;
+                    system("pause");
+
+                }
+
+            }
+
+        }
+
+    }
+
+    else {
+
+        cout << "Tai khoan khong ton tai." << endl;
+        cout << "Ban co muon tao tai khoan khong?\nY la co, N la khong. [Y/N] : ";
+        char ch;
+        cin >> ch;
+        if (ch == 'N' || ch == 'n') {
+
+            return;
+
+        }
+
+        else if (ch == 'Y' || ch == 'y') {
+
+            int check = 0;
+            Account tmpacc;
+            tmpacc.Register(&check);
+            if (check == 0) return;
+            cout << "Nhap thong tin cua ban: " << endl;
+            Customer tmpcus;
+            tmpcus.setID(tmpacc.getID());
+            tmpcus.Input();
+            this->AmountOfAccount ++;
+            this->List_Account.push_back(tmpacc);
+            this->AmountOfCustomer ++;
+            this->List_Customer.push_back(tmpcus);
+            ofstream al, cl;
+            al.open("AccountList.txt", ios::out);
+            al << this->AmountOfAccount << endl;
+            for (int i = 0; i < this->List_Account.getSize(); i ++) {
+
+                Account tacc = this->List_Account[i].getData();
+                al << tacc;
+
+            }
+            al.close();
+            cl.open("CustomerList.txt", ios::out);
+            cl << this->AmountOfCustomer << endl;
+            for (int i = 0; i < this->List_Customer.getSize(); i ++) {
+
+                Customer tcus = this->List_Customer[i].getData();
+                cl << tcus;
+
+            }
+            cl.close();
+            cout << "Dang ki thanh cong!" << endl;
+            cus = tmpcus;
+            acc = tmpacc;
+            system("pause");
+            return;
+        }
+
+        else return;
 
     }
 
@@ -108,83 +230,85 @@ void Manager::UpdateData()
 }
 void Manager::AddFilm()
 {
-    ifstream inFile("FilmList.txt");
-    if (!inFile.is_open()) {
-        cout << "Error: File not found." << endl;
-        return;
-    }
-    int countFilm;
-    inFile >> countFilm;
-    this->AmountOfFilm = countFilm;
-    inFile.ignore();
-    ofstream outFile("FilmList.txt",ios::app);
-    if (!outFile.is_open()) {
-        cerr << "Error: Unable to open file for writing." << endl;
-        return;
-    }
+    system("cls");
+    // ifstream inFile("FilmList.txt");
+    // if (!inFile.is_open()) {
+    //     cout << "Error: File not found." << endl;
+    //     return;
+    // }
+    // int countFilm;
+    // inFile >> countFilm;
+    // this->AmountOfFilm = countFilm;
+    // inFile.ignore();
+    ofstream fl;
+    fl.open("FilmList.txt",ios::out);
     this->AmountOfFilm++;
     Film f;
-    f.doc();
+    f.Input();
     ListOfFilm.push_back(f);
-    outFile << f << endl;
+    fl << this->AmountOfFilm << endl;
+    for (int i = 0; i < ListOfFilm.getSize(); i ++) {
 
-    outFile.seekp(0);
-    outFile << this->AmountOfFilm;
-    inFile.close();
-    outFile.close();
+        Film f1 = ListOfFilm[i].getData();
+        fl << f1;
+
+    }
+    //inFile.close();
     cout << "Them phim thanh cong!"<< endl;
+    system("pause");
 }
-void Manager::DeleteFilm()
-{
-    ifstream inFile("FilmList.txt");
-    if (!inFile.is_open()) {
-        cerr << "Error: File not found." << endl;
-        return;
-    }
-    int countFilm;
-    inFile >> countFilm;
-    inFile.ignore();
-    this->AmountOfFilm = countFilm;
-    this->ListOfFilm.setSize(countFilm);
-    for (int i = 0; i < countFilm; i++)
-    {
-        Film temp;
-        inFile >> temp;
-        this->ListOfFilm[i].setData(temp);
-    }
-    inFile.close();
-    int x;
-    cout << "Nhap vi tri phim can xoa: ";
-    cin >> x;
-    if (x < 1 || x > this->AmountOfFilm)
-    {
-        cout << "Vi tri khong hop le!" << endl;
-        return;
-    }
-    Film temp;
-    for (int i = x; i < this->AmountOfFilm - 1; i++)
-    {
-        ListOfFilm[i] = ListOfFilm[i + 1];
-    }
-    this->AmountOfFilm--;
-    ListOfFilm.setSize(this->AmountOfFilm);
-    ofstream outFile("FilmList.txt");
-    if (!outFile.is_open()) {
-        cerr << "Error: Unable to open file for writing." << endl;
-        return;
-    }
-    outFile << this->AmountOfFilm;
-    for (int i = 0; i < this->AmountOfFilm; i++)
-    {
-        Film temp;
-        temp = ListOfFilm[i].getData();
-        outFile << temp << endl;
-    }
-    outFile.close();
-    cout << "Xoa phim thanh cong!"<< endl;
-}
+// void Manager::DeleteFilm()
+// {
+//     ifstream inFile("FilmList.txt");
+//     if (!inFile.is_open()) {
+//         cerr << "Error: File not found." << endl;
+//         return;
+//     }
+//     int countFilm;
+//     inFile >> countFilm;
+//     inFile.ignore();
+//     this->AmountOfFilm = countFilm;
+//     this->ListOfFilm.setSize(countFilm);
+//     for (int i = 0; i < countFilm; i++)
+//     {
+//         Film temp;
+//         inFile >> temp;
+//         this->ListOfFilm[i].setData(temp);
+//     }
+//     inFile.close();
+//     int x;
+//     cout << "Nhap vi tri phim can xoa: ";
+//     cin >> x;
+//     if (x < 1 || x > this->AmountOfFilm)
+//     {
+//         cout << "Vi tri khong hop le!" << endl;
+//         return;
+//     }
+//     Film temp;
+//     for (int i = x; i < this->AmountOfFilm - 1; i++)
+//     {
+//         ListOfFilm[i] = ListOfFilm[i + 1];
+//     }
+//     this->AmountOfFilm--;
+//     ListOfFilm.setSize(this->AmountOfFilm);
+//     ofstream outFile("FilmList.txt");
+//     if (!outFile.is_open()) {
+//         cerr << "Error: Unable to open file for writing." << endl;
+//         return;
+//     }
+//     outFile << this->AmountOfFilm << endl;
+//     for (int i = 0; i < this->AmountOfFilm; i++)
+//     {
+//         Film temp;
+//         temp = ListOfFilm[i].getData();
+//         outFile << temp << endl;
+//     }
+//     outFile.close();
+//     cout << "Xoa phim thanh cong!"<< endl;
+// }
 void Manager::EditFilm()
 {
+    system("cls");
     ifstream inFile("FilmList.txt");
     if (!inFile.is_open()) {
         cerr << "Error: File not found." << endl;
@@ -203,6 +327,12 @@ void Manager::EditFilm()
     }
     inFile.close();
 
+    for (int i = 0; i < countFilm; i ++) {
+
+        Film f = ListOfFilm[i].getData();
+        cout << i + 1 << ". " << f.getFilmName() << endl;
+
+    }
     int x;
     cout << "Nhap vi tri phim can chinh sua: ";
     cin >> x;
@@ -211,19 +341,49 @@ void Manager::EditFilm()
         cout << "Vi tri khong hop le!" << endl;
         return;
     }
-    this->ListOfFilm[x - 1].getdata().edit();
+    system("cls");
+    Film ef = this->ListOfFilm[x - 1].getData();
+    Film fc = ef;
+    ef.edit();
+    for (int i = 0; i < AmountOfCustomer; i ++) {
+
+        Customer cus = List_Customer[i].getData();
+        Vector <Trade> temp;
+        temp = cus.getTrade();
+        for (int j = 0; j < cus.getAmountOfTrade();j++ ) {
+            
+            Trade tt = temp[j].getData();
+            tt.Update(fc, ef);
+            temp[j].setData(tt);
+
+        }
+        cus.setTrade(temp);
+        List_Customer[i].setData(cus);
+
+    }
+    ofstream lc;
+    lc.open("CustomerList.txt", ios::out);
+    lc << AmountOfCustomer << endl;
+    for (int i = 0; i < AmountOfCustomer; i ++) {
+
+        Customer cs;
+        cs = List_Customer[i].getData();
+        lc << cs;
+
+    }
+    lc.close();
     this->ListOfFilm[x - 1].setData(ef);
     ofstream outFile("FilmList.txt");
     if (!outFile.is_open()) {
         cerr << "Error: Unable to open file for writing." << endl;
         return;
     }
-    outFile << this->AmountOfFilm;
+    outFile << this->AmountOfFilm << endl;
     for (int i = 0; i < this->AmountOfFilm; i++)
     {
         Film f;
         f = ListOfFilm[i].getData();
-        outFile << f << endl;
+        outFile << f;
     }
     outFile.close();
 }
@@ -234,11 +394,10 @@ void Manager::SearchFilm()
     cin >> name;
     for (int i = 0; i < AmountOfFilm; i++)
     {
-        if ((this->ListOfFilm[i].getData().getFilmName() == name))
+        Film f = this->ListOfFilm[i].getData();
+        if ((f.getFilmName() == name))
         {
-            Film temp;
-            temp = this->ListOfFilm[i].getData();
-            temp.Output();
+            f.Output();
             return;
         }
     }
@@ -246,28 +405,32 @@ void Manager::SearchFilm()
 }
 void Manager::ListFilm()
 {
+    system("cls");
     cout << "------------------Danh Sach Phim-------------------------\n";
     for (int i = 0; i < AmountOfFilm; i++){
-        cout << i + 1 << endl;
+        cout << i + 1 << ". ";
         Film temp;
         temp = this->ListOfFilm[i].getData();
-        temp.Output();
+        cout << temp.getFilmName();
         cout << endl;
     }
     cout << "---------------------------------------------------------\n";
+    system("pause");
 }
 void Manager::ListCustomer()
 {
+    system("cls");
     cout << "------------------Danh Sach Khach Hang-------------------------\n";
     for (int i = 0; i < AmountOfCustomer; i++)
     {
-        cout << i + 1 << ".  ";
+        cout << i + 1 << endl;
         Customer cus;
         cus = List_Customer[i].getData();
         cus.Output();
         cout << endl;
     }
     cout << "---------------------------------------------------------\n";
+    system("pause");
 }
 
 void Manager::AddCustomer(Customer& cus) {
@@ -297,52 +460,63 @@ void Manager::AddCustomer(Customer& cus) {
     List_Customer = temp;
     ofstream cl;
     cl.open("CustomerList.txt", ios::out);
-    cl << AmountOfCustomer;
+    cl << AmountOfCustomer << endl;
     for (int i = 0; i < AmountOfCustomer; i ++) {
 
         Customer c = List_Customer[i].getData();
-        cl << c << endl;
+        cl << c;
 
     }
 
 }
-void Manager::EditCustomer()
+void Manager::EditCustomer(Customer &cus)
 {
-    ifstream inFile("CustomerList.txt");
-    if (!inFile.is_open()) {
-        cerr << "Error: File not found." << endl;
-        return;
-    }
-    int countCus;
-    inFile >> countCus;
-    inFile.ignore();
-    this->AmountOfCustomer = countCus;
-    this->List_Customer.setSize(countCus);
-    Customer temp;
-    for (int i = 0; i < countCus; i++)
-    {
-        inFile >> temp;
-        this->List_Customer[i].setData(temp);
-    }
-    inFile.close();
+    // ifstream inFile("CustomerList.txt");
+    // if (!inFile.is_open()) {
+    //     cerr << "Error: File not found." << endl;
+    //     return;
+    // }
+    // int countCus;
+    // inFile >> countCus;
+    // inFile.ignore();
+    // this->AmountOfCustomer = countCus;
+    // this->List_Customer.setSize(countCus);
+    // Customer temp;
+    // for (int i = 0; i < countCus; i++)
+    // {
+    //     inFile >> temp;
+    //     this->List_Customer[i].setData(temp);
+    // }
+    // inFile.close();
+
+    // int x;
+    // cout << "Nhap vi tri khach hang can chinh sua: ";
+    // cin >> x;
+    // if (x < 1 || x > this->AmountOfCustomer)
+    // {
+    //     cout << "Vi tri khong hop le!" << endl;
+    //     return;
+    // }
 
     int x;
-    cout << "Nhap vi tri khach hang can chinh sua: ";
-    cin >> x;
-    if (x < 1 || x > this->AmountOfCustomer)
-    {
-        cout << "Vi tri khong hop le!" << endl;
-        return;
+    for (int i = 0; i < AmountOfCustomer; i ++) {
+
+        if (cus == List_Customer[i].getData()) {
+
+            x = i;
+            break;
+
+        }  
+
     }
-    Customer ec;
-    ec = this->List_Customer[x - 1].getdata().edit();
-    this->List_Customer[x - 1].setData(ec);
+    cus.edit();
+    this->List_Customer[x].setData(cus);
     ofstream outFile("CustomerList.txt");
     if (!outFile.is_open()) {
         cerr << "Error: Unable to open file for writing." << endl;
         return;
     }
-    outFile << this->AmountOfCustomer;
+    outFile << this->AmountOfCustomer << endl;
     for (int i = 0; i < this->AmountOfCustomer; i++)
     {
         Customer c;
@@ -389,7 +563,7 @@ void Manager::DeleteFilm()
         cerr << "Error: Unable to open file for writing." << endl;
         return;
     }
-    outFile << this->AmountOfFilm;
+    outFile << this->AmountOfFilm << endl;
     for (int i = 0; i < this->AmountOfFilm; i++)
     {
         Film temp;
@@ -398,6 +572,5 @@ void Manager::DeleteFilm()
     }
     outFile.close();
     cout << "Xoa phim thanh cong!"<< endl;
-}
-void Manager::EditCustomer(Customer& cus) {
+    system("pause");
 }
