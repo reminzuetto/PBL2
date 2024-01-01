@@ -7,7 +7,7 @@ class Normal : public Customer {
         int TotalPrice;    
     
     public:
-        void setTotalPrice();
+        void setTotalPrice(const int&);
         int getTotalPrice();
 
 };
