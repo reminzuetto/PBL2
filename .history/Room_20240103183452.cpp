@@ -123,7 +123,7 @@ int Room::isChairAvailable(string& viTri)
             return 0;
         }
     }
-    else if (viTri.length() == 2 || test == 0 ) // them dieu kien dssc do nua vao
+    if (viTri.length() == 2 || test == 0 ) // them dieu kien dssc do nua vao
     {
         int row = toupper(viTri[0]) - 64;
         int column = stoi(viTri.substr(1));

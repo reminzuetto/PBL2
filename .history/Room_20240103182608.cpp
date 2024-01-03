@@ -138,6 +138,7 @@ int Room::isChairAvailable(string& viTri)
     }
     else
     {
+        cout << "Nhap sai cu phap, vui long nhap lai" << endl;
         return -1;  
     }
 }
@@ -177,20 +178,16 @@ string Room::SelectSeat(Room& r)
     while (check == false) {
 
         cin >> viTri;
-        if (isChairAvailable(viTri) == 1) {
+        if (isChairAvailable(viTri)) {
 
             cout << "Dat ghe thanh cong" << endl;
             check = true;
         
         }
-        else if(isChairAvailable(viTri) == 0) {
+        else {
 
             cout << "So ghe nay da duoc dat, vui long chon so ghe khac:" << endl;
         
-        }
-        else {
-                
-                cout << "Nhap sai cu phap, vui long nhap lai" << endl;
         }
 
     }
