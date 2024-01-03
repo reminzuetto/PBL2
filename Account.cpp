@@ -45,13 +45,26 @@ void Account::Login() {
 
 }
 
-void Account::Register(int* tmp) {
+void Account::Register(Vector<Account> ListCus, int* tmp) {
 
-    string tid, tp;
+    system("cls");
+    string tid = "", tp = "";
     cout << "Nhap vao ID cua ban : ";
     while (tid == "") {
-
+  
         getline(cin, tid);
+        for (int i = 0; i < ListCus.getSize(); i ++) {
+
+            Account tmpac = ListCus[i].getData();
+            if (tid == tmpac.getID()) {
+
+                cout << "ID nay da ton tai. Moi ban nhap ID khac." << endl;
+                tid = "";
+                cout << "Nhap vao ID cua ban : ";
+
+            }
+
+        }
 
     }
     this->ID = tid;

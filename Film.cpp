@@ -73,6 +73,12 @@ Vector <string> Film::getDate() {
 
 }
 
+void Film::setDSSC(Vector<Showtime> st) {
+
+    this->DSSC = st;
+
+}
+
 bool Film::operator==(const Film& f) {
 
     return (this->FilmName == f.FilmName && this->Duration == f.Duration && this->TypeOfFilm == f.TypeOfFilm && this->AmountOfDate == f.AmountOfDate);

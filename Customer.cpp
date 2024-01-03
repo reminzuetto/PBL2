@@ -278,6 +278,7 @@ void Customer::edit() {
     cout << "1. Ten\n2. Tuoi\n3. So dien thoai\n4. Loai khach hang:\n";
     int choice;
     string s;
+    cout << "Moi ban chon thong tin can thay doi : ";
     cin >> choice;
     cin.ignore();
     switch (choice)

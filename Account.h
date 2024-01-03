@@ -1,5 +1,5 @@
 #pragma once
-#include <bits/stdc++.h>
+#include "Customer.h"
 
 using namespace std;
 class Account {
@@ -14,7 +14,7 @@ class Account {
         void setPass(const string&);
         string getPass();
         void Login();
-        void Register(int*);
+        void Register(Vector<Account>, int*);
         Account& operator=(const Account&);
         bool operator==(const Account&);
         friend istream& operator>>(istream&, Account& );

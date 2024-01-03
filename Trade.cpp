@@ -66,7 +66,7 @@ void Trade::CreateTrading(Vector <Film> ListFilm) {
             string fn = f1.getFilmName();
             t.setFilmName(fn);
             if (selectFilm == 0) break;
-            int selectShowtime = 0;
+            int selectShowtime = 0, select = 0;
             Showtime s;
             string tempt;
             int tempp;
@@ -103,7 +103,7 @@ void Trade::CreateTrading(Vector <Film> ListFilm) {
                 }
 
                 system("cls");
-                int select = 0;
+                select = 0;
                 Time = s.getTime(); 
                 Price = s.getPrices();
                 Room = s.getRoom();
@@ -120,7 +120,6 @@ void Trade::CreateTrading(Vector <Film> ListFilm) {
                         tempr.Output();
 
                     }
-                    int select;
                     cout << "Moi ban chon suat chieu : ";
                     cin >> select;
                     if (select == 0) {
@@ -136,11 +135,14 @@ void Trade::CreateTrading(Vector <Film> ListFilm) {
 
                         string tempseat = tempr.SelectSeat(tempr);
                         Seat.push_back(tempseat);
+                        tempr.UpdateSeat(tempseat);
 
                     }
                     if (select != 0) break;
 
                 }
+
+                
 
                 if (selectShowtime != 0) break;
 
@@ -205,7 +207,7 @@ void Trade::PrintBill()
         t.Output();
 
     }
-    cout << "Tong so tien : " << this->Cost << endl;
+    cout << "Tong so tien : " << this->Cost << endl << endl;
 
 }
 
@@ -289,6 +291,9 @@ void Trade::Update(Film& newFilm, Film& oldFilm) {
                     Room tr = ndroom[j].getData();
                     int nr = tr.getNumOfRoom();
                     t.setNumOfRoom(nr);
+                    string seats = t.getSeat();
+                    tr.UpdateSeat(seats);
+                    ndroom[j].setData(tr);
                     break;
 
                 }

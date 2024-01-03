@@ -20,6 +20,7 @@ class Showtime {
         int getAmountOfShowtime();
         void AddShowtime(Showtime&);
         void EditShowtime();
+        void setRoom(Vector<Room>);
         Vector<string> getTime();
         Vector<int> getPrices();
         Vector<Room> getRoom();

@@ -22,6 +22,7 @@ class Room {
         int isChairAvailable(string&);
         Vector <int> getChair();
         string SelectSeat(Room&);
+        void UpdateSeat(string);
         Room& operator=(const Room&);
         bool operator==(const Room&);
         friend istream& operator>>(istream&, Room&);

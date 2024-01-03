@@ -124,7 +124,7 @@ void Manager::Customer_Login(Account& acc, Customer &cus, int* ind) {
 
             int check = 0;
             Account tmpacc;
-            tmpacc.Register(&check);
+            tmpacc.Register(List_Account, &check);
             if (check == 0) return;
             cout << "Nhap thong tin cua ban: " << endl;
             Customer tmpcus;
@@ -226,8 +226,37 @@ void Manager::UpdateData()
         this->List_Account.push_back(acc);
     }
     al.close();
+    UpdateSeats();
 
 }
+
+void Manager::UpdateSeats() {
+
+    for (int k = 0; k < AmountOfFilm; k ++) {
+
+        Film fm = ListOfFilm[k].getData();
+
+        for (int i = 0; i < AmountOfCustomer; i ++) {
+
+            Customer cs = List_Customer[i].getData();
+            Vector <Trade> tmp;
+            tmp = cs.getTrade();
+            for (int j = 0; j < cs.getAmountOfTrade(); j++ ) {
+
+                Trade tt = tmp[j].getData();
+                tt.Update(fm, fm);
+                tmp[j].setData(tt);
+
+            }
+
+        }
+
+        ListOfFilm[k].setData(fm);
+
+    }
+
+}
+
 void Manager::AddFilm()
 {
     system("cls");
@@ -468,36 +497,11 @@ void Manager::AddCustomer(Customer& cus) {
 
     }
 
+    UpdateSeats();
+
 }
 void Manager::EditCustomer(Customer &cus)
 {
-    // ifstream inFile("CustomerList.txt");
-    // if (!inFile.is_open()) {
-    //     cerr << "Error: File not found." << endl;
-    //     return;
-    // }
-    // int countCus;
-    // inFile >> countCus;
-    // inFile.ignore();
-    // this->AmountOfCustomer = countCus;
-    // this->List_Customer.setSize(countCus);
-    // Customer temp;
-    // for (int i = 0; i < countCus; i++)
-    // {
-    //     inFile >> temp;
-    //     this->List_Customer[i].setData(temp);
-    // }
-    // inFile.close();
-
-    // int x;
-    // cout << "Nhap vi tri khach hang can chinh sua: ";
-    // cin >> x;
-    // if (x < 1 || x > this->AmountOfCustomer)
-    // {
-    //     cout << "Vi tri khong hop le!" << endl;
-    //     return;
-    // }
-
     int x;
     for (int i = 0; i < AmountOfCustomer; i ++) {
 
@@ -521,7 +525,7 @@ void Manager::EditCustomer(Customer &cus)
     {
         Customer c;
         c = List_Customer[i].getData();
-        outFile << c << endl;
+        outFile << c;
     }
     outFile.close();
 }

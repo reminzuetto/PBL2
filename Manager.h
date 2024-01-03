@@ -1,7 +1,5 @@
 #pragma once
-//#include "Film.h"
 #include "Account.h"
-#include "Customer.h"
 class Manager {
 
     private:
@@ -18,12 +16,12 @@ class Manager {
         void Customer_Login(Account&, Customer&, int*);
         void SearchFilm();
         void UpdateData();
+        void UpdateSeats();
         void AddFilm();
         void EditFilm();
         void DeleteFilm();
         void AddCustomer(Customer&);
         void EditCustomer(Customer&);
-        void DeleteCustomer();
         void ListFilm();
         void ListCustomer();
         Vector <Film> getListFilm();

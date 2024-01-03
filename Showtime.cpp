@@ -48,11 +48,11 @@ Vector<int> Showtime::getPrices() {
 
 }
 
-// void Showtime::setNumOfRoom(const Room& r) {
+void Showtime::setRoom(Vector<Room> r) {
 
-//     this->room = r;
+    this->room = r;
 
-// }
+}
 
 Vector<Room> Showtime::getRoom() {
 
