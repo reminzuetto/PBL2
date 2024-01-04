@@ -93,7 +93,13 @@ void MainMenu() {
                             break;
 
                         }
-                        case 1: {cus.BuyTicket(ListFilm); break;}
+                        case 1: {
+                            
+                            cus.BuyTicket(ListFilm);
+                            ql.UpdateSeats(cus);
+                            break;
+                            
+                        }
                         case 2: {
                             cus.PrintTrade();
                             system("pause");

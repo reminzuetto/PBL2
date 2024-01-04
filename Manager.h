@@ -15,7 +15,7 @@ class Manager {
         void Customer_Login(Account&, Customer&, int*);
         void SearchFilm();
         void UpdateData();
-        void UpdateSeats();
+        void UpdateSeats(Customer&);
         void AddFilm();
         void EditFilm();
         void DeleteFilm();

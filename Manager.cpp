@@ -213,6 +213,7 @@ void Manager::UpdateData()
     {
         cl >> cus;
         this->List_Customer.push_back(cus);
+        UpdateSeats(cus);
     }
     cl.close();
 
@@ -226,32 +227,25 @@ void Manager::UpdateData()
         this->List_Account.push_back(acc);
     }
     al.close();
-    UpdateSeats();
 
 }
 
-void Manager::UpdateSeats() {
+void Manager::UpdateSeats(Customer& cs) {
 
-    for (int k = 0; k < AmountOfFilm; k ++) {
+    for (int i = 0; i < AmountOfFilm; i ++) {
 
-        Film fm = ListOfFilm[k].getData();
+        Film fm = ListOfFilm[i].getData();
+        Vector <Trade> tmp;
+        tmp = cs.getTrade();
+        for (int j = 0; j < cs.getAmountOfTrade(); j++ ) {
 
-        for (int i = 0; i < AmountOfCustomer; i ++) {
-
-            Customer cs = List_Customer[i].getData();
-            Vector <Trade> tmp;
-            tmp = cs.getTrade();
-            for (int j = 0; j < cs.getAmountOfTrade(); j++ ) {
-
-                Trade tt = tmp[j].getData();
-                tt.Update(fm, fm);
-                tmp[j].setData(tt);
-
-            }
+            Trade tt = tmp[j].getData();
+            tt.Update(fm, fm);
+            tmp[j].setData(tt);
 
         }
 
-        ListOfFilm[k].setData(fm);
+        ListOfFilm[i].setData(fm);
 
     }
 
@@ -496,8 +490,6 @@ void Manager::AddCustomer(Customer& cus) {
         cl << c;
 
     }
-
-    UpdateSeats();
 
 }
 void Manager::EditCustomer(Customer &cus)
