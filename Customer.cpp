@@ -90,9 +90,13 @@ string Customer::getID() {
 void Customer::BuyTicket(Vector <Film> ListFilm) {
 
     Trade t;
-    t.CreateTrading(ListFilm);
+    bool type = this->TypeOfCus;
+    t.CreateTrading(ListFilm, type);
+    if (type == true) cout << "Vi quy khach la khach hang thanh vien nen se duoc giam gia 20%" << endl;
     this->ListOfTrade.push_back(t);
     this->AmountOfTrade ++;
+    cout << "Dat ve thanh cong" << endl;
+    system("pause");
 
 }
 
@@ -171,11 +175,6 @@ void Customer::Output()
         cout << "Khach hang thanh vien" << endl;
     else
         cout << "Khanh hang binh thuong" << endl;
-    // cout << "Lich su giao dich: " << endl;
-    // for (int i = 0; i < this->ListOfTrade.size(); i++)
-    // {
-    //     cout << this->ListOfTrade[i];
-    // }
 }
 istream& operator>>(istream& is, Customer& c)
 {

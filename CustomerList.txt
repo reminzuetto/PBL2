@@ -9,5 +9,5 @@ Membership
 Le Minh Duyet
 20
 0123456789
-Membership
+Normal
 1

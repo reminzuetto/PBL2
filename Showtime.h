@@ -8,7 +8,7 @@ class Showtime {
     private:
         int AmountOfShowtime;
         Vector<string> Time;
-        Vector<int> Prices;
+        Vector<double> Prices;
         Vector<Room> room;
 
     public:
@@ -22,7 +22,7 @@ class Showtime {
         void EditShowtime();
         void setRoom(Vector<Room>);
         Vector<string> getTime();
-        Vector<int> getPrices();
+        Vector<double> getPrices();
         Vector<Room> getRoom();
         //Showtime SelectShowtime(Vector<Showtime>, int*);
         bool operator==(const Showtime&);

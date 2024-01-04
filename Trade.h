@@ -5,15 +5,15 @@ class Trade {
     private:
         int AmountOfTicket;
         Vector<Ticket> List_Ticket;
-        int Cost;
+        double Cost;
 
     public:
         Trade();
         void setAmountOfTicket(const int&);
         int getAmountOfTicket();
-        void setCost(const int&);
-        int getCost();
-        void CreateTrading(Vector <Film>);
+        void setCost(const double&);
+        double getCost();
+        void CreateTrading(Vector <Film>, bool);
         Vector <Ticket> getTicket();
         void PrintBill();
         void Update(Film&, Film&);

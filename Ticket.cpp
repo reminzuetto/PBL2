@@ -70,12 +70,12 @@ string Ticket::getSeat() {
     return this->Seat;
 
 }
-void Ticket::setPrices(const int& Prices) {
+void Ticket::setPrices(const double& Prices) {
 
     this->Prices = Prices;
 
 }
-int Ticket::getPrices() {
+double Ticket::getPrices() {
 
     return this->Prices;
 

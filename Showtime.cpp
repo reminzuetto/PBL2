@@ -4,7 +4,7 @@ Showtime::Showtime() {
 
     this->AmountOfShowtime = 0;
     Vector<string> t;
-    Vector<int> p;
+    Vector<double> p;
     Vector<Room> r;
     this->Time = t;
     this->Prices = p;
@@ -42,7 +42,7 @@ Vector<string> Showtime::getTime() {
 
 // }
 
-Vector<int> Showtime::getPrices() {
+Vector<double> Showtime::getPrices() {
 
     return this->Prices;
 
@@ -77,7 +77,7 @@ void Showtime::Input() {
         Time.push_back(s);
 
         cout << "Nhap gia ve suat chieu " << i + 1 << " : ";
-        int p;
+        double p;
         cin >> p;
         Prices.push_back(p);
 
@@ -126,11 +126,11 @@ istream& operator>>(istream& is, Showtime& st)
     // st.Prices.resize(st.AmountOfShowtime);
     // st.room.resize(st.AmountOfShowtime);
     Vector<string> tm;
-    Vector<int> pr;
+    Vector<double> pr;
     for (int i = 0; i < st.AmountOfShowtime; i++)
     {
         string tt = "";
-        int price;
+        double price;
         Room tr;
         while (tt == "") {
 
@@ -160,7 +160,7 @@ void Showtime::doc() {
         getline(cin, timeData) ;
         Time[i].setData(timeData);
         cout << "Nhap gia tien cua suat chieu " << i+1 << ": ";
-        int temp;
+        double temp;
         cin >> temp;
         Prices[i].setData(temp);
         cin.ignore();
@@ -178,7 +178,7 @@ ostream& operator<<(ostream& os, Showtime& st)
     for (int i = 0; i < st.AmountOfShowtime; i++)
     {
         string time;
-        int prices;
+        double prices;
         time = st.Time[i].getData();
         prices = st.Prices[i].getData();
         os << time << endl;
@@ -212,7 +212,7 @@ void Showtime::EditShowtime()
             cin >> temp;
             this->Time.push_back(temp);
             cout << "Nhap gia tien cua thoi gian chieu: ";
-            int temp2;
+            double temp2;
             cin >> temp2;
             this->Prices.push_back(temp2);
             cout << "Nhap phong chieu cua thoi gian chieu: ";
@@ -251,7 +251,7 @@ void Showtime::EditShowtime()
 
                 string tt = Time[i].getData();
                 cout << i + 1 << ". " << "Thoi gian chieu : " << tt << " ";
-                int tp = Prices[i].getData();
+                double tp = Prices[i].getData();
                 cout << "Gia ve : " << tp << " ";
                 Room tr = room[i].getData();
                 tr.Output();
@@ -287,7 +287,7 @@ void Showtime::EditShowtime()
 
                 string tt = Time[i].getData();
                 cout << i + 1 << ". " << "Thoi gian chieu : " << tt << " ";
-                int tp = Prices[i].getData();
+                double tp = Prices[i].getData();
                 cout << "Gia ve : " << tp << " ";
                 Room tr = room[i].getData();
                 tr.Output();
@@ -304,7 +304,7 @@ void Showtime::EditShowtime()
 
         }
         cout << "Nhap gia tien moi: ";
-        int temp3;
+        double temp3;
         cin >> temp3;
         this->Prices[temp - 1].setData(temp3);
         return;
@@ -315,7 +315,7 @@ void Showtime::EditShowtime()
 
                 string tt = Time[i].getData();
                 cout << i + 1 << ". " << "Thoi gian chieu : " << tt << " ";
-                int tp = Prices[i].getData();
+                double tp = Prices[i].getData();
                 cout << "Gia ve : " << tp << " ";
                 Room tr = room[i].getData();
                 tr.Output();
@@ -350,7 +350,7 @@ void Showtime::AddShowtime(Showtime& st) {
 
         string tt = st.Time[i].getData();
         this->Time.push_back(tt);
-        int tp = st.Prices[i].getData();
+        double tp = st.Prices[i].getData();
         this->Prices.push_back(tp);
         Room tr = st.room[i].getData();
         this->room.push_back(tr);

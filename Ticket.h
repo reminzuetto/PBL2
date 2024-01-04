@@ -12,7 +12,7 @@ class Ticket {
         string showtime;
         int NumOfRoom;
         string Seat;
-        int Prices;
+        double Prices;
 
     public:
         Ticket();
@@ -28,8 +28,8 @@ class Ticket {
         int getNumOfRoom();
         void setSeat(const string&);
         string getSeat();
-        void setPrices(const int&);
-        int getPrices();
+        void setPrices(const double&);
+        double getPrices();
         Ticket& operator= (const Ticket&);
         friend istream& operator>>(istream&, Ticket&);
         friend ostream& operator<<(ostream&, Ticket&);

@@ -2,7 +2,6 @@
 #include <bits/stdc++.h>
 
 using namespace std;
-
 template <typename T>
 class Node {
     
@@ -15,7 +14,6 @@ class Node {
         Node();
         Node(const T&);
         Node(const Node*);
-        //~Node(); 
         void setData(const T&);
         T getData();
         void setNext(Node*);
@@ -25,3 +23,4 @@ class Node {
         bool operator==(const Node&);
         Node& operator=(const Node&);
 };
+

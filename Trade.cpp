@@ -36,7 +36,7 @@ Vector <Ticket> Trade::getTicket() {
 
 }
 
-void Trade::CreateTrading(Vector <Film> ListFilm) {
+void Trade::CreateTrading(Vector <Film> ListFilm, bool type) {
     int selectamount = 0;
     while (selectamount == 0) {
         system("cls");
@@ -69,11 +69,11 @@ void Trade::CreateTrading(Vector <Film> ListFilm) {
             int selectShowtime = 0, select = 0;
             Showtime s;
             string tempt;
-            int tempp;
+            double tempp;
             Room tempr;
             Vector<Showtime> ListShowtime;
             Vector <string> Day;
-            Vector<int> Price;
+            Vector<double> Price;
             Vector<Room> Room;
             Vector<string> Time;
             Vector <string> Seat;
@@ -152,6 +152,7 @@ void Trade::CreateTrading(Vector <Film> ListFilm) {
             else {
                 
                 t.setShowtime(tempt);
+                if (type == true) tempp = tempp - tempp * 0.2;
                 t.setPrices(tempp);
                 int tempc = 0;
                 Vector <Ticket> temptk;
@@ -183,13 +184,13 @@ void Trade::CreateTrading(Vector <Film> ListFilm) {
     }
 }
 
-void Trade::setCost(const int& cost) {
+void Trade::setCost(const double& cost) {
 
     this->Cost = cost;
 
 }
 
-int Trade::getCost() {
+double Trade::getCost() {
 
     return this->Cost;
 
@@ -247,7 +248,7 @@ ostream& operator<<(ostream& os, Trade& t) {
 
 void Trade::Update(Film& newFilm, Film& oldFilm) {
 
-    int tempc = 0;
+    double tempc = 0;
     for (int i = 0; i < this->AmountOfTicket; i ++) {
 
         Ticket t = this->List_Ticket[i].getData();
@@ -278,14 +279,14 @@ void Trade::Update(Film& newFilm, Film& oldFilm) {
             Vector<string> odtime = ot.getTime();
             Vector<string> ndtime = st.getTime();
             Vector<Room> ndroom = st.getRoom();
-            Vector<int> ndprices = st.getPrices();
+            Vector<double> ndprices = st.getPrices();
             for (int j = 0; j < ot.getAmountOfShowtime(); j ++) {
 
                 if (t.getShowtime() == odtime[j].getData()) {
 
                     string tm = ndtime[j].getData();
                     t.setShowtime(tm);
-                    int tp = ndprices[j].getData();
+                    double tp = ndprices[j].getData();
                     t.setPrices(tp);
                     tempc += tp;
                     Room tr = ndroom[j].getData();
