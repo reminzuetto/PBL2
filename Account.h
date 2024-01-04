@@ -15,6 +15,7 @@ class Account {
         string getPass();
         void Login();
         void Register(Vector<Account>, int*);
+        Account ChangePassword(int *);
         Account& operator=(const Account&);
         bool operator==(const Account&);
         friend istream& operator>>(istream&, Account& );

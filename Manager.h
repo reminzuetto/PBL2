@@ -24,6 +24,7 @@ class Manager {
         void EditCustomer(Customer&);
         void ListFilm();
         void ListCustomer();
+        void UpdatePass(Account&);
         Vector <Film> getListFilm();
         void Revenue();
 };

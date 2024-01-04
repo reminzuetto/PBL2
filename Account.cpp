@@ -123,6 +123,46 @@ void Account::Register(Vector<Account> ListCus, int* tmp) {
 
 }
 
+Account Account::ChangePassword(int* check) {
+
+    system("cls");
+    string oldpass, newpass;
+    cout << "Nhap mat khau cu cua ban : ";
+    cin.ignore();
+    getline(cin, oldpass);
+    int count = 1;
+    while (oldpass == "" || oldpass != this->Password)
+    {
+        if (count == 5) {
+            
+            cout << "Ban da nhap sai qua 5 lan, vui long thu lai sau." << endl;
+            *check = 1;
+            system("pause");
+            return *this;
+
+        }
+        else cout << "Mat khau cu khong trung khop, vui long nhap lai." << endl;
+        count ++;
+        system("pause");
+        system("cls");
+        cout << "Nhap mat khau cu cua ban : ";
+        cin.ignore();
+        getline(cin, oldpass);
+
+    }
+    
+    cout << "Nhap mat khau moi: ";
+    while(newpass == "") {
+
+        getline(cin, newpass);
+
+    }
+
+    this->Password = newpass;
+    return *this;
+
+}
+
 bool Account::operator==(const Account& account) {
 
     return (this->ID == account.ID && this->Password == account.Password);

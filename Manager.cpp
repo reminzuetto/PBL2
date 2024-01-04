@@ -601,3 +601,39 @@ void Manager::Revenue() {
     system("pause");
 
 }
+
+void Manager::UpdatePass(Account& acc) {
+
+    int check = 0;
+    acc.ChangePassword(&check);
+    if (check == 0) {
+
+        ofstream al;
+        al.open("AccountList.txt", ios::out);
+        al << AmountOfAccount << endl;
+
+        for (int i = 0; i < List_Account.getSize(); i ++) {
+
+            Account tmp = List_Account[i].getData();
+            if (acc.getID() == tmp.getID()) {
+
+                List_Account[i].setData(acc);
+                al << acc;
+
+            }
+
+            else {
+
+                al << tmp;
+
+            }
+
+        }
+
+        al.close();
+        cout << "Doi mat khau thanh cong." << endl;
+        system("pause");
+
+    }
+
+}
