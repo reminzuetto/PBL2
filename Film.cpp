@@ -175,6 +175,7 @@ void Film::doc() {
 }
 
 void Film::edit() {
+    system("cls");
     int choice;
     cout << "1. Ten phim\n2. Thoi luong phim\n3. The loai phim\n4. Suat chieu phim\n0. Ket thuc\n";
     cout << "Nhap loai du lieu muon thay doi:";

@@ -13,12 +13,6 @@ Manager::Manager()
     this->List_Account = a;
     this->List_Customer = c;
 }
-// Manager::~Manager()
-// {
-//     delete[] this->ListOfFilm;
-//     delete[] this->List_Account;
-//     delete[] this->List_Customer;
-// }
 
 Vector <Film> Manager::getListFilm() {
 
@@ -332,25 +326,8 @@ void Manager::AddFilm()
 void Manager::EditFilm()
 {
     system("cls");
-    ifstream inFile("FilmList.txt");
-    if (!inFile.is_open()) {
-        cerr << "Error: File not found." << endl;
-        return;
-    }
-    int countFilm;
-    inFile >> countFilm;
-    inFile.ignore();
-    this->AmountOfFilm = countFilm;
-    this->ListOfFilm.setSize(countFilm);
-    Film temp;
-    for (int i = 0; i < countFilm; i++)
-    {
-        inFile >> temp;
-        this->ListOfFilm[i].setData(temp);
-    }
-    inFile.close();
 
-    for (int i = 0; i < countFilm; i ++) {
+    for (int i = 0; i < this->AmountOfFilm; i ++) {
 
         Film f = ListOfFilm[i].getData();
         cout << i + 1 << ". " << f.getFilmName() << endl;

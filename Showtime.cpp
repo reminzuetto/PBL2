@@ -192,7 +192,7 @@ ostream& operator<<(ostream& os, Showtime& st)
 
 void Showtime::EditShowtime()
 {
-
+    system("cls");
     cout << "1. Thay doi thoi gian chieu\n2. Thay doi gia\n3. Thay doi phong chieu\n";
     cout << "Nhap lua chon: ";
     int choice;
@@ -207,6 +207,7 @@ void Showtime::EditShowtime()
         switch (temp)
         {
         case 1: {
+            system("cls");
             string temp;
             cout << "Nhap thoi gian chieu muon them: ";
             cin >> temp;
@@ -222,6 +223,7 @@ void Showtime::EditShowtime()
             break;
         }
         case 2: {
+            system("cls");
             for (int i = 0; i < this->AmountOfShowtime; i ++) {
 
                 string tt = Time[i].getData();
@@ -247,6 +249,7 @@ void Showtime::EditShowtime()
             break;
         }
         case 3: {
+            system("cls");
             for (int i = 0; i < this->AmountOfShowtime; i ++) {
 
                 string tt = Time[i].getData();
@@ -283,6 +286,7 @@ void Showtime::EditShowtime()
         }
     }
     case 2: {
+        system("cls");
         for (int i = 0; i < this->AmountOfShowtime; i ++) {
 
                 string tt = Time[i].getData();
@@ -311,6 +315,7 @@ void Showtime::EditShowtime()
         break;
     }
     case 3: {
+        system("cls");
         for (int i = 0; i < this->AmountOfShowtime; i ++) {
 
                 string tt = Time[i].getData();

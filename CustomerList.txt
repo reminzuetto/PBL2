@@ -4,10 +4,10 @@ Dang Nguyen Ngoc Toan
 19
 0917930888
 Membership
-1
+0
 123456
 Le Minh Duyet
-20
-0123456789
+21
+987654321
 Normal
-1
+2

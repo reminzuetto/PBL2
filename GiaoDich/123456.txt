@@ -1,14 +1,40 @@
-2
-Doraemon
-1/1/2024
-8h30
-2
+3
+Avenger: End game
+5/1/2024
+7h30
+4
+A3
+70000
+Avenger: End game
+5/1/2024
+7h30
+4
 A4
 70000
-Doraemon
-1/1/2024
-8h30
-2
+Avenger: End game
+5/1/2024
+7h30
+4
 A5
 70000
-140000
+210000
+3
+Avenger: End game
+5/1/2024
+7h30
+4
+A6
+70000
+Avenger: End game
+5/1/2024
+7h30
+4
+A7
+70000
+Avenger: End game
+5/1/2024
+7h30
+4
+A8
+70000
+210000

@@ -78,6 +78,7 @@ void MainMenu() {
                     cout << "\n\n\t2. Kiem Tra Ve Da Dat";
                     cout << "\n\n\t3. Chinh Sua Thong Tin";
                     cout << "\n\n\t4. Doi Mat Khau";
+                    cout << "\n\n\t5. Kiem Tra Thong Tin";
                     cout << "\n\n\t0. Ket Thuc";
                     cout << "\n\n\t\t ================= END ===============";	
 		            cout << "\n\n\tMoi ban nhap lua chon: ";
@@ -116,6 +117,14 @@ void MainMenu() {
                         case 4: {
 
                             ql.UpdatePass(cus_login);
+                            break;
+
+                        }
+
+                        case 5: {
+
+                            cus.Output();
+                            system("pause");
                             break;
 
                         }

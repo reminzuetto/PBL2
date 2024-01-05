@@ -152,14 +152,16 @@ void Customer::Input()
     }
     this->Name = tname;
     bool check = false;
-    cout << "Nhap tuoi khach hang: ";
-    while (!check)
+    while (check == false)
     {
         int age;
+        cout << "Nhap tuoi khach hang: ";
         cin >> age;
         if (cin.fail())
         {
-            cout << "Sai dinh dang. Vui long nhap lai." << endl;
+            cout << "Dinh dang khong hop le, vui long nhap lai." << endl;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
         else
         {
@@ -175,10 +177,28 @@ void Customer::Input()
         }
     }
     
-    cout << "Nhap so dien thoai khach hang: ";
     while (tphone == "") {
 
+        cout << "Nhap so dien thoai khach hang: ";
+        cin.ignore();
         getline(cin, tphone);
+        for (int i = 0; i < tphone.length(); i ++) {
+
+            if (tphone[0] == '+' || ((int)tphone[i] >= 48 && (int)tphone[i] <= 57) ) {
+
+                continue;
+
+            }
+
+            else {
+
+                cout << "Dinh dang khong hop le, vui long nhap lai." << endl;
+                tphone = "";
+                break;
+
+            }
+
+        }
 
     }
     this->PhoneNumber = tphone;
@@ -190,6 +210,7 @@ void Customer::Input()
 }
 void Customer::Output()
 {
+    system("cls");
     cout << "Ten khach hang: " << this->Name << endl;
     cout << "Tuoi: " << this->Age << endl;
     cout << "So dien thoai khach hang: " << this->PhoneNumber << endl;
@@ -296,7 +317,8 @@ Customer& Customer::operator=(const Customer& cus) {
 }
 
 void Customer::edit() {
-    cout << "1. Ten\n2. Tuoi\n3. So dien thoai\n4. Loai khach hang:\n";
+    system("cls");
+    cout << "1. Ten\n2. Tuoi\n3. So dien thoai\n4. Loai khach hang\n";
     int choice;
     string s;
     cout << "Moi ban chon thong tin can thay doi : ";
@@ -308,15 +330,63 @@ void Customer::edit() {
         cout << "Nhap ten moi: ";
         getline(cin, this->Name);
         break;
-    case 2:
-        cout << "Nhap tuoi moi: ";
-        cin >> this->Age;
+    case 2: {
+        bool check = false;
+        while (check == false)
+        {
+            int age;
+            cout << "Nhap tuoi moi: ";
+            cin >> age;
+            if (cin.fail())
+            {
+                cout << "Sai dinh dang. Vui long nhap lai." << endl;
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
+            else
+            {
+                if (age < 0)
+                {
+                    cout << "Tuoi khong duoc nho hon 0. Vui long nhap lai." << endl;
+                }
+                else
+                {
+                    this->Age = age;
+                    check = true;
+                }
+            }
+        }
         break;
-    case 3:
-        cout << "Nhap so dien thoai moi: ";
-        cin.ignore();
-        getline(cin, this->PhoneNumber);
+    }
+    case 3: {
+        string tphone = "";
+        while (tphone == "") {
+
+            cout << "Nhap so dien thoai moi: ";
+            cin.ignore();
+            getline(cin, tphone);
+            for (int i = 0; i < tphone.length(); i ++) {
+
+                if (tphone[0] == '+' || ((int)tphone[i] >= 48 && (int)tphone[i] <= 57) ) {
+
+                    continue;
+
+                }
+
+                else {
+
+                    cout << "Dinh dang khong hop le, vui long nhap lai." << endl;
+                    tphone = "";
+                    break;
+
+                }
+
+            }
+
+        }
+        this->PhoneNumber = tphone;
         break;
+    }
     case 4:
         cout << "Nhap loai khach hang moi: ";
         cin.ignore();
