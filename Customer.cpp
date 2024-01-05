@@ -151,8 +151,30 @@ void Customer::Input()
 
     }
     this->Name = tname;
+    bool check = false;
     cout << "Nhap tuoi khach hang: ";
-    cin >> this->Age;
+    while (!check)
+    {
+        int age;
+        cin >> age;
+        if (cin.fail())
+        {
+            cout << "Sai dinh dang. Vui long nhap lai." << endl;
+        }
+        else
+        {
+            if (age < 0)
+            {
+                cout << "Tuoi khong duoc nho hon 0. Vui long nhap lai." << endl;
+            }
+            else
+            {
+                this->Age = age;
+                check = true;
+            }
+        }
+    }
+    
     cout << "Nhap so dien thoai khach hang: ";
     while (tphone == "") {
 

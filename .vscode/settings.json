@@ -93,6 +93,19 @@
     "syncstream": "cpp",
     "variant": "cpp",
     "xstring": "cpp",
-    "xlocmes": "cpp"
+    "xlocmes": "cpp",
+    "ios": "cpp",
+    "locale": "cpp",
+    "xfacet": "cpp",
+    "xiosbase": "cpp",
+    "xlocale": "cpp",
+    "xlocbuf": "cpp",
+    "xlocinfo": "cpp",
+    "xlocmon": "cpp",
+    "xlocnum": "cpp",
+    "xloctime": "cpp",
+    "xmemory": "cpp",
+    "xtr1common": "cpp",
+    "xutility": "cpp"
   }
 }
