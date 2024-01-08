@@ -210,7 +210,6 @@ void Customer::Input()
 }
 void Customer::Output()
 {
-    system("cls");
     cout << "Ten khach hang: " << this->Name << endl;
     cout << "Tuoi: " << this->Age << endl;
     cout << "So dien thoai khach hang: " << this->PhoneNumber << endl;
